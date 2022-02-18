@@ -26,3 +26,4 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.ManageEmployees.resources

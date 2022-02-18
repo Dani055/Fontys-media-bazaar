@@ -14,11 +14,12 @@ namespace MediaBazaar
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-        public double hourlyWage { get; set; }
+        public double HourlyWage { get; set; }
         public string DepartmentId { get; }
         public string Role { get; set; }
-
-        public Employee(int id, string username, string pass, string firstname, string lastname, string address, string departmentid, string role)
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public Employee(int id, string username, string pass, string firstname, string lastname,double wage, string address, string departmentid, string role, string email, string phone)
         {
             Id = id;
             Username = username;
@@ -26,10 +27,21 @@ namespace MediaBazaar
             FirstName = firstname;
             LastName = lastname;
             Address = address;
+            HourlyWage = wage;
             if (departmentid == "")
             {
                 departmentid = null;
             }
+            if (email == "")
+            {
+                email = null;
+            }
+            if (phone == "")
+            {
+                phone = null;
+            }
+            Email = email;
+            Phone = phone;
             DepartmentId = departmentid;
             Role = role;
         }

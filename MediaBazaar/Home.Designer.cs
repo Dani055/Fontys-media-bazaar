@@ -32,6 +32,7 @@ namespace MediaBazaar
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnManageEmp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -62,11 +63,22 @@ namespace MediaBazaar
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnManageEmp
+            // 
+            this.btnManageEmp.Location = new System.Drawing.Point(67, 39);
+            this.btnManageEmp.Name = "btnManageEmp";
+            this.btnManageEmp.Size = new System.Drawing.Size(119, 62);
+            this.btnManageEmp.TabIndex = 3;
+            this.btnManageEmp.Text = "Manage Employees";
+            this.btnManageEmp.UseVisualStyleBackColor = true;
+            this.btnManageEmp.Click += new System.EventHandler(this.btnManageEmp_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnManageEmp);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblUsername);
@@ -82,5 +94,6 @@ namespace MediaBazaar
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnManageEmp;
     }
 }

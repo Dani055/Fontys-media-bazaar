@@ -24,5 +24,11 @@ namespace MediaBazaar
             EmployeeService.loggedEmp = null;
             this.Dispose();
         }
+
+        private void btnManageEmp_Click(object sender, EventArgs e)
+        {
+            ManageEmployees frm = new ManageEmployees();
+            frm.ShowDialog();
+        }
     }
 }

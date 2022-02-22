@@ -84,6 +84,7 @@ namespace MediaBazaar
             this.Controls.Add(this.lblUsername);
             this.Name = "Home";
             this.Text = "Home";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

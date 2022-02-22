@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.logic.models;
+using MediaBazaar.logic.services;
 using MySql.Data.MySqlClient;
 
 namespace MediaBazaar
@@ -16,11 +18,6 @@ namespace MediaBazaar
         public ManageEmployees()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void ManageEmployees_Load(object sender, EventArgs e)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar
+namespace MediaBazaar.logic.models
 {
     public class Employee
     {

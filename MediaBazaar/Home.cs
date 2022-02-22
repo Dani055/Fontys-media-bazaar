@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.logic.services;
 
 namespace MediaBazaar
 {
     public partial class Home : Form
     {
+        bool closedByButton = false;
         public Home()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace MediaBazaar
         private void btnLogout_Click(object sender, EventArgs e)
         {
             EmployeeService.loggedEmp = null;
+            closedByButton = true;
             this.Dispose();
         }
 
@@ -29,6 +32,18 @@ namespace MediaBazaar
         {
             ManageEmployees frm = new ManageEmployees();
             frm.ShowDialog();
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (closedByButton)
+            {
+                this.Close();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

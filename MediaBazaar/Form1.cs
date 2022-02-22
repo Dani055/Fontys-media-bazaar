@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.logic.services;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -28,7 +29,6 @@ namespace MediaBazaar
             if (result)
             {
                 Home home = new Home();
-                /*home.Closed += new EventHandler(home_Closed);*/
                 this.Hide();
                 home.ShowDialog();
                 this.Show();
@@ -37,6 +37,7 @@ namespace MediaBazaar
 
         private void home_Closed(object sender, EventArgs e)
         {
+
             this.Close();
         }
     }

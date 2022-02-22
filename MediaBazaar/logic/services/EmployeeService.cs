@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.logic;
+using MediaBazaar.logic.models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-namespace MediaBazaar
+namespace MediaBazaar.logic.services
 {
     public static class EmployeeService
     {
@@ -38,8 +40,8 @@ namespace MediaBazaar
                             string firstname = reader.GetString("firstName");
                             string lastname = reader.GetString("lastName");
                             string address = reader.GetString("address");
-                            double wage = reader.GetDouble("hourly_wage");
-                            string departmentid = reader["department_id"].ToString();
+                            double wage = reader.GetDouble("hourlyWage");
+                            string departmentid = reader["departmentId"].ToString();
                             string role = reader["role"].ToString();
                             string email = reader["email"].ToString();
                             string phone = reader["phone"].ToString();
@@ -109,8 +111,8 @@ namespace MediaBazaar
                             string firstname = reader.GetString("firstName");
                             string lastname = reader.GetString("lastName");
                             string address = reader.GetString("address");
-                            double wage = reader.GetDouble("hourly_wage");
-                            string departmentid = reader["department_id"].ToString();
+                            double wage = reader.GetDouble("hourlyWage");
+                            string departmentid = reader["departmentId"].ToString();
                             string role = reader["role"].ToString();
                             string email = reader["email"].ToString();
                             string phone = reader["phone"].ToString();

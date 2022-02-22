@@ -45,5 +45,10 @@ namespace MediaBazaar
                 Application.Exit();
             }
         }
+
+        private void btnManageDepartments_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

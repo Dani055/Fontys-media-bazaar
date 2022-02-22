@@ -40,6 +40,11 @@ namespace MediaBazaar
             this.colDepartmentID = new System.Windows.Forms.ColumnHeader();
             this.colEmail = new System.Windows.Forms.ColumnHeader();
             this.colPhone = new System.Windows.Forms.ColumnHeader();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnRemoveEmployee = new System.Windows.Forms.Button();
+            this.btnEditInfo = new System.Windows.Forms.Button();
+            this.btnViewShifts = new System.Windows.Forms.Button();
+            this.btnManageShifts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvEmps
@@ -58,10 +63,10 @@ namespace MediaBazaar
             this.lvEmps.FullRowSelect = true;
             this.lvEmps.GridLines = true;
             this.lvEmps.HideSelection = false;
-            this.lvEmps.Location = new System.Drawing.Point(12, 38);
+            this.lvEmps.Location = new System.Drawing.Point(12, 12);
             this.lvEmps.MultiSelect = false;
             this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(826, 309);
+            this.lvEmps.Size = new System.Drawing.Size(1171, 315);
             this.lvEmps.TabIndex = 1;
             this.lvEmps.UseCompatibleStateImageBehavior = false;
             this.lvEmps.View = System.Windows.Forms.View.Details;
@@ -106,11 +111,61 @@ namespace MediaBazaar
             // 
             this.colPhone.Text = "Phone";
             // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.Location = new System.Drawing.Point(25, 349);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(150, 53);
+            this.btnAddEmployee.TabIndex = 2;
+            this.btnAddEmployee.Text = "Add Employee";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveEmployee
+            // 
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(194, 349);
+            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(156, 53);
+            this.btnRemoveEmployee.TabIndex = 3;
+            this.btnRemoveEmployee.Text = "Remove selected employee";
+            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnEditInfo
+            // 
+            this.btnEditInfo.Location = new System.Drawing.Point(368, 349);
+            this.btnEditInfo.Name = "btnEditInfo";
+            this.btnEditInfo.Size = new System.Drawing.Size(156, 53);
+            this.btnEditInfo.TabIndex = 4;
+            this.btnEditInfo.Text = "Edit info";
+            this.btnEditInfo.UseVisualStyleBackColor = true;
+            // 
+            // btnViewShifts
+            // 
+            this.btnViewShifts.Location = new System.Drawing.Point(194, 424);
+            this.btnViewShifts.Name = "btnViewShifts";
+            this.btnViewShifts.Size = new System.Drawing.Size(150, 53);
+            this.btnViewShifts.TabIndex = 5;
+            this.btnViewShifts.Text = "View work shifts and attendance";
+            this.btnViewShifts.UseVisualStyleBackColor = true;
+            // 
+            // btnManageShifts
+            // 
+            this.btnManageShifts.Location = new System.Drawing.Point(19, 424);
+            this.btnManageShifts.Name = "btnManageShifts";
+            this.btnManageShifts.Size = new System.Drawing.Size(156, 53);
+            this.btnManageShifts.TabIndex = 6;
+            this.btnManageShifts.Text = "Manage shifts for employee";
+            this.btnManageShifts.UseVisualStyleBackColor = true;
+            // 
             // ManageEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 588);
+            this.ClientSize = new System.Drawing.Size(1195, 589);
+            this.Controls.Add(this.btnManageShifts);
+            this.Controls.Add(this.btnViewShifts);
+            this.Controls.Add(this.btnEditInfo);
+            this.Controls.Add(this.btnRemoveEmployee);
+            this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.lvEmps);
             this.Name = "ManageEmployees";
             this.Text = "ManageEmployees";
@@ -131,5 +186,10 @@ namespace MediaBazaar
         private System.Windows.Forms.ColumnHeader colEmail;
         private System.Windows.Forms.ColumnHeader colPhone;
         private System.Windows.Forms.ColumnHeader colWage;
+        private System.Windows.Forms.Button btnAddEmployee;
+        private System.Windows.Forms.Button btnRemoveEmployee;
+        private System.Windows.Forms.Button btnEditInfo;
+        private System.Windows.Forms.Button btnViewShifts;
+        private System.Windows.Forms.Button btnManageShifts;
     }
 }

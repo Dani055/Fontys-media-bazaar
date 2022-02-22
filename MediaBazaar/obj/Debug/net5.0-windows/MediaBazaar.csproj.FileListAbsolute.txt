@@ -27,3 +27,6 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.ManageEmployees.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddEmployee.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditEmployee.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageDepartments.resources

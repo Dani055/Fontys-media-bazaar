@@ -41,6 +41,7 @@ namespace MediaBazaar.forms
             this.lblSeatch = new System.Windows.Forms.Label();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.btnRemoveItem = new System.Windows.Forms.Button();
+            this.btnSendRestockRequest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvEmps
@@ -56,10 +57,11 @@ namespace MediaBazaar.forms
             this.lvEmps.FullRowSelect = true;
             this.lvEmps.GridLines = true;
             this.lvEmps.HideSelection = false;
-            this.lvEmps.Location = new System.Drawing.Point(12, 39);
+            this.lvEmps.Location = new System.Drawing.Point(10, 29);
+            this.lvEmps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvEmps.MultiSelect = false;
             this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(784, 314);
+            this.lvEmps.Size = new System.Drawing.Size(686, 236);
             this.lvEmps.TabIndex = 2;
             this.lvEmps.UseCompatibleStateImageBehavior = false;
             this.lvEmps.View = System.Windows.Forms.View.Details;
@@ -101,48 +103,63 @@ namespace MediaBazaar.forms
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(71, 6);
+            this.tbSearch.Location = new System.Drawing.Point(62, 4);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(140, 27);
+            this.tbSearch.Size = new System.Drawing.Size(123, 23);
             this.tbSearch.TabIndex = 3;
             // 
             // lblSeatch
             // 
             this.lblSeatch.AutoSize = true;
-            this.lblSeatch.Location = new System.Drawing.Point(12, 9);
+            this.lblSeatch.Location = new System.Drawing.Point(10, 7);
             this.lblSeatch.Name = "lblSeatch";
-            this.lblSeatch.Size = new System.Drawing.Size(53, 20);
+            this.lblSeatch.Size = new System.Drawing.Size(42, 15);
             this.lblSeatch.TabIndex = 4;
             this.lblSeatch.Text = "Search";
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(12, 371);
+            this.btnAddItem.Location = new System.Drawing.Point(10, 278);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(137, 49);
+            this.btnAddItem.Size = new System.Drawing.Size(120, 45);
             this.btnAddItem.TabIndex = 6;
             this.btnAddItem.Text = "Add new item";
             this.btnAddItem.UseVisualStyleBackColor = true;
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(171, 371);
+            this.btnRemoveItem.Location = new System.Drawing.Point(150, 278);
+            this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(144, 49);
+            this.btnRemoveItem.Size = new System.Drawing.Size(126, 45);
             this.btnRemoveItem.TabIndex = 7;
             this.btnRemoveItem.Text = "Remove selected item";
             this.btnRemoveItem.UseVisualStyleBackColor = true;
             // 
+            // btnSendRestockRequest
+            // 
+            this.btnSendRestockRequest.Location = new System.Drawing.Point(576, 278);
+            this.btnSendRestockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSendRestockRequest.Name = "btnSendRestockRequest";
+            this.btnSendRestockRequest.Size = new System.Drawing.Size(120, 45);
+            this.btnSendRestockRequest.TabIndex = 8;
+            this.btnSendRestockRequest.Text = "Send ReStock Request";
+            this.btnSendRestockRequest.UseVisualStyleBackColor = true;
+            // 
             // Inventory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 530);
+            this.ClientSize = new System.Drawing.Size(709, 398);
+            this.Controls.Add(this.btnSendRestockRequest);
             this.Controls.Add(this.btnRemoveItem);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.lblSeatch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lvEmps);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Inventory";
             this.Text = "Inventory";
             this.ResumeLayout(false);
@@ -164,5 +181,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Label lblSeatch;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Button btnRemoveItem;
+        private System.Windows.Forms.Button btnSendRestockRequest;
     }
 }

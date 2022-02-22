@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZyptRCUktCIh3EwAlHNPNT2bIB7u4fl8yLf7VmLtYWNKCVrUKhZjxzwHvWr9LORw9Y3A9XjAmbIFqcygFjeisQ==",
+  "dgSpecHash": "+2AOU46HZZUfRTp7lqh9e3vdE1FrxwUmKf5P1sQzqpXib2K8o7JKndtcxh5JYs0QtqCxfLbJRUdyQco/JNZJ3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+  "projectFilePath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Nitro\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+    "C:\\Users\\tudor\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
   ],
   "logs": []
 }

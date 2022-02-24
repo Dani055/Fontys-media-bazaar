@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediaBazaar.logic.models;
+using MediaBazaar.logic.services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace MediaBazaar.forms
 {
     public partial class EditEmployee : Form
     {
-        public EditEmployee()
+        private Employee emp;
+        public EditEmployee(int empID)
         {
             InitializeComponent();
+            emp = EmployeeService.GetEmployeeByID(empID);
         }
     }
 }

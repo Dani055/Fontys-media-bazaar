@@ -35,5 +35,23 @@ namespace MediaBazaar.forms
             item = new ListViewItem(row);
             lvDepartments.Items.Add(item);
         }
+
+        private void btnEditDepartment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                EditDepartment editDepartment = new EditDepartment(Convert.ToInt16(lvDepartments.SelectedItems[0].Text));
+                editDepartment.ShowDialog();
+            }
+
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+                MessageBox.Show("No department has been selected");
+                return;
+
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.forms;
 using MediaBazaar.logic.models;
 using MediaBazaar.logic.services;
 using MySql.Data.MySqlClient;
@@ -35,6 +36,55 @@ namespace MediaBazaar
         {
             foreach (ColumnHeader col in lvw.Columns)
                 col.Width = width;
+        }
+
+        private void btnManageShifts_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                ManageShifts manageShifts = new ManageShifts(Convert.ToInt16(lvEmps.SelectedItems[0].Text));
+                manageShifts.ShowDialog();
+            }
+
+            catch (ArgumentOutOfRangeException ex) {
+
+                MessageBox.Show("No employee has been selected");
+                return;
+
+            }
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            AddEmployee addEmployee = new AddEmployee();
+            addEmployee.ShowDialog();
+        }
+
+        private void btnViewShifts_Click(object sender, EventArgs e)
+        {
+            AllShifts allShifts = new AllShifts();
+            allShifts.ShowDialog();
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                EditEmployee editEmployee = new EditEmployee(Convert.ToInt16(lvEmps.SelectedItems[0].Text));
+                editEmployee.ShowDialog();
+            }
+
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+                MessageBox.Show("No employee has been selected");
+                return;
+
+            }
+
         }
     }
 }

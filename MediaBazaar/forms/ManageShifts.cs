@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediaBazaar.logic.models;
+using MediaBazaar.logic.services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,20 @@ namespace MediaBazaar.forms
 {
     public partial class ManageShifts : Form
     {
-        public ManageShifts()
+
+        private Employee emp;
+        public ManageShifts(int empID)
         {
             InitializeComponent();
+            emp = EmployeeService.GetEmployeeByID(empID);
+        }
+
+        private void ManageShifts_Load(object sender, EventArgs e)
+        {
+            
+
+            lblEmpName.Text = $"{emp.FirstName} {emp.LastName}";
+
         }
     }
 }

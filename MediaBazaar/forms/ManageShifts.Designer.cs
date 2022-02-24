@@ -158,6 +158,7 @@ namespace MediaBazaar.forms
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManageShifts";
             this.Text = "ManageShifts";
+            this.Load += new System.EventHandler(this.ManageShifts_Load);
             this.gbManageShift.ResumeLayout(false);
             this.gbManageShift.PerformLayout();
             this.ResumeLayout(false);

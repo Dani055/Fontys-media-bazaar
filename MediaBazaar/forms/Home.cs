@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.forms;
 using MediaBazaar.logic.services;
 
 namespace MediaBazaar
@@ -48,7 +49,29 @@ namespace MediaBazaar
 
         private void btnManageDepartments_Click(object sender, EventArgs e)
         {
+
             
+            ManageDepartments frm = new ManageDepartments();
+            frm.ShowDialog();
+
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            Inventory inventory = new Inventory();
+            inventory.ShowDialog();
+        }
+
+        private void btnRestockReq_Click(object sender, EventArgs e)
+        {
+            RestockRequests restockRequests = new RestockRequests();
+            restockRequests.ShowDialog();
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            Sell sell = new Sell();
+            sell.ShowDialog();
         }
     }
 }

@@ -127,6 +127,7 @@ namespace MediaBazaar.forms
             this.btnAddItem.TabIndex = 6;
             this.btnAddItem.Text = "Add new item";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnRemoveItem
             // 

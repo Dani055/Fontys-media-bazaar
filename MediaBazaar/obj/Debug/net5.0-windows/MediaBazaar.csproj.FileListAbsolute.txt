@@ -30,3 +30,42 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddEmployee.resources
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditEmployee.resources
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageDepartments.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.exe
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.deps.json
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.json
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.dev.json
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.pdb
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\Google.Protobuf.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Compression.LZ4.Streams.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MySql.Data.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\ZstdNet.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.AssemblyReference.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddEmployee.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddItem.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AllShifts.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditDepartment.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditEmployee.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Form1.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Home.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Inventory.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageDepartments.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.ManageEmployees.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageShifts.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.RestockRequests.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Sell.resources
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.GenerateResource.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.GeneratedMSBuildEditorConfig.editorconfig
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.AssemblyInfoInputs.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.AssemblyInfo.cs
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CoreCompileInputs.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CopyComplete
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\refint\MediaBazaar.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll

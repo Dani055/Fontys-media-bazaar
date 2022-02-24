@@ -16,5 +16,11 @@ namespace MediaBazaar.forms
         {
             InitializeComponent();
         }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddItem addItem = new AddItem();
+            addItem.ShowDialog();
+        }
     }
 }

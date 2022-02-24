@@ -131,5 +131,53 @@ namespace MediaBazaar.logic.services
                 return new List<Employee>();
             }
         }
+
+        public static Employee GetEmployeeByID(int id) {
+
+
+            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+
+            try
+            {
+
+                string sql = "SELECT * FROM Employee WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+
+                    reader.Read();
+                    int empid = reader.GetInt32("id");
+                    string uname = reader.GetString("username");
+                    string pwd = reader.GetString("password");
+                    string firstname = reader.GetString("firstName");
+                    string lastname = reader.GetString("lastName");
+                    string address = reader.GetString("address");
+                    double wage = reader.GetDouble("hourlyWage");
+                    string departmentid = reader["departmentId"].ToString();
+                    string role = reader["role"].ToString();
+                    string email = reader["email"].ToString();
+                    string phone = reader["phone"].ToString();
+
+                    Employee emp = new Employee(empid, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone);
+                    return emp;
+
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+
+            }
+            
+            
+
+        
+        }
     }
 }

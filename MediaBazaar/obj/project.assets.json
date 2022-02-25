@@ -853,19 +853,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tudor\\.nuget\\packages\\": {}
+    "C:\\Users\\Nitro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+      "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
       "projectName": "MediaBazaar",
-      "projectPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-      "packagesPath": "C:\\Users\\tudor\\.nuget\\packages\\",
-      "outputPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+      "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+      "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -906,6 +906,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.14, 5.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -914,7 +920,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

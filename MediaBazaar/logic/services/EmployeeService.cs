@@ -13,7 +13,7 @@ namespace MediaBazaar.logic.services
 {
     public static class EmployeeService
     {
-        public static Employee loggedEmp { get; set; } = null;
+        public static Employee loggedEmp { get; set; }
         private static MySqlConnection conn = new MySqlConnection(Utils.connectionString);
 
         public static bool Login(string username, string password)
@@ -174,10 +174,44 @@ namespace MediaBazaar.logic.services
                 return null;
 
             }
-            
-            
-
-        
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public static void AddEmployee(Employee e)
+        {
+            string query = "INSERT INTO Employee (username,password,firstName,lastName,address,hourlyWage,departmentId,role,email,phone,contractType) VALUES (@Username, @Password, @FirstName, @LastName, @Address, @HourlyWage, @DepartmentId, @Role, @Email, @Phone, @ContractType)";
+            MySqlCommand command = new MySqlCommand(query, conn);
+            command.Parameters.AddWithValue("@Username", e.Username);
+            command.Parameters.AddWithValue("@Password", e.Password);
+            command.Parameters.AddWithValue("@FirstName", e.FirstName);
+            command.Parameters.AddWithValue("@LastName", e.LastName);
+            command.Parameters.AddWithValue("@Address", e.Address);
+            command.Parameters.AddWithValue("@HourlyWage", e.HourlyWage);
+            command.Parameters.AddWithValue("@DepartmentId", e.DepartmentId == "0" ? DBNull.Value : e.DepartmentId);
+            command.Parameters.AddWithValue("@Role", e.Role == null ? DBNull.Value : e.Role);
+            command.Parameters.AddWithValue("@Email", e.Email == null ? DBNull.Value : e.Email);
+            command.Parameters.AddWithValue("@Phone", e.Phone == null ? DBNull.Value : e.Phone);
+            command.Parameters.AddWithValue("@ContractType", DBNull.Value); //TODO : INSERT CONTRACT TYPE HERE
+            try
+            {
+                conn.Open();
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Successfuly added new employee");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+        public static int GetNewAvailableID()
+        {
+            var emps = GetEmployees();
+            return emps.ElementAt(emps.Count - 1).Id + 1;
         }
     }
 }

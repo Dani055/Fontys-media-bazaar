@@ -47,8 +47,10 @@ namespace MediaBazaar.forms
             this.calShifts.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.calShifts.Location = new System.Drawing.Point(16, 14);
             this.calShifts.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.calShifts.MaxSelectionCount = 1;
             this.calShifts.Name = "calShifts";
             this.calShifts.TabIndex = 0;
+            this.calShifts.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.calShifts_DateSelected);
             // 
             // lblEmpName
             // 
@@ -145,6 +147,7 @@ namespace MediaBazaar.forms
             this.btnAddShift.TabIndex = 6;
             this.btnAddShift.Text = "Add shift";
             this.btnAddShift.UseVisualStyleBackColor = true;
+            this.btnAddShift.Click += new System.EventHandler(this.btnAddShift_Click);
             // 
             // ManageShifts
             // 

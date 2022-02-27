@@ -48,7 +48,7 @@ namespace MediaBazaar
                 manageShifts.ShowDialog();
             }
 
-            catch (ArgumentOutOfRangeException ex) {
+            catch (ArgumentOutOfRangeException) {
 
                 MessageBox.Show("No employee has been selected");
                 return;
@@ -77,7 +77,7 @@ namespace MediaBazaar
                 editEmployee.ShowDialog();
             }
 
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
 
                 MessageBox.Show("No employee has been selected");

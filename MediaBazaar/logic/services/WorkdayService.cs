@@ -50,6 +50,71 @@ namespace MediaBazaar.logic.services
                 return null;
             }
         }
+        public static List<DetailedWorkday> GetWorkdays(string date)
+        {
+            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            if (EmployeeService.loggedEmp.Role != "Employee manager" || EmployeeService.loggedEmp.Role != "Department manager" || EmployeeService.loggedEmp.Role != "Depot manager")
+            {
+                return null;
+            }
+            try
+            {
+
+                string sql = "SELECT workdayId, employeeId, firstName, lastName, role, day, e.departmentId, departmentName ,shifts, missing FROM Workday as w " +
+                    "inner join Employee as e " +
+                    "on e.id = w.employeeId " +
+                    "left join Department as d " +
+                    "on e.departmentId = d.departmentId";
+                if (EmployeeService.loggedEmp.Role != "Employee manager")
+                {
+                    sql += " WHERE e.departmentId = @deptId AND day = @date"; 
+                }
+                else
+                {
+                    sql += " WHERE day = @date";
+                }
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@date", date);
+                if (EmployeeService.loggedEmp.Role != "Employee manager")
+                {
+                    cmd.Parameters.AddWithValue("@deptId", EmployeeService.loggedEmp.DepartmentId);
+                }
+
+                List<DetailedWorkday> workdays = new List<DetailedWorkday>();
+                connection.Open();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32("workdayId");
+                        int empId = reader.GetInt32("employeeId");
+                        string day = reader.GetString("day");
+                        string shifts = reader.GetString("shifts");
+                        bool missing = reader.GetBoolean("missing");
+                        string firstName = reader.GetString("firstName");
+                        string lastName = reader.GetString("lastName");
+                        string role = reader["role"].ToString();
+                        string departmentId = reader["departmentId"].ToString();
+                        string departmentName = reader["departmentName"].ToString();
+
+                        DetailedWorkday workday = new DetailedWorkday(id, empId, day, shifts, missing, firstName, lastName, role, departmentId, departmentName);
+                        workdays.Add(workday);
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+                return workdays;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
         public static bool AddWorkday(Employee emp, Workday workday)
         {
             Workday foundDay = WorkdayService.GetEmployeeWorkday(emp, workday.Date);
@@ -97,6 +162,35 @@ namespace MediaBazaar.logic.services
                 MessageBox.Show(ex.ToString());
                 return false;
 
+            }
+        }
+        public static bool MarkAttendance(string workdayId, bool missing)
+        {
+            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            if (workdayId == null)
+            {
+                MessageBox.Show("No workday selected!");
+                return false;
+            }
+            try
+            {
+                string sql = "UPDATE Workday SET missing = @missing WHERE workdayId = @workdayId";
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@workdayId", workdayId);
+                cmd.Parameters.AddWithValue("@missing", missing);
+                connection.Open();
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Attendance marked successfully");
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
             }
         }
         public static bool DeleteWorkday(Workday workday)

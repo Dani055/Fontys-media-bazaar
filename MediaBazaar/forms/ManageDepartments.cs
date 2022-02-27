@@ -45,7 +45,7 @@ namespace MediaBazaar.forms
                 editDepartment.ShowDialog();
             }
 
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
 
                 MessageBox.Show("No department has been selected");

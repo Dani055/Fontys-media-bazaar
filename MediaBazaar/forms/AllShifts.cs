@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.logic;
+using MediaBazaar.logic.models;
+using MediaBazaar.logic.services;
 
 namespace MediaBazaar.forms
 {
@@ -15,6 +18,82 @@ namespace MediaBazaar.forms
         public AllShifts()
         {
             InitializeComponent();
+            if (EmployeeService.loggedEmp.Role == "Employee manager")
+            {
+                lblDepartment.Text = "Viewing shifts for: all departments";
+            }
+            else
+            {
+                lblDepartment.Text = $"Viewing shifts for {EmployeeService.loggedEmp.DepartmentId} ID";
+            }
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            RefreshLV(dateTime);
+
+        }
+        private void RefreshLV(DateTime dt)
+        {
+            string date = dt.ToString(Utils.DbDateFormat);
+            List<DetailedWorkday> workdays = WorkdayService.GetWorkdays(date);
+            lvShifts.Items.Clear();
+            if (workdays == null)
+            {
+                return;
+            }
+            foreach (DetailedWorkday wd in workdays)
+            {
+                string[] row = { wd.Id.ToString(), wd.FirstName, wd.LastName, wd.Role, wd.DepartmentName, wd.Shifts, wd.Missing.ToString()};
+                ListViewItem item = new ListViewItem(row);
+                lvShifts.Items.Add(item);
+            }
+
+        }
+
+        private void calShifts_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            RefreshLV(dateTime);
+        }
+
+        private void btnAttended_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string workdayId = lvShifts.SelectedItems[0].Text;
+                if (lvShifts.SelectedItems[0].SubItems[6].Text == "False")
+                {
+                    return;
+                }
+                if (WorkdayService.MarkAttendance(workdayId, false))
+                {
+                    RefreshLV(calShifts.SelectionRange.Start);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No workday selected");
+            }
+
+        }
+
+        private void btnMissing_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string workdayId = lvShifts.SelectedItems[0].Text;
+                if(lvShifts.SelectedItems[0].SubItems[6].Text == "True")
+                {
+                    return;
+                }
+                if (WorkdayService.MarkAttendance(workdayId, true))
+                {
+                    RefreshLV(calShifts.SelectionRange.Start);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No workday selected");
+            }
         }
     }
 }

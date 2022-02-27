@@ -35,7 +35,24 @@ namespace MediaBazaar.forms
         {
 
             string date = dateTime.ToString(Utils.DbDateFormat);
+            string prevDate = dateTime.AddDays(-1).ToString(Utils.DbDateFormat);
             selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
+            Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
+            if (prevWorkday != null)
+            {
+                if (prevWorkday.Shifts.IndexOf("evening") != -1)
+                {
+                    cbMorning.Enabled = false;
+                }
+                else
+                {
+                    cbMorning.Enabled = true;
+                }
+            }
+            else
+            {
+                cbMorning.Enabled = true;
+            }
             listBox1.Items.Clear();
             if (selectedWorkday == null) {
 
@@ -50,6 +67,7 @@ namespace MediaBazaar.forms
             {
                 listBox1.Items.Add(s);
             }
+            
 
         }
 
@@ -101,6 +119,7 @@ namespace MediaBazaar.forms
             if (WorkdayService.AddWorkday(emp, workday))
             {
                 RefreshListBox(dateTime);
+                cbMorning.Enabled = true;
             }
 
         }
@@ -115,6 +134,7 @@ namespace MediaBazaar.forms
             WorkdayService.DeleteWorkday(selectedWorkday);
             DateTime dateTime = calShifts.SelectionRange.Start;
             RefreshListBox(dateTime);
+            cbMorning.Enabled = true;
         }
 
         private void cbMorning_CheckedChanged(object sender, EventArgs e)

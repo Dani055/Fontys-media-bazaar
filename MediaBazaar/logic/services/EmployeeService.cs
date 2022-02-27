@@ -79,7 +79,7 @@ namespace MediaBazaar.logic.services
                     MySqlCommand cmd;
                     if (loggedEmp.Role == "Department manager")
                     {
-                        sql = "SELECT * FROM Employee WHERE department_id = @depID";
+                        sql = "SELECT * FROM Employee WHERE departmentId = @depID";
                         cmd = new MySqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("@depID", loggedEmp.DepartmentId);
                     }

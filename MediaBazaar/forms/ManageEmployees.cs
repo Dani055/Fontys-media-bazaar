@@ -23,15 +23,23 @@ namespace MediaBazaar
 
         private void ManageEmployees_Load(object sender, EventArgs e)
         {
+            RefreshEmployees();
+        }
+
+        private void RefreshEmployees()
+        {
+            lvEmps.Items.Clear();
             List<Employee> emps = EmployeeService.GetEmployees();
             foreach (Employee emp in emps)
             {
                 string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), emp.DepartmentId, emp.Email, emp.Phone };
                 ListViewItem item = new ListViewItem(row);
+                item.Tag = emp;
                 lvEmps.Items.Add(item);
             }
             SetListViewColumnSizes(lvEmps, -2);
         }
+
         private void SetListViewColumnSizes(ListView lvw, int width)
         {
             foreach (ColumnHeader col in lvw.Columns)
@@ -40,7 +48,6 @@ namespace MediaBazaar
 
         private void btnManageShifts_Click(object sender, EventArgs e)
         {
-
             try
             {
 
@@ -48,7 +55,7 @@ namespace MediaBazaar
                 manageShifts.ShowDialog();
             }
 
-            catch (ArgumentOutOfRangeException ex) {
+            catch (ArgumentOutOfRangeException) {
 
                 MessageBox.Show("No employee has been selected");
                 return;
@@ -60,6 +67,13 @@ namespace MediaBazaar
         {
             AddEmployee addEmployee = new AddEmployee();
             addEmployee.ShowDialog();
+            addEmployee.Dispose();
+            RefreshEmployees();
+        }
+        private void btnRemoveEmployee_Click(object sender, EventArgs e)
+        {
+            EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id);
+            RefreshEmployees();
         }
 
         private void btnViewShifts_Click(object sender, EventArgs e)
@@ -75,9 +89,10 @@ namespace MediaBazaar
 
                 EditEmployee editEmployee = new EditEmployee(Convert.ToInt16(lvEmps.SelectedItems[0].Text));
                 editEmployee.ShowDialog();
+                editEmployee.Dispose();
             }
 
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
 
                 MessageBox.Show("No employee has been selected");
@@ -86,5 +101,6 @@ namespace MediaBazaar
             }
 
         }
+
     }
 }

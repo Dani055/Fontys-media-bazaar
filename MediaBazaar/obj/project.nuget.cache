@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "07YpyuJ89r/YWRnuyubvA1Ki7/JvP31cE/ReMDGKxdet/yNz2yacm3quYvwoz9tB7HbvBwA7Kf7RQaLPP7Du4g==",
+  "dgSpecHash": "6ft/paUnKE6/0PSNiqUdAuf2JekW/BnE7O0wHEs78B8grUzq425p4yvrOdAfJ6eBPnX9tg5t1xi7gsWTzf9fxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+  "projectFilePath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NIKI\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\NIKI\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

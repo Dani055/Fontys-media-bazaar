@@ -19,7 +19,8 @@ namespace MediaBazaar.logic.models
         public string Role { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public Employee(int id, string username, string pass, string firstname, string lastname,double wage, string address, string departmentid, string role, string email, string phone)
+        public string ContractType { get; set; }
+        public Employee(int id, string username, string pass, string firstname, string lastname,double wage, string address, string departmentid, string role, string email, string phone, string contract)
         {
             Id = id;
             Username = username;
@@ -40,10 +41,13 @@ namespace MediaBazaar.logic.models
             {
                 phone = null;
             }
+            if(contract == "")
+                contract = null;
             Email = email;
             Phone = phone;
             DepartmentId = departmentid;
             Role = role;
+            ContractType = contract;
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
+    "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {
+    "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "projectUniqueName": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
         "projectName": "MediaBazaar",
-        "projectPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "projectPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
         "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+        "outputPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

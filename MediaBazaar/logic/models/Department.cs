@@ -17,8 +17,6 @@ namespace MediaBazaar.logic.models
         
             Id = id;
             Name = name;
-
-        
         }
     }
 }

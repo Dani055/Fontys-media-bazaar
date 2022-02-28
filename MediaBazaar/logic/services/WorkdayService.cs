@@ -53,7 +53,7 @@ namespace MediaBazaar.logic.services
         public static List<DetailedWorkday> GetWorkdays(string date)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee manager" || EmployeeService.loggedEmp.Role != "Department manager" || EmployeeService.loggedEmp.Role != "Depot manager")
+            if (EmployeeService.loggedEmp.Role != "Employee manager" && EmployeeService.loggedEmp.Role != "Department manager" && EmployeeService.loggedEmp.Role != "Depot manager")
             {
                 return null;
             }

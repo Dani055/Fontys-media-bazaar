@@ -6,8 +6,8 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\Nitro\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Nitro\\.nuget\\packages"
+      "C:\\Users\\tudor\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\tudor\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

@@ -37,6 +37,7 @@ namespace MediaBazaar.forms
             string date = dateTime.ToString(Utils.DbDateFormat);
             string prevDate = dateTime.AddDays(-1).ToString(Utils.DbDateFormat);
             selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
+
             Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
             if (prevWorkday != null)
             {

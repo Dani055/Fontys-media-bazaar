@@ -1,8 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
   },
   "projects": {
@@ -14,38 +12,9 @@
         "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
         "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\",
-=======
-    "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
-        "projectName": "MediaBazaar",
-        "projectPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
-        "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\obj\\",
->>>>>>> main-feature-1
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
-  },
-  "projects": {
-    "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-        "projectName": "MediaBazaar",
-        "projectPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-        "packagesPath": "C:\\Users\\tudor\\.nuget\\packages\\",
-        "outputPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> main-feature-2
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

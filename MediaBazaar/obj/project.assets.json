@@ -853,42 +853,19 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Nitro\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\tudor\\.nuget\\packages\\": {}
->>>>>>> main-feature-2
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
       "projectName": "MediaBazaar",
       "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
       "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
-      "projectName": "MediaBazaar",
-      "projectPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
-      "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\obj\\",
->>>>>>> main-feature-1
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-      "projectName": "MediaBazaar",
-      "projectPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-      "packagesPath": "C:\\Users\\tudor\\.nuget\\packages\\",
-      "outputPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> main-feature-2
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -946,5 +923,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

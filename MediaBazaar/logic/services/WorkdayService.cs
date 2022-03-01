@@ -15,6 +15,11 @@ namespace MediaBazaar.logic.services
         public static Workday GetEmployeeWorkday(Employee emp, string date)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            {
+                MessageBox.Show("You are not an Employee manager!");
+                return null;
+            }
             try
             {
 
@@ -55,6 +60,7 @@ namespace MediaBazaar.logic.services
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
             if (EmployeeService.loggedEmp.Role != "Employee manager" && EmployeeService.loggedEmp.Role != "Department manager" && EmployeeService.loggedEmp.Role != "Depot manager")
             {
+                MessageBox.Show("You are not authorized!");
                 return null;
             }
             try
@@ -117,6 +123,11 @@ namespace MediaBazaar.logic.services
         }
         public static bool AddWorkday(Employee emp, Workday workday)
         {
+            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            {
+                MessageBox.Show("You are not an Employee manager!");
+                return false;
+            }
             Workday foundDay = WorkdayService.GetEmployeeWorkday(emp, workday.Date);
 
             if (foundDay != null)
@@ -167,6 +178,11 @@ namespace MediaBazaar.logic.services
         public static bool MarkAttendance(string workdayId, bool missing)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            if (EmployeeService.loggedEmp.Role != "Employee manager" && EmployeeService.loggedEmp.Role != "Department manager" && EmployeeService.loggedEmp.Role != "Depot manager")
+            {
+                MessageBox.Show("You are not authorized!");
+                return false;
+            }
             if (workdayId == null)
             {
                 MessageBox.Show("No workday selected!");
@@ -196,7 +212,11 @@ namespace MediaBazaar.logic.services
         public static bool DeleteWorkday(Workday workday)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-
+            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            {
+                MessageBox.Show("You are not an Employee manager!");
+                return false;
+            }
             try
             {
                 string sql = "DELETE from Workday WHERE workdayId = @workdayId";

@@ -81,7 +81,7 @@ namespace MediaBazaar.logic.services
 
                     if (loggedEmpRole == "DEPARTMENT MANAGER")
                     {
-                        sql = "SELECT * FROM Employee WHERE department_id = @depID";
+                        sql = "SELECT * FROM Employee WHERE departmentId = @depID";
                         cmd = new MySqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("@depID", loggedEmp.DepartmentId);
                     }
@@ -268,5 +268,7 @@ namespace MediaBazaar.logic.services
             var emps = GetEmployees();
             return emps.ElementAt(emps.Count - 1).Id + 1;
         }
+
+       
     }
 }

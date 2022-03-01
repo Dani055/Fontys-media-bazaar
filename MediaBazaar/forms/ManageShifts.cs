@@ -1,4 +1,5 @@
-﻿using MediaBazaar.logic.models;
+﻿using MediaBazaar.logic;
+using MediaBazaar.logic.models;
 using MediaBazaar.logic.services;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace MediaBazaar.forms
     {
 
         private Employee emp;
+        private Workday selectedWorkday;
         public ManageShifts(int empID)
         {
             InitializeComponent();
@@ -24,10 +26,143 @@ namespace MediaBazaar.forms
 
         private void ManageShifts_Load(object sender, EventArgs e)
         {
+            lblEmpName.Text = $"{emp.FirstName} {emp.LastName}";
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            RefreshListBox(dateTime);
+        }
+
+        private void RefreshListBox(DateTime dateTime) 
+        {
+
+            string date = dateTime.ToString(Utils.DbDateFormat);
+            string prevDate = dateTime.AddDays(-1).ToString(Utils.DbDateFormat);
+            selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
+            Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
+            if (prevWorkday != null)
+            {
+                if (prevWorkday.Shifts.IndexOf("evening") != -1)
+                {
+                    cbMorning.Enabled = false;
+                }
+                else
+                {
+                    cbMorning.Enabled = true;
+                }
+            }
+            else
+            {
+                cbMorning.Enabled = true;
+            }
+            listBox1.Items.Clear();
+            if (selectedWorkday == null) {
+
+                listBox1.Items.Add("Nothing Scheduled for this date");
+
+                return;
+            }
+
+            listBox1.Items.Add("Assigned shifts:");
+            List<string> shifts = selectedWorkday.Shifts.Split("#").ToList();
+            foreach (string s in shifts)
+            {
+                listBox1.Items.Add(s);
+            }
             
 
-            lblEmpName.Text = $"{emp.FirstName} {emp.LastName}";
+        }
 
+        private void calShifts_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            cbMorning.Checked = false;
+            cbAfternoon.Checked = false;
+            cbEvening.Checked = false;
+            RefreshListBox(dateTime);
+
+        }
+
+        private void btnAddShift_Click(object sender, EventArgs e)
+        {
+            string shifts = "";
+            if (cbMorning.Checked) {
+
+                shifts += "morning#";
+
+            }
+
+            if (cbAfternoon.Checked) {
+
+                shifts += "afternoon#";
+            
+            }
+
+            if (cbEvening.Checked) {
+
+                shifts += "evening#";
+
+            }
+            shifts = shifts.Trim('#');
+            if (String.IsNullOrEmpty(shifts)) {
+
+                
+                MessageBox.Show("no shifts have been selected");
+                return;
+
+            }
+
+
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            string date = dateTime.ToString(Utils.DbDateFormat);
+            
+            Workday workday = new Workday(emp.Id, date, shifts, false);
+
+            if (WorkdayService.AddWorkday(emp, workday))
+            {
+                RefreshListBox(dateTime);
+                cbMorning.Enabled = true;
+            }
+
+        }
+
+        private void btnRemoveShift_Click(object sender, EventArgs e)
+        {
+            if (selectedWorkday == null)
+            {
+                MessageBox.Show("No workday to delete!");
+                return;
+            }
+            WorkdayService.DeleteWorkday(selectedWorkday);
+            DateTime dateTime = calShifts.SelectionRange.Start;
+            RefreshListBox(dateTime);
+            cbMorning.Enabled = true;
+        }
+
+        private void cbMorning_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbMorning.Checked)
+            {
+                cbEvening.Checked = false;
+                cbEvening.Enabled = false;
+            }
+            else
+            {
+                cbEvening.Checked = false;
+                cbEvening.Enabled = true;
+            }
+        }
+
+        private void cbEvening_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEvening.Checked)
+            {
+                cbMorning.Checked = false;
+                cbMorning.Enabled = false;
+            }
+            else
+            {
+                cbMorning.Checked = false;
+                cbMorning.Enabled = true;
+            }
         }
     }
 }

@@ -13,7 +13,6 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
-C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MySql.Data.xml
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.AssemblyReference.cache
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Form1.resources
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Home.resources
@@ -108,6 +107,7 @@ C:\Users\NIKI\Source\Repos\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-win
 C:\Users\NIKI\Source\Repos\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\NIKI\Source\Repos\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
 C:\Users\NIKI\Source\Repos\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
+<<<<<<< HEAD
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.exe
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.deps.json
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.json
@@ -147,3 +147,12 @@ C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\obj\Debug\net5.0-wi
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
 C:\Users\NIKI\Source\Repos\media-bazaar-group-61\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
+=======
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddItem.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AllShifts.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditDepartment.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Inventory.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageShifts.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.RestockRequests.resources
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Sell.resources
+>>>>>>> main-feature-2

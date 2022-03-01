@@ -2,6 +2,7 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
   },
   "projects": {
@@ -29,6 +30,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
+  },
+  "projects": {
+    "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "projectName": "MediaBazaar",
+        "projectPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "packagesPath": "C:\\Users\\tudor\\.nuget\\packages\\",
+        "outputPath": "D:\\GROUP PROJECT\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> main-feature-2
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

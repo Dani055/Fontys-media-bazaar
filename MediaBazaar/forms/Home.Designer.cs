@@ -42,7 +42,7 @@ namespace MediaBazaar
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(553, 344);
+            this.lblUsername.Location = new System.Drawing.Point(564, 335);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(75, 20);
             this.lblUsername.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace MediaBazaar
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(553, 377);
+            this.lblRole.Location = new System.Drawing.Point(564, 356);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(39, 20);
             this.lblRole.TabIndex = 1;

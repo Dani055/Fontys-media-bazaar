@@ -29,7 +29,6 @@ namespace MediaBazaar.forms
         {
            
             lblDepartmentName.Text = department.Name;
-
         }
     }
 }

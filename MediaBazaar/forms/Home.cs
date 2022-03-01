@@ -33,6 +33,7 @@ namespace MediaBazaar
         {
             ManageEmployees frm = new ManageEmployees();
             frm.ShowDialog();
+            frm.Dispose();
         }
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)

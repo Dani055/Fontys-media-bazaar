@@ -858,11 +858,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
       "projectName": "MediaBazaar",
       "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
       "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
+      "projectName": "MediaBazaar",
+      "projectPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
+      "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-61\\MediaBazaar\\obj\\",
+>>>>>>> main-feature-1
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",

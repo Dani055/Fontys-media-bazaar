@@ -17,6 +17,9 @@ namespace MediaBazaar.forms
         public AddEmployee()
         {
             InitializeComponent();
+            cbxRole.SelectedIndex = 0;
+            cbxDepartment.SelectedIndex = 0;
+            cbxContractType.SelectedIndex = 0;
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -28,12 +31,12 @@ namespace MediaBazaar.forms
             string lName = tbxLastName.Text;
             double wage = (double)numericHourWage.Value;
             string address = tbxAddress.Text == string.Empty ? null : tbxAddress.Text;
-            string departmentId = "0"; //* cbxDeparment.SelectedValue.ToString();
-            string role =  cbxRole.SelectedText.ToString();
             string email = tbxEmail.Text == string.Empty ? null : tbxEmail.Text;
             string phone = tbxPhone.Text == string.Empty ? null : tbxPhone.Text;
-
-            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone);
+            string departmentId = "0"; //* cbxDeparment.SelectedValue.ToString();
+            string role =  cbxRole.Text.ToString();
+            string contractType = cbxContractType.Text.ToString();
+            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType);
             EmployeeService.AddEmployee(employeeToAdd);
         }
     }

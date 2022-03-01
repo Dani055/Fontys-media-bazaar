@@ -30,7 +30,7 @@ namespace MediaBazaar.forms
         private void InitializeComponent()
         {
             this.lblDepartment = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericWage = new System.Windows.Forms.NumericUpDown();
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.lblContract = new System.Windows.Forms.Label();
@@ -41,19 +41,19 @@ namespace MediaBazaar.forms
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblLastname = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxDepartment = new System.Windows.Forms.ComboBox();
+            this.cbxContract = new System.Windows.Forms.ComboBox();
+            this.cbxRole = new System.Windows.Forms.ComboBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tbxPhone = new System.Windows.Forms.TextBox();
+            this.tbxEmail = new System.Windows.Forms.TextBox();
+            this.tbxAddress = new System.Windows.Forms.TextBox();
+            this.tbxLastName = new System.Windows.Forms.TextBox();
+            this.tbxFirstName = new System.Windows.Forms.TextBox();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
+            this.tbxUsername = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericWage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDepartment
@@ -65,12 +65,12 @@ namespace MediaBazaar.forms
             this.lblDepartment.TabIndex = 48;
             this.lblDepartment.Text = "Department";
             // 
-            // numericUpDown1
+            // numericWage
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(197, 298);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(80, 27);
-            this.numericUpDown1.TabIndex = 47;
+            this.numericWage.Location = new System.Drawing.Point(197, 298);
+            this.numericWage.Name = "numericWage";
+            this.numericWage.Size = new System.Drawing.Size(80, 27);
+            this.numericWage.TabIndex = 47;
             // 
             // btnEditEmployee
             // 
@@ -80,6 +80,7 @@ namespace MediaBazaar.forms
             this.btnEditEmployee.TabIndex = 46;
             this.btnEditEmployee.Text = "Edit details";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
+            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
             // label9
             // 
@@ -162,34 +163,34 @@ namespace MediaBazaar.forms
             this.lblFirstName.TabIndex = 37;
             this.lblFirstName.Text = "First name *";
             // 
-            // comboBox3
+            // cbxDepartment
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDepartment.FormattingEnabled = true;
+            this.cbxDepartment.Items.AddRange(new object[] {
             "Unassigned"});
-            this.comboBox3.Location = new System.Drawing.Point(551, 42);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(151, 28);
-            this.comboBox3.TabIndex = 36;
+            this.cbxDepartment.Location = new System.Drawing.Point(551, 42);
+            this.cbxDepartment.Name = "cbxDepartment";
+            this.cbxDepartment.Size = new System.Drawing.Size(151, 28);
+            this.cbxDepartment.TabIndex = 36;
             // 
-            // comboBox2
+            // cbxContract
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbxContract.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxContract.FormattingEnabled = true;
+            this.cbxContract.Items.AddRange(new object[] {
             "0 Hour fixed",
             "Permanent"});
-            this.comboBox2.Location = new System.Drawing.Point(551, 252);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(151, 28);
-            this.comboBox2.TabIndex = 35;
+            this.cbxContract.Location = new System.Drawing.Point(551, 252);
+            this.cbxContract.Name = "cbxContract";
+            this.cbxContract.Size = new System.Drawing.Size(151, 28);
+            this.cbxContract.TabIndex = 35;
             // 
-            // comboBox1
+            // cbxRole
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRole.FormattingEnabled = true;
+            this.cbxRole.Items.AddRange(new object[] {
             "Unassigned",
             "Employee Manager",
             "Depot Manager",
@@ -197,10 +198,10 @@ namespace MediaBazaar.forms
             "Department Employee",
             "Cashier",
             "Warehouse Worker"});
-            this.comboBox1.Location = new System.Drawing.Point(551, 94);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
-            this.comboBox1.TabIndex = 34;
+            this.cbxRole.Location = new System.Drawing.Point(551, 94);
+            this.cbxRole.Name = "cbxRole";
+            this.cbxRole.Size = new System.Drawing.Size(151, 28);
+            this.cbxRole.TabIndex = 34;
             // 
             // lblPassword
             // 
@@ -220,54 +221,54 @@ namespace MediaBazaar.forms
             this.lblUsername.TabIndex = 32;
             this.lblUsername.Text = "Username *";
             // 
-            // textBox8
+            // tbxPhone
             // 
-            this.textBox8.Location = new System.Drawing.Point(551, 205);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(151, 27);
-            this.textBox8.TabIndex = 31;
+            this.tbxPhone.Location = new System.Drawing.Point(551, 205);
+            this.tbxPhone.Name = "tbxPhone";
+            this.tbxPhone.Size = new System.Drawing.Size(151, 27);
+            this.tbxPhone.TabIndex = 31;
             // 
-            // textBox7
+            // tbxEmail
             // 
-            this.textBox7.Location = new System.Drawing.Point(551, 150);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(151, 27);
-            this.textBox7.TabIndex = 30;
+            this.tbxEmail.Location = new System.Drawing.Point(551, 150);
+            this.tbxEmail.Name = "tbxEmail";
+            this.tbxEmail.Size = new System.Drawing.Size(151, 27);
+            this.tbxEmail.TabIndex = 30;
             // 
-            // textBox5
+            // tbxAddress
             // 
-            this.textBox5.Location = new System.Drawing.Point(196, 252);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(165, 27);
-            this.textBox5.TabIndex = 29;
+            this.tbxAddress.Location = new System.Drawing.Point(196, 252);
+            this.tbxAddress.Name = "tbxAddress";
+            this.tbxAddress.Size = new System.Drawing.Size(165, 27);
+            this.tbxAddress.TabIndex = 29;
             // 
-            // textBox4
+            // tbxLastName
             // 
-            this.textBox4.Location = new System.Drawing.Point(197, 202);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(165, 27);
-            this.textBox4.TabIndex = 28;
+            this.tbxLastName.Location = new System.Drawing.Point(197, 202);
+            this.tbxLastName.Name = "tbxLastName";
+            this.tbxLastName.Size = new System.Drawing.Size(165, 27);
+            this.tbxLastName.TabIndex = 28;
             // 
-            // textBox3
+            // tbxFirstName
             // 
-            this.textBox3.Location = new System.Drawing.Point(197, 150);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 27);
-            this.textBox3.TabIndex = 27;
+            this.tbxFirstName.Location = new System.Drawing.Point(197, 150);
+            this.tbxFirstName.Name = "tbxFirstName";
+            this.tbxFirstName.Size = new System.Drawing.Size(164, 27);
+            this.tbxFirstName.TabIndex = 27;
             // 
-            // textBox2
+            // tbxPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(197, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 27);
-            this.textBox2.TabIndex = 26;
+            this.tbxPassword.Location = new System.Drawing.Point(197, 94);
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.Size = new System.Drawing.Size(164, 27);
+            this.tbxPassword.TabIndex = 26;
             // 
-            // textBox1
+            // tbxUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(197, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 27);
-            this.textBox1.TabIndex = 25;
+            this.tbxUsername.Location = new System.Drawing.Point(197, 43);
+            this.tbxUsername.Name = "tbxUsername";
+            this.tbxUsername.Size = new System.Drawing.Size(164, 27);
+            this.tbxUsername.TabIndex = 25;
             // 
             // EditEmployee
             // 
@@ -275,7 +276,7 @@ namespace MediaBazaar.forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblDepartment);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericWage);
             this.Controls.Add(this.btnEditEmployee);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblContract);
@@ -286,21 +287,21 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblLastname);
             this.Controls.Add(this.lblFirstName);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxDepartment);
+            this.Controls.Add(this.cbxContract);
+            this.Controls.Add(this.cbxRole);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxPhone);
+            this.Controls.Add(this.tbxEmail);
+            this.Controls.Add(this.tbxAddress);
+            this.Controls.Add(this.tbxLastName);
+            this.Controls.Add(this.tbxFirstName);
+            this.Controls.Add(this.tbxPassword);
+            this.Controls.Add(this.tbxUsername);
             this.Name = "EditEmployee";
             this.Text = "EditEmployee";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericWage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,7 +310,7 @@ namespace MediaBazaar.forms
         #endregion
 
         private System.Windows.Forms.Label lblDepartment;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericWage;
         private System.Windows.Forms.Button btnEditEmployee;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblContract;
@@ -320,17 +321,17 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblLastname;
         private System.Windows.Forms.Label lblFirstName;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxDepartment;
+        private System.Windows.Forms.ComboBox cbxContract;
+        private System.Windows.Forms.ComboBox cbxRole;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxPhone;
+        private System.Windows.Forms.TextBox tbxEmail;
+        private System.Windows.Forms.TextBox tbxAddress;
+        private System.Windows.Forms.TextBox tbxLastName;
+        private System.Windows.Forms.TextBox tbxFirstName;
+        private System.Windows.Forms.TextBox tbxPassword;
+        private System.Windows.Forms.TextBox tbxUsername;
     }
 }

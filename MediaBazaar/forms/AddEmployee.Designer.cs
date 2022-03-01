@@ -53,6 +53,7 @@ namespace MediaBazaar.forms
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.numericHourWage = new System.Windows.Forms.NumericUpDown();
             this.lblDepartment = new System.Windows.Forms.Label();
+            this.cbxStudent = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericHourWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +109,7 @@ namespace MediaBazaar.forms
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
+            this.lblUsername.ForeColor = System.Drawing.Color.IndianRed;
             this.lblUsername.Location = new System.Drawing.Point(61, 49);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(85, 20);
@@ -117,6 +119,7 @@ namespace MediaBazaar.forms
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
+            this.lblPassword.ForeColor = System.Drawing.Color.IndianRed;
             this.lblPassword.Location = new System.Drawing.Point(66, 103);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(80, 20);
@@ -166,6 +169,7 @@ namespace MediaBazaar.forms
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
+            this.lblFirstName.ForeColor = System.Drawing.Color.IndianRed;
             this.lblFirstName.Location = new System.Drawing.Point(59, 159);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(87, 20);
@@ -175,6 +179,7 @@ namespace MediaBazaar.forms
             // lblLastname
             // 
             this.lblLastname.AutoSize = true;
+            this.lblLastname.ForeColor = System.Drawing.Color.IndianRed;
             this.lblLastname.Location = new System.Drawing.Point(59, 211);
             this.lblLastname.Name = "lblLastname";
             this.lblLastname.Size = new System.Drawing.Size(86, 20);
@@ -184,6 +189,7 @@ namespace MediaBazaar.forms
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
+            this.lblAddress.ForeColor = System.Drawing.Color.IndianRed;
             this.lblAddress.Location = new System.Drawing.Point(73, 258);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(72, 20);
@@ -238,7 +244,8 @@ namespace MediaBazaar.forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(443, 311);
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(491, 346);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 20);
             this.label9.TabIndex = 21;
@@ -246,7 +253,7 @@ namespace MediaBazaar.forms
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(287, 366);
+            this.btnAddEmployee.Location = new System.Drawing.Point(290, 395);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(138, 49);
             this.btnAddEmployee.TabIndex = 22;
@@ -270,11 +277,22 @@ namespace MediaBazaar.forms
             this.lblDepartment.TabIndex = 24;
             this.lblDepartment.Text = "Department";
             // 
+            // cbxStudent
+            // 
+            this.cbxStudent.AutoSize = true;
+            this.cbxStudent.Location = new System.Drawing.Point(506, 307);
+            this.cbxStudent.Name = "cbxStudent";
+            this.cbxStudent.Size = new System.Drawing.Size(82, 24);
+            this.cbxStudent.TabIndex = 25;
+            this.cbxStudent.Text = "Student";
+            this.cbxStudent.UseVisualStyleBackColor = true;
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 475);
+            this.Controls.Add(this.cbxStudent);
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.numericHourWage);
             this.Controls.Add(this.btnAddEmployee);
@@ -333,5 +351,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.NumericUpDown numericHourWage;
         private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.CheckBox cbxStudent;
     }
 }

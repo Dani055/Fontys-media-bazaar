@@ -32,7 +32,9 @@ namespace MediaBazaar
             List<Employee> emps = EmployeeService.GetEmployees();
             foreach (Employee emp in emps)
             {
-                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), emp.DepartmentId, emp.Email, emp.Phone };
+                string depName = DepartmentService.GetDepartmentByID(emp.DepartmentId)?.Name;
+                depName ??= String.Empty; 
+                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString() , depName , (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = emp;
                 lvEmps.Items.Add(item);
@@ -86,10 +88,10 @@ namespace MediaBazaar
         {
             try
             {
-
                 EditEmployee editEmployee = new EditEmployee(Convert.ToInt16(lvEmps.SelectedItems[0].Text));
                 editEmployee.ShowDialog();
                 editEmployee.Dispose();
+                RefreshEmployees();
             }
 
             catch (ArgumentOutOfRangeException)

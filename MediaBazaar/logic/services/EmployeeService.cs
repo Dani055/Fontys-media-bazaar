@@ -118,7 +118,8 @@ namespace MediaBazaar.logic.services
                         string email = reader["email"].ToString();
                         string phone = reader["phone"].ToString();
                         string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
-                        Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType);
+                        bool isStudent = reader.GetBoolean("isStudent");
+                        Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) {IsStudent = isStudent };
                         emps.Add(emp);
                     }
                     reader.Close();
@@ -162,9 +163,9 @@ namespace MediaBazaar.logic.services
                     string email = reader["email"].ToString();
                     string phone = reader["phone"].ToString();
                     string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
-                    Employee emp = new Employee(empid, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType);
+                    bool isStudent = reader.GetBoolean("isStudent");
+                    Employee emp = new Employee(empid, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) {IsStudent = isStudent };
                     return emp;
-
                 }
                 return null;
             }
@@ -181,7 +182,7 @@ namespace MediaBazaar.logic.services
         }
         public static void AddEmployee(Employee e)
         {
-            string query = "INSERT INTO Employee (username,password,firstName,lastName,address,hourlyWage,departmentId,role,email,phone,contractType) VALUES (@Username, @Password, @FirstName, @LastName, @Address, @HourlyWage, @DepartmentId, @Role, @Email, @Phone, @ContractType)";
+            string query = "INSERT INTO Employee (username,password,firstName,lastName,address,hourlyWage,departmentId,role,email,phone,contractType,isStudent) VALUES (@Username, @Password, @FirstName, @LastName, @Address, @HourlyWage, @DepartmentId, @Role, @Email, @Phone, @ContractType, @isStudent)";
             MySqlCommand command = new MySqlCommand(query, conn);
             command.Parameters.AddWithValue("@Username", e.Username);
             command.Parameters.AddWithValue("@Password", e.Password);
@@ -189,11 +190,12 @@ namespace MediaBazaar.logic.services
             command.Parameters.AddWithValue("@LastName", e.LastName);
             command.Parameters.AddWithValue("@Address", e.Address);
             command.Parameters.AddWithValue("@HourlyWage", e.HourlyWage);
-            command.Parameters.AddWithValue("@DepartmentId", e.DepartmentId == "0" ? DBNull.Value : e.DepartmentId);
+            command.Parameters.AddWithValue("@DepartmentId", e.DepartmentId == 0 ? DBNull.Value : e.DepartmentId.ToString());
             command.Parameters.AddWithValue("@Role", e.Role == null ? DBNull.Value : e.Role);
             command.Parameters.AddWithValue("@Email", e.Email == null ? DBNull.Value : e.Email);
             command.Parameters.AddWithValue("@Phone", e.Phone == null ? DBNull.Value : e.Phone);
             command.Parameters.AddWithValue("@ContractType", e.ContractType == null ? DBNull.Value : e.ContractType);
+            command.Parameters.AddWithValue("@isStudent", e.IsStudent);
             try
             {
                 conn.Open();
@@ -235,7 +237,7 @@ namespace MediaBazaar.logic.services
         }
         public static void UpdateEmployee(Employee e)
         {
-            string query = "UPDATE Employee SET username = @newUName, password = @newPassword, firstName = @newFirstName, lastName = @newLastName, address = @newAddress, hourlyWage = @newHourlyWage, departmentId = @newDepartmentId, role = @newRole, email = @newEmail, phone = @newPhone, contractType = @newContractType WHERE id = @id";
+            string query = "UPDATE Employee SET username = @newUName, password = @newPassword, firstName = @newFirstName, lastName = @newLastName, address = @newAddress, hourlyWage = @newHourlyWage, departmentId = @newDepartmentId, role = @newRole, email = @newEmail, phone = @newPhone, contractType = @newContractType, isStudent = @newIsStudent WHERE id = @id";
             MySqlCommand command = new MySqlCommand(query, conn);
             command.Parameters.AddWithValue("@id", e.Id);
             command.Parameters.AddWithValue("@newUName", e.Username);
@@ -244,11 +246,12 @@ namespace MediaBazaar.logic.services
             command.Parameters.AddWithValue("@newLastName", e.LastName);
             command.Parameters.AddWithValue("@newAddress", e.Address);
             command.Parameters.AddWithValue("@newHourlyWage", e.HourlyWage);
-            command.Parameters.AddWithValue("@newDepartmentId", e.DepartmentId == "0" ? DBNull.Value : e.DepartmentId);
+            command.Parameters.AddWithValue("@newDepartmentId", e.DepartmentId == 0 ? DBNull.Value : e.DepartmentId);
             command.Parameters.AddWithValue("@newRole", e.Role);
             command.Parameters.AddWithValue("@newEmail", e.Email);
             command.Parameters.AddWithValue("@newPhone", e.Phone);
             command.Parameters.AddWithValue("@newContractType", e.ContractType);
+            command.Parameters.AddWithValue("@newIsStudent", e.IsStudent);
             try
             {
                 conn.Open();
@@ -268,7 +271,5 @@ namespace MediaBazaar.logic.services
             var emps = GetEmployees();
             return emps.ElementAt(emps.Count - 1).Id + 1;
         }
-
-       
     }
 }

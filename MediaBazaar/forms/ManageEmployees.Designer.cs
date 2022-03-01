@@ -37,9 +37,11 @@ namespace MediaBazaar
             this.colFirstname = new System.Windows.Forms.ColumnHeader();
             this.colLastname = new System.Windows.Forms.ColumnHeader();
             this.colWage = new System.Windows.Forms.ColumnHeader();
+            this.colDepName = new System.Windows.Forms.ColumnHeader();
             this.colDepartmentID = new System.Windows.Forms.ColumnHeader();
             this.colEmail = new System.Windows.Forms.ColumnHeader();
             this.colPhone = new System.Windows.Forms.ColumnHeader();
+            this.colIsStudent = new System.Windows.Forms.ColumnHeader();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnRemoveEmployee = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
@@ -57,9 +59,11 @@ namespace MediaBazaar
             this.colFirstname,
             this.colLastname,
             this.colWage,
+            this.colDepName,
             this.colDepartmentID,
             this.colEmail,
-            this.colPhone});
+            this.colPhone,
+            this.colIsStudent});
             this.lvEmps.FullRowSelect = true;
             this.lvEmps.GridLines = true;
             this.lvEmps.HideSelection = false;
@@ -99,6 +103,10 @@ namespace MediaBazaar
             // 
             this.colWage.Text = "Hourly wage";
             // 
+            // colDepName
+            // 
+            this.colDepName.Text = "Department Name";
+            // 
             // colDepartmentID
             // 
             this.colDepartmentID.Text = "Depart. ID";
@@ -110,6 +118,10 @@ namespace MediaBazaar
             // colPhone
             // 
             this.colPhone.Text = "Phone";
+            // 
+            // colIsStudent
+            // 
+            this.colIsStudent.Text = "Student";
             // 
             // btnAddEmployee
             // 
@@ -196,5 +208,7 @@ namespace MediaBazaar
         private System.Windows.Forms.Button btnEditInfo;
         private System.Windows.Forms.Button btnViewShifts;
         private System.Windows.Forms.Button btnManageShifts;
+        private System.Windows.Forms.ColumnHeader colDepName;
+        private System.Windows.Forms.ColumnHeader colIsStudent;
     }
 }

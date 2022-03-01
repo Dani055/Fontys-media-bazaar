@@ -15,11 +15,16 @@ namespace MediaBazaar.forms
     public partial class EditEmployee : Form
     {
         private Employee emp;
+        private List<Department> departments;
         public EditEmployee(int empID)
         {
             InitializeComponent();
             emp = EmployeeService.GetEmployeeByID(empID);
             FillData();
+            departments = DepartmentService.GetAllDepartments();
+            cbxDepartment.DataSource = departments;
+            cbxDepartment.DisplayMember = "Name";
+            cbxDepartment.ValueMember = "Id";
         }
         private void FillData()
         {
@@ -37,6 +42,7 @@ namespace MediaBazaar.forms
             cbxDepartment.SelectedIndex = cbxDepartment.Items.IndexOf("Unassigned"); //* Somehow to get department name out of id cuz I don't want to make a request to DB only for that.
             cbxRole.SelectedIndex = cbxRole.Items.IndexOf(emp.Role);
             cbxContract.SelectedIndex = cbxContract.Items.IndexOf(emp.ContractType ?? "Unassigned");
+            cbxStudent.Checked = emp.IsStudent;
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
@@ -49,10 +55,10 @@ namespace MediaBazaar.forms
             string address = tbxAddress.Text == string.Empty ? null : tbxAddress.Text;
             string email = tbxEmail.Text == string.Empty ? null : tbxEmail.Text;
             string phone = tbxPhone.Text == string.Empty ? null : tbxPhone.Text;
-            string departmentId = "0"; //* cbxDeparment.SelectedValue.ToString();
+            string departmentId = cbxDepartment.SelectedValue.ToString();
             string role = cbxRole.Text.ToString();
             string contractType = cbxContract.Text.ToString();
-            Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType);
+            Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) { IsStudent = cbxStudent.Checked };
             EmployeeService.UpdateEmployee(newEmp);
         }
     }

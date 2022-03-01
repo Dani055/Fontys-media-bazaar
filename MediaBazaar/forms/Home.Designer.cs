@@ -42,27 +42,26 @@ namespace MediaBazaar
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(515, 14);
+            this.lblUsername.Location = new System.Drawing.Point(553, 344);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(60, 15);
+            this.lblUsername.Size = new System.Drawing.Size(75, 20);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Username";
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(528, 36);
+            this.lblRole.Location = new System.Drawing.Point(553, 377);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(30, 15);
+            this.lblRole.Size = new System.Drawing.Size(39, 20);
             this.lblRole.TabIndex = 1;
             this.lblRole.Text = "Role";
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(601, 9);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(687, 12);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(88, 25);
+            this.btnLogout.Size = new System.Drawing.Size(101, 33);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -70,10 +69,9 @@ namespace MediaBazaar
             // 
             // btnManageEmp
             // 
-            this.btnManageEmp.Location = new System.Drawing.Point(35, 20);
-            this.btnManageEmp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManageEmp.Location = new System.Drawing.Point(40, 27);
             this.btnManageEmp.Name = "btnManageEmp";
-            this.btnManageEmp.Size = new System.Drawing.Size(104, 46);
+            this.btnManageEmp.Size = new System.Drawing.Size(119, 61);
             this.btnManageEmp.TabIndex = 3;
             this.btnManageEmp.Text = "Manage Employees";
             this.btnManageEmp.UseVisualStyleBackColor = true;
@@ -81,10 +79,9 @@ namespace MediaBazaar
             // 
             // btnManageDepartments
             // 
-            this.btnManageDepartments.Location = new System.Drawing.Point(35, 81);
-            this.btnManageDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManageDepartments.Location = new System.Drawing.Point(40, 108);
             this.btnManageDepartments.Name = "btnManageDepartments";
-            this.btnManageDepartments.Size = new System.Drawing.Size(104, 46);
+            this.btnManageDepartments.Size = new System.Drawing.Size(119, 61);
             this.btnManageDepartments.TabIndex = 4;
             this.btnManageDepartments.Text = "Manage Departments";
             this.btnManageDepartments.UseVisualStyleBackColor = true;
@@ -92,10 +89,9 @@ namespace MediaBazaar
             // 
             // btnRestockReq
             // 
-            this.btnRestockReq.Location = new System.Drawing.Point(35, 186);
-            this.btnRestockReq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRestockReq.Location = new System.Drawing.Point(40, 248);
             this.btnRestockReq.Name = "btnRestockReq";
-            this.btnRestockReq.Size = new System.Drawing.Size(104, 46);
+            this.btnRestockReq.Size = new System.Drawing.Size(119, 61);
             this.btnRestockReq.TabIndex = 6;
             this.btnRestockReq.Text = "View restock requests";
             this.btnRestockReq.UseVisualStyleBackColor = true;
@@ -103,10 +99,9 @@ namespace MediaBazaar
             // 
             // btnInventory
             // 
-            this.btnInventory.Location = new System.Drawing.Point(35, 132);
-            this.btnInventory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInventory.Location = new System.Drawing.Point(40, 176);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(104, 46);
+            this.btnInventory.Size = new System.Drawing.Size(119, 61);
             this.btnInventory.TabIndex = 7;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
@@ -114,10 +109,9 @@ namespace MediaBazaar
             // 
             // btnSell
             // 
-            this.btnSell.Location = new System.Drawing.Point(35, 236);
-            this.btnSell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSell.Location = new System.Drawing.Point(40, 315);
             this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(104, 46);
+            this.btnSell.Size = new System.Drawing.Size(119, 61);
             this.btnSell.TabIndex = 8;
             this.btnSell.Text = "Enter Sell Screen";
             this.btnSell.UseVisualStyleBackColor = true;
@@ -125,9 +119,9 @@ namespace MediaBazaar
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.btnSell);
             this.Controls.Add(this.btnInventory);
             this.Controls.Add(this.btnRestockReq);
@@ -136,7 +130,6 @@ namespace MediaBazaar
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblUsername);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Home";
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);

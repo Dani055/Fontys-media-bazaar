@@ -14,12 +14,16 @@ namespace MediaBazaar.forms
 {
     public partial class AddEmployee : Form
     {
+        private List<Department> departments;
         public AddEmployee()
         {
             InitializeComponent();
             cbxRole.SelectedIndex = 0;
-            cbxDepartment.SelectedIndex = 0;
             cbxContractType.SelectedIndex = 0;
+            departments = DepartmentService.GetAllDepartments();
+            cbxDepartment.DataSource = departments;
+            cbxDepartment.DisplayMember = "Name";
+            cbxDepartment.ValueMember = "Id";
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -33,10 +37,11 @@ namespace MediaBazaar.forms
             string address = tbxAddress.Text == string.Empty ? null : tbxAddress.Text;
             string email = tbxEmail.Text == string.Empty ? null : tbxEmail.Text;
             string phone = tbxPhone.Text == string.Empty ? null : tbxPhone.Text;
-            string departmentId = "0"; //* cbxDeparment.SelectedValue.ToString();
+            string departmentId = cbxDepartment.SelectedValue.ToString();
             string role =  cbxRole.Text.ToString();
             string contractType = cbxContractType.Text.ToString();
-            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType);
+            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) {IsStudent = cbxStudent.Checked };           
+
             EmployeeService.AddEmployee(employeeToAdd);
         }
     }

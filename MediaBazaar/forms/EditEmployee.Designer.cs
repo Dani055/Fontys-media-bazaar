@@ -53,6 +53,7 @@ namespace MediaBazaar.forms
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.tbxUsername = new System.Windows.Forms.TextBox();
+            this.cbxStudent = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,9 +86,11 @@ namespace MediaBazaar.forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(488, 305);
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(530, 374);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 20);
+            this.label9.Size = new System.Drawing.Size(148, 20);
             this.label9.TabIndex = 45;
             this.label9.Text = "* Fields are required";
             // 
@@ -139,6 +142,7 @@ namespace MediaBazaar.forms
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
+            this.lblAddress.ForeColor = System.Drawing.Color.IndianRed;
             this.lblAddress.Location = new System.Drawing.Point(118, 252);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(72, 20);
@@ -148,6 +152,7 @@ namespace MediaBazaar.forms
             // lblLastname
             // 
             this.lblLastname.AutoSize = true;
+            this.lblLastname.ForeColor = System.Drawing.Color.IndianRed;
             this.lblLastname.Location = new System.Drawing.Point(104, 205);
             this.lblLastname.Name = "lblLastname";
             this.lblLastname.Size = new System.Drawing.Size(86, 20);
@@ -157,6 +162,7 @@ namespace MediaBazaar.forms
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
+            this.lblFirstName.ForeColor = System.Drawing.Color.IndianRed;
             this.lblFirstName.Location = new System.Drawing.Point(104, 153);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(87, 20);
@@ -206,6 +212,7 @@ namespace MediaBazaar.forms
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
+            this.lblPassword.ForeColor = System.Drawing.Color.IndianRed;
             this.lblPassword.Location = new System.Drawing.Point(111, 97);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(80, 20);
@@ -215,6 +222,7 @@ namespace MediaBazaar.forms
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
+            this.lblUsername.ForeColor = System.Drawing.Color.IndianRed;
             this.lblUsername.Location = new System.Drawing.Point(106, 43);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(85, 20);
@@ -270,11 +278,22 @@ namespace MediaBazaar.forms
             this.tbxUsername.Size = new System.Drawing.Size(164, 27);
             this.tbxUsername.TabIndex = 25;
             // 
+            // cbxStudent
+            // 
+            this.cbxStudent.AutoSize = true;
+            this.cbxStudent.Location = new System.Drawing.Point(551, 300);
+            this.cbxStudent.Name = "cbxStudent";
+            this.cbxStudent.Size = new System.Drawing.Size(82, 24);
+            this.cbxStudent.TabIndex = 49;
+            this.cbxStudent.Text = "Student";
+            this.cbxStudent.UseVisualStyleBackColor = true;
+            // 
             // EditEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbxStudent);
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.numericWage);
             this.Controls.Add(this.btnEditEmployee);
@@ -333,5 +352,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.TextBox tbxFirstName;
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.TextBox tbxUsername;
+        private System.Windows.Forms.CheckBox cbxStudent;
     }
 }

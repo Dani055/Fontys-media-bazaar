@@ -15,7 +15,7 @@ namespace MediaBazaar.logic.services
         public static Workday GetEmployeeWorkday(Employee emp, string date)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager")
             {
                 MessageBox.Show("You are not an Employee manager!");
                 return null;
@@ -58,7 +58,7 @@ namespace MediaBazaar.logic.services
         public static List<DetailedWorkday> GetWorkdays(string date)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee manager" && EmployeeService.loggedEmp.Role != "Department manager" && EmployeeService.loggedEmp.Role != "Depot manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
             {
                 MessageBox.Show("You are not authorized!");
                 return null;
@@ -71,7 +71,7 @@ namespace MediaBazaar.logic.services
                     "on e.id = w.employeeId " +
                     "left join Department as d " +
                     "on e.departmentId = d.departmentId";
-                if (EmployeeService.loggedEmp.Role != "Employee manager")
+                if (EmployeeService.loggedEmp.Role != "Employee Manager")
                 {
                     sql += " WHERE e.departmentId = @deptId AND day = @date"; 
                 }
@@ -81,7 +81,7 @@ namespace MediaBazaar.logic.services
                 }
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 cmd.Parameters.AddWithValue("@date", date);
-                if (EmployeeService.loggedEmp.Role != "Employee manager")
+                if (EmployeeService.loggedEmp.Role != "Employee Manager")
                 {
                     cmd.Parameters.AddWithValue("@deptId", EmployeeService.loggedEmp.DepartmentId);
                 }
@@ -123,7 +123,7 @@ namespace MediaBazaar.logic.services
         }
         public static bool AddWorkday(Employee emp, Workday workday)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager")
             {
                 MessageBox.Show("You are not an Employee manager!");
                 return false;
@@ -178,7 +178,7 @@ namespace MediaBazaar.logic.services
         public static bool MarkAttendance(string workdayId, bool missing)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee manager" && EmployeeService.loggedEmp.Role != "Department manager" && EmployeeService.loggedEmp.Role != "Depot manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
             {
                 MessageBox.Show("You are not authorized!");
                 return false;
@@ -212,7 +212,7 @@ namespace MediaBazaar.logic.services
         public static bool DeleteWorkday(Workday workday)
         {
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager")
             {
                 MessageBox.Show("You are not an Employee manager!");
                 return false;

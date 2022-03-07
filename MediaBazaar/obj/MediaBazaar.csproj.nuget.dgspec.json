@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
+    "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {
+    "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "projectUniqueName": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
         "projectName": "MediaBazaar",
-        "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-        "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+        "projectPath": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+        "packagesPath": "C:\\Users\\Katsarski\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Katsarski\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,12 +59,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.14, 5.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -69,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

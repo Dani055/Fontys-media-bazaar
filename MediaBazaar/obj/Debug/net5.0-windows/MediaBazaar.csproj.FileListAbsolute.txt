@@ -156,3 +156,42 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.RestockRequests.resources
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Sell.resources
 >>>>>>> main-feature-2
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.exe
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.deps.json
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.json
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.dev.json
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\ref\MediaBazaar.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.pdb
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\Google.Protobuf.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MySql.Data.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\ZstdNet.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.AssemblyReference.cache
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddEmployee.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AddItem.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.AllShifts.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditDepartment.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditEmployee.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Form1.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.Home.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Inventory.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageDepartments.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.ManageEmployees.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.ManageShifts.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.RestockRequests.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.Sell.resources
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.GenerateResource.cache
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.AssemblyInfoInputs.cache
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.AssemblyInfo.cs
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CoreCompileInputs.cache
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CopyComplete
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
+C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache

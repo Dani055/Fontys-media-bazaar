@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaBazaar.forms;
+using MediaBazaar.logic.models;
+using MediaBazaar.logic.services;
+using MySql.Data.MySqlClient;
 
 namespace MediaBazaar.forms
 {
@@ -15,12 +19,73 @@ namespace MediaBazaar.forms
         public Inventory()
         {
             InitializeComponent();
+            RefreshProducts();
+            btnRemoveItem.Enabled = false;
+            //lvProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             AddItem addItem = new AddItem();
             addItem.ShowDialog();
+            RefreshProducts();
+        }
+
+        private void RefreshProducts()
+        {
+            lvProducts.Items.Clear();
+            List<Product> products = InventoryService.GetAllProducts();
+
+            foreach (Product p in products)
+            {
+                ListViewItem entry = new ListViewItem(p.GetDataArray());
+                lvProducts.Items.Add(entry);
+            }
+
+
+        }
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            if (lvProducts.SelectedItems.Count == 0) return;
+
+            int selectedID = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
+            InventoryService.DeleteProduct(selectedID);
+            RefreshProducts();
+            
+        }
+
+        private void lvProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvProducts.SelectedItems.Count != 0)
+            {
+                btnRemoveItem.Enabled = true;
+            } else
+            {
+                btnRemoveItem.Enabled = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchStr = tbSearch.Text;
+
+            List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
+
+
+            lvProducts.Items.Clear();
+
+            foreach (Product p in foundProducts)
+            {
+                ListViewItem entry = new ListViewItem(p.GetDataArray());
+                lvProducts.Items.Add(entry);
+            }
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshProducts();
         }
     }
 }

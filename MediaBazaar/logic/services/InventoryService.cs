@@ -13,6 +13,7 @@ namespace MediaBazaar.logic.services
     public static class InventoryService
     {
         private static MySqlConnection conn = new MySqlConnection(Utils.connectionString);
+        public static List<Product> cart { get; set; } = new List<Product>();
 
         public static List<Product> GetAllProducts()
         {
@@ -111,6 +112,33 @@ namespace MediaBazaar.logic.services
             }
         }
 
+        public static int GetAmountInStock (int id)
+        {
+            string query = "select amountInStock from Product where productId = @prodId";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@prodId", id);
+            int result = 0;
+
+            try
+            {
+                using (conn)
+                {
+                    conn.Open();
+                    result = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return result;
+        }
+
         public static List<Product> SearchProducts(string str)
         {
             List<Product> foundProducts = new List<Product>();
@@ -143,6 +171,42 @@ namespace MediaBazaar.logic.services
             }
 
             return foundProducts;
+        }
+
+        public static void SellProduct (int id, int sellingAmount)
+        {
+            int currentAmountInStock = GetAmountInStock(id);
+            int newQuantity = currentAmountInStock - sellingAmount;
+
+            if (sellingAmount > currentAmountInStock)
+            {
+                Utils.ShowError("One or more entries were not sold due to insufficient storage quantity");
+                return;
+            }
+
+            string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@newAmount", newQuantity.ToString());
+            cmd.Parameters.AddWithValue("@productId", id.ToString());
+
+            try
+            {
+                conn.Open();
+
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    Utils.ShowError("Error selling item");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

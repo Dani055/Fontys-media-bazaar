@@ -48,11 +48,20 @@ namespace MediaBazaar.forms
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
             if (lvProducts.SelectedItems.Count == 0) return;
-
             int selectedID = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
-            InventoryService.DeleteProduct(selectedID);
-            RefreshProducts();
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to permanently delete this item from the system", "Confirm actions", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
+            if (dialogResult == DialogResult.Yes)
+            {
+                InventoryService.DeleteProduct(selectedID);
+                RefreshProducts();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
         }
 
         private void lvProducts_SelectedIndexChanged(object sender, EventArgs e)

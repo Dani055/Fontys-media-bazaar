@@ -13,7 +13,6 @@ namespace MediaBazaar.logic.services
     public static class InventoryService
     {
         private static MySqlConnection conn = new MySqlConnection(Utils.connectionString);
-        public static List<Product> cart { get; set; } = new List<Product>();
 
         public static List<Product> GetAllProducts()
         {
@@ -173,6 +172,41 @@ namespace MediaBazaar.logic.services
             return foundProducts;
         }
 
+        public static Product GetProductByID (int id)
+        {
+            Product foundProduct = null;
+
+            string query = $"SELECT * FROM Product WHERE productId = @id";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int productID = reader.GetInt32("productID");
+                    string productName = reader.GetString("productName");
+                    string productEAN = reader.GetString("productEan");
+                    int deptID = reader.GetInt32("departmentId");
+                    int amountInStock = reader.GetInt32("amountInStock");
+                    int minStock = reader.GetInt32("minStock");
+                    double price = reader.GetDouble("price");
+
+                    foundProduct = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
+                }
+                reader.Close();
+                conn.Close();
+            } catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
+            return foundProduct;
+        }
+
         public static void SellProduct (int id, int sellingAmount)
         {
             int currentAmountInStock = GetAmountInStock(id);
@@ -202,6 +236,160 @@ namespace MediaBazaar.logic.services
             {
                 MessageBox.Show(ex.Message);
 
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            Product p = GetProductByID(id);
+            int newAmountInStock = p.AmountInStock;
+            int minimumStock = p.MinStock;
+
+            if (newAmountInStock < minimumStock)
+            {
+                int amountToRestock = (minimumStock - newAmountInStock) + minimumStock;
+                CreateRestockRequest(id, amountToRestock);
+            }
+        }
+
+        public static void RestockProduct(int id, int amount)
+        {
+            if (amount <= 0) { return; }
+
+            int currentQuantity = GetAmountInStock(id);
+            int newQuantity = currentQuantity + amount;
+
+            string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@newAmount", newQuantity.ToString());
+            cmd.Parameters.AddWithValue("@productId", id.ToString());
+
+            try
+            {
+                conn.Open();
+
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    Utils.ShowError("Error restocking item");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void CreateRestockRequest (int productID, int amountToRestock)
+        {
+            string query = "INSERT INTO RestockRequest (dateCreated,productId,amount) VALUES (@dateCreated,@productId,@amount)";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@dateCreated", Utils.GetDateStringForMySQL(DateTime.Now));
+            cmd.Parameters.AddWithValue("@productId", productID.ToString());
+            cmd.Parameters.AddWithValue("@amount", amountToRestock.ToString());
+
+            try
+            {
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    Utils.ShowError("Error creating restock request");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<RestockRequest> GetRestockRequests()
+        {
+            List<RestockRequest> restockRequests = new List<RestockRequest>();
+
+            using (conn)
+            {
+                string query = "SELECT * FROM RestockRequest inner join Product on Product.productId = RestockRequest.productId order by requestId";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int productID = reader.GetInt32("productId");
+                    string productName = reader.GetString("productName");
+                    string productEAN = reader.GetString("productEan");
+                    int deptID = reader.GetInt32("departmentId");
+                    int amountInStock = reader.GetInt32("amountInStock");
+                    int minStock = reader.GetInt32("minStock");
+                    double price = reader.GetDouble("price");
+
+                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
+
+                    int requestID = reader.GetInt32("requestId");
+                    DateTime dateCreated = reader.GetDateTime("dateCreated");
+                    DateTime dateProcessed;
+                    if (!reader.IsDBNull(reader.GetOrdinal("dateProcessed")))
+                    {
+                        dateProcessed = reader.GetDateTime(reader.GetOrdinal("dateProcessed"));
+                    } else
+                    {
+                        dateProcessed = DateTime.MinValue;
+                    }
+                        
+                    int amountToRestock = reader.GetInt32("amount");
+                    string status = reader.GetString("Status");
+
+                    RestockRequest rr = new RestockRequest(requestID, dateCreated, dateProcessed, p, amountToRestock, status);
+                    restockRequests.Add(rr);
+                }
+                reader.Close();
+                conn.Close();
+            }
+
+            return restockRequests;
+        }
+
+        public static void AcceptOrDenyRestockRequest(int id, bool accept)
+        {
+            DateTime currentDate = DateTime.Now;
+            string dateString = $"{currentDate.Year}-{currentDate.Month}-{currentDate.Day}";
+            string query;
+
+            if (accept == true)
+            {
+                query = "UPDATE RestockRequest SET status = 'Accepted', dateProcessed = @newDate WHERE requestId = @reqId";
+            } else
+            {
+                query = "UPDATE RestockRequest SET status = 'Denied', dateProcessed = @newDate WHERE requestId = @reqId";
+            }
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@newDate", dateString);
+            cmd.Parameters.AddWithValue("@reqId", id);
+
+            try
+            {
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    Utils.ShowError("Error accepting request");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
             finally
             {

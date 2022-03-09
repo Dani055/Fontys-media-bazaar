@@ -16,5 +16,16 @@ namespace MediaBazaar.logic
         {
             MessageBox.Show(text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void ShowInfo(string text)
+        {
+            MessageBox.Show(text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        public static string GetDateStringForMySQL(DateTime date)
+        {
+            return $"{date.Year}-{date.Month}-{date.Day}";
+        }
     }
 }

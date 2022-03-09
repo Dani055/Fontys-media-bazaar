@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
+using MediaBazaar.logic;
 using MediaBazaar.logic.models;
 using MediaBazaar.logic.services;
 using MySql.Data.MySqlClient;
@@ -21,6 +22,7 @@ namespace MediaBazaar.forms
             InitializeComponent();
             RefreshProducts();
             btnRemoveItem.Enabled = false;
+            btnSendRestockRequest.Enabled = false;
             //lvProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
@@ -69,9 +71,11 @@ namespace MediaBazaar.forms
             if (lvProducts.SelectedItems.Count != 0)
             {
                 btnRemoveItem.Enabled = true;
+                btnSendRestockRequest.Enabled = true;
             } else
             {
                 btnRemoveItem.Enabled = false;
+                btnSendRestockRequest.Enabled = false;
             }
         }
 
@@ -95,6 +99,20 @@ namespace MediaBazaar.forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshProducts();
+        }
+
+        private void btnSendRestockRequest_Click(object sender, EventArgs e)
+        {
+            int amountToRestock = Convert.ToInt32(nmrRestockAmount.Value);
+            if (amountToRestock == 0) 
+            {
+                Utils.ShowError("Can't request amount of 0");
+                return; 
+            }
+
+            int productIdToRestock = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
+            InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock);
+            Utils.ShowInfo("Successfully created restock request");
         }
     }
 }

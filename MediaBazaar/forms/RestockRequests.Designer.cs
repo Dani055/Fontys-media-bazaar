@@ -29,7 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvEmps = new System.Windows.Forms.ListView();
+            this.lvRestockRequests = new System.Windows.Forms.ListView();
             this.colID = new System.Windows.Forms.ColumnHeader();
             this.colDateCreated = new System.Windows.Forms.ColumnHeader();
             this.colDateProcessed = new System.Windows.Forms.ColumnHeader();
@@ -43,9 +43,9 @@ namespace MediaBazaar.forms
             this.btnDenyRequest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lvEmps
+            // lvRestockRequests
             // 
-            this.lvEmps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvRestockRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
             this.colDateCreated,
             this.colDateProcessed,
@@ -55,17 +55,17 @@ namespace MediaBazaar.forms
             this.colMinStock,
             this.colRequestAmount,
             this.columnStatus});
-            this.lvEmps.FullRowSelect = true;
-            this.lvEmps.GridLines = true;
-            this.lvEmps.HideSelection = false;
-            this.lvEmps.Location = new System.Drawing.Point(10, 9);
-            this.lvEmps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lvEmps.MultiSelect = false;
-            this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(996, 245);
-            this.lvEmps.TabIndex = 3;
-            this.lvEmps.UseCompatibleStateImageBehavior = false;
-            this.lvEmps.View = System.Windows.Forms.View.Details;
+            this.lvRestockRequests.FullRowSelect = true;
+            this.lvRestockRequests.GridLines = true;
+            this.lvRestockRequests.HideSelection = false;
+            this.lvRestockRequests.Location = new System.Drawing.Point(10, 9);
+            this.lvRestockRequests.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvRestockRequests.MultiSelect = false;
+            this.lvRestockRequests.Name = "lvRestockRequests";
+            this.lvRestockRequests.Size = new System.Drawing.Size(995, 245);
+            this.lvRestockRequests.TabIndex = 3;
+            this.lvRestockRequests.UseCompatibleStateImageBehavior = false;
+            this.lvRestockRequests.View = System.Windows.Forms.View.Details;
             // 
             // colID
             // 
@@ -75,7 +75,7 @@ namespace MediaBazaar.forms
             // colDateCreated
             // 
             this.colDateCreated.Text = "Date created";
-            this.colDateCreated.Width = 200;
+            this.colDateCreated.Width = 150;
             // 
             // colDateProcessed
             // 
@@ -105,7 +105,6 @@ namespace MediaBazaar.forms
             // colRequestAmount
             // 
             this.colRequestAmount.Text = "Requested amount";
-            this.colRequestAmount.Width = 150;
             // 
             // columnStatus
             // 
@@ -120,24 +119,26 @@ namespace MediaBazaar.forms
             this.btnAcceptRequest.TabIndex = 4;
             this.btnAcceptRequest.Text = "Accept Request";
             this.btnAcceptRequest.UseVisualStyleBackColor = true;
+            this.btnAcceptRequest.Click += new System.EventHandler(this.btnAcceptRequest_Click);
             // 
             // btnDenyRequest
             // 
-            this.btnDenyRequest.Location = new System.Drawing.Point(888, 282);
+            this.btnDenyRequest.Location = new System.Drawing.Point(133, 282);
             this.btnDenyRequest.Name = "btnDenyRequest";
             this.btnDenyRequest.Size = new System.Drawing.Size(117, 52);
             this.btnDenyRequest.TabIndex = 5;
             this.btnDenyRequest.Text = "Deny Request";
             this.btnDenyRequest.UseVisualStyleBackColor = true;
+            this.btnDenyRequest.Click += new System.EventHandler(this.btnDenyRequest_Click);
             // 
             // RestockRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 374);
+            this.ClientSize = new System.Drawing.Size(1016, 374);
             this.Controls.Add(this.btnDenyRequest);
             this.Controls.Add(this.btnAcceptRequest);
-            this.Controls.Add(this.lvEmps);
+            this.Controls.Add(this.lvRestockRequests);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RestockRequests";
             this.Text = "RestockRequests";
@@ -147,7 +148,7 @@ namespace MediaBazaar.forms
 
         #endregion
 
-        private System.Windows.Forms.ListView lvEmps;
+        private System.Windows.Forms.ListView lvRestockRequests;
         private System.Windows.Forms.ColumnHeader colID;
         private System.Windows.Forms.ColumnHeader colDateCreated;
         private System.Windows.Forms.ColumnHeader colDateProcessed;

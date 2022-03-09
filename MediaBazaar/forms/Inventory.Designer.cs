@@ -44,6 +44,9 @@ namespace MediaBazaar.forms
             this.btnSendRestockRequest = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nmrRestockAmount = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // lvProducts
@@ -145,13 +148,14 @@ namespace MediaBazaar.forms
             // 
             // btnSendRestockRequest
             // 
-            this.btnSendRestockRequest.Location = new System.Drawing.Point(674, 342);
+            this.btnSendRestockRequest.Location = new System.Drawing.Point(628, 360);
             this.btnSendRestockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendRestockRequest.Name = "btnSendRestockRequest";
-            this.btnSendRestockRequest.Size = new System.Drawing.Size(120, 45);
+            this.btnSendRestockRequest.Size = new System.Drawing.Size(170, 27);
             this.btnSendRestockRequest.TabIndex = 8;
-            this.btnSendRestockRequest.Text = "Send ReStock Request";
+            this.btnSendRestockRequest.Text = "Send Restock Request";
             this.btnSendRestockRequest.UseVisualStyleBackColor = true;
+            this.btnSendRestockRequest.Click += new System.EventHandler(this.btnSendRestockRequest_Click);
             // 
             // btnSearch
             // 
@@ -173,11 +177,29 @@ namespace MediaBazaar.forms
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(628, 335);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 15);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Amount to restock:";
+            // 
+            // nmrRestockAmount
+            // 
+            this.nmrRestockAmount.Location = new System.Drawing.Point(743, 332);
+            this.nmrRestockAmount.Name = "nmrRestockAmount";
+            this.nmrRestockAmount.Size = new System.Drawing.Size(53, 23);
+            this.nmrRestockAmount.TabIndex = 13;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 398);
+            this.Controls.Add(this.nmrRestockAmount);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnSendRestockRequest);
@@ -189,6 +211,7 @@ namespace MediaBazaar.forms
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Inventory";
             this.Text = "Inventory";
+            ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +234,7 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Button btnSendRestockRequest;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown nmrRestockAmount;
     }
 }

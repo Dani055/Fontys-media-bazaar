@@ -97,9 +97,6 @@ namespace MediaBazaar.forms
             if (lvProducts.SelectedItems.Count != 0 && EmployeeService.loggedEmp.Role.ToUpper() == "DEPARTMENT MANAGER")
             {
                 btnSendRestockRequest.Enabled = true;
-            } else
-            {
-                btnSendRestockRequest.Enabled = false;
             }
         }
 

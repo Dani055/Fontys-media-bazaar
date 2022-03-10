@@ -38,7 +38,6 @@ namespace MediaBazaar.forms
             this.colMinStock = new System.Windows.Forms.ColumnHeader();
             this.colPrice = new System.Windows.Forms.ColumnHeader();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.lblSeatch = new System.Windows.Forms.Label();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnSendRestockRequest = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@ namespace MediaBazaar.forms
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nmrRestockAmount = new System.Windows.Forms.NumericUpDown();
+            this.btnEditItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,11 +62,11 @@ namespace MediaBazaar.forms
             this.lvProducts.FullRowSelect = true;
             this.lvProducts.GridLines = true;
             this.lvProducts.HideSelection = false;
-            this.lvProducts.Location = new System.Drawing.Point(12, 76);
+            this.lvProducts.Location = new System.Drawing.Point(12, 43);
             this.lvProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvProducts.MultiSelect = false;
             this.lvProducts.Name = "lvProducts";
-            this.lvProducts.Size = new System.Drawing.Size(784, 236);
+            this.lvProducts.Size = new System.Drawing.Size(784, 269);
             this.lvProducts.TabIndex = 2;
             this.lvProducts.UseCompatibleStateImageBehavior = false;
             this.lvProducts.View = System.Windows.Forms.View.Details;
@@ -109,24 +109,15 @@ namespace MediaBazaar.forms
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(60, 26);
+            this.tbSearch.Location = new System.Drawing.Point(12, 12);
             this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(123, 23);
+            this.tbSearch.Size = new System.Drawing.Size(171, 23);
             this.tbSearch.TabIndex = 3;
-            // 
-            // lblSeatch
-            // 
-            this.lblSeatch.AutoSize = true;
-            this.lblSeatch.Location = new System.Drawing.Point(12, 29);
-            this.lblSeatch.Name = "lblSeatch";
-            this.lblSeatch.Size = new System.Drawing.Size(42, 15);
-            this.lblSeatch.TabIndex = 4;
-            this.lblSeatch.Text = "Search";
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(12, 342);
+            this.btnAddItem.Location = new System.Drawing.Point(12, 332);
             this.btnAddItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(120, 45);
@@ -137,7 +128,7 @@ namespace MediaBazaar.forms
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(138, 342);
+            this.btnRemoveItem.Location = new System.Drawing.Point(270, 332);
             this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveItem.Name = "btnRemoveItem";
             this.btnRemoveItem.Size = new System.Drawing.Size(126, 45);
@@ -159,7 +150,7 @@ namespace MediaBazaar.forms
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(189, 26);
+            this.btnSearch.Location = new System.Drawing.Point(189, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 9;
@@ -169,7 +160,7 @@ namespace MediaBazaar.forms
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(719, 26);
+            this.btnRefresh.Location = new System.Drawing.Point(721, 15);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 10;
@@ -193,11 +184,23 @@ namespace MediaBazaar.forms
             this.nmrRestockAmount.Size = new System.Drawing.Size(53, 23);
             this.nmrRestockAmount.TabIndex = 13;
             // 
+            // btnEditItem
+            // 
+            this.btnEditItem.Location = new System.Drawing.Point(138, 332);
+            this.btnEditItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditItem.Name = "btnEditItem";
+            this.btnEditItem.Size = new System.Drawing.Size(126, 45);
+            this.btnEditItem.TabIndex = 14;
+            this.btnEditItem.Text = "Edit selected item";
+            this.btnEditItem.UseVisualStyleBackColor = true;
+            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 398);
+            this.Controls.Add(this.btnEditItem);
             this.Controls.Add(this.nmrRestockAmount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRefresh);
@@ -205,7 +208,6 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.btnSendRestockRequest);
             this.Controls.Add(this.btnRemoveItem);
             this.Controls.Add(this.btnAddItem);
-            this.Controls.Add(this.lblSeatch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lvProducts);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -228,7 +230,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.ColumnHeader colMinStock;
         private System.Windows.Forms.ColumnHeader colPrice;
         private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.Label lblSeatch;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Button btnRemoveItem;
         private System.Windows.Forms.Button btnSendRestockRequest;
@@ -236,5 +237,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nmrRestockAmount;
+        private System.Windows.Forms.Button btnEditItem;
     }
 }

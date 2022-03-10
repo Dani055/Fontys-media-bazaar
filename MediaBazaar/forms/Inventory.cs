@@ -17,12 +17,26 @@ namespace MediaBazaar.forms
 {
     public partial class Inventory : Form
     {
+        public bool CanAccessControls = false;
         public Inventory()
         {
             InitializeComponent();
             RefreshProducts();
             btnRemoveItem.Enabled = false;
             btnSendRestockRequest.Enabled = false;
+            btnEditItem.Enabled = false;
+
+            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            if (loggedEmpRole != "DEPOT MANAGER")
+            {
+                CanAccessControls = false;
+                btnAddItem.Enabled = false;
+            } else
+            {
+                CanAccessControls = true;
+            }
+
+
             //lvProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
@@ -68,13 +82,23 @@ namespace MediaBazaar.forms
 
         private void lvProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvProducts.SelectedItems.Count != 0)
+            if (lvProducts.SelectedItems.Count != 0 && CanAccessControls)
             {
                 btnRemoveItem.Enabled = true;
                 btnSendRestockRequest.Enabled = true;
+                btnEditItem.Enabled = true;
             } else
             {
                 btnRemoveItem.Enabled = false;
+                btnSendRestockRequest.Enabled = false;
+                btnEditItem.Enabled = false;
+            }
+
+            if (lvProducts.SelectedItems.Count != 0 && EmployeeService.loggedEmp.Role.ToUpper() == "DEPARTMENT MANAGER")
+            {
+                btnSendRestockRequest.Enabled = true;
+            } else
+            {
                 btnSendRestockRequest.Enabled = false;
             }
         }
@@ -113,6 +137,13 @@ namespace MediaBazaar.forms
             int productIdToRestock = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
             InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock);
             Utils.ShowInfo("Successfully created restock request");
+        }
+
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            int selectedID = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
+            EditItem editItem = new EditItem(selectedID);
+            editItem.ShowDialog();
         }
     }
 }

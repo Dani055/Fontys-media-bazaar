@@ -80,6 +80,42 @@ namespace MediaBazaar.logic.services
             }
         }
 
+        public static void EditProduct (Product prod)
+        {
+            if (prod == null) { return; }
+
+            string query = "UPDATE Product SET productName = @newName, productEan = @newEan, departmentId = @newDept, amountInStock = @newAmountInStock, minStock = @newMinStock, price = @newPrice WHERE productId = @id";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@newName", prod.ProductName);
+            cmd.Parameters.AddWithValue("@newEan", prod.ProductEAN);
+            cmd.Parameters.AddWithValue("@newDept", prod.DepartmentID);
+            cmd.Parameters.AddWithValue("@newAmountInStock", prod.AmountInStock);
+            cmd.Parameters.AddWithValue("@newMinStock", prod.MinStock);
+            cmd.Parameters.AddWithValue("@newPrice", prod.Price);
+            cmd.Parameters.AddWithValue("@id", prod.ProductID);
+
+            try
+            {
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    Utils.ShowError("Error updating item");
+                } else
+                {
+                    Utils.ShowInfo("Successfully updated product");
+                }
+            }
+            catch (Exception e)
+            {
+                Utils.ShowError(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
         public static void DeleteProduct (int prodID)
         {
             using (conn)

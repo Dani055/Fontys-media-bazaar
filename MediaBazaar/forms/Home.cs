@@ -20,6 +20,46 @@ namespace MediaBazaar
             InitializeComponent();
             lblRole.Text = EmployeeService.loggedEmp.Username;
             lblUsername.Text = EmployeeService.loggedEmp.Role;
+
+            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            if (loggedEmpRole == "DEPOT MANAGER")
+            {
+                btnManageDepartments.Enabled = false;
+            } else if (loggedEmpRole == "CASHIER")
+            {
+                btnManageEmp.Enabled = false;
+                btnManageDepartments.Enabled = false;
+                btnRestockReq.Enabled = false;
+            } else if (loggedEmpRole == "EMPLOYEE MANAGER")
+            {
+                btnRestockReq.Enabled = false;
+                btnSell.Enabled = false;
+            } else if (loggedEmpRole == "DEPARTMENT MANAGER")
+            {
+                btnManageDepartments.Enabled = false;
+                btnRestockReq.Enabled = false;
+                btnSell.Enabled = false;
+            } else if (loggedEmpRole == "DEPARTMENT EMPLOYEE")
+            {
+                btnManageEmp.Enabled = false;
+                btnManageDepartments.Enabled = false;
+                btnRestockReq.Enabled = false;
+                btnSell.Enabled = false;
+            } else if (loggedEmpRole == "WAREHOUSE WORKER")
+            {
+                btnManageEmp.Enabled = false;
+                btnManageDepartments.Enabled = false;
+                btnSell.Enabled = false;
+            } else
+            {
+                btnManageEmp.Enabled = false;
+                btnManageDepartments.Enabled = false;
+                btnInventory.Enabled = false;
+                btnRestockReq.Enabled = false;
+                btnSell.Enabled = false;
+            }
+
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

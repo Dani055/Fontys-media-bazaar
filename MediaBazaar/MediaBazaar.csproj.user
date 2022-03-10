@@ -16,6 +16,9 @@
     <Compile Update="forms\EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="forms\EditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

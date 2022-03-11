@@ -180,9 +180,10 @@ namespace MediaBazaar.logic.services
 
             using (conn)
             {
-                string query = $"SELECT * FROM Product WHERE productName LIKE '%{str}%' OR productId LIKE '%{str}%' OR productEan LIKE '%{str}%'";
+                string query = $"SELECT * FROM Product WHERE productName LIKE @str OR productId LIKE @str OR productEan LIKE @str";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@str", "%" + str + "%");
 
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();

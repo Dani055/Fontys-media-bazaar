@@ -79,7 +79,7 @@ namespace MediaBazaar.logic.services
                     MySqlCommand cmd;
                     string loggedEmpRole = loggedEmp.Role.ToUpper();
 
-                    if (loggedEmpRole == "DEPARTMENT MANAGER")
+                    if (loggedEmpRole == "DEPARTMENT MANAGER" || loggedEmpRole == "DEPOT MANAGER")
                     {
                         sql = "SELECT * FROM Employee WHERE departmentId = @depID";
                         cmd = new MySqlCommand(sql, conn);
@@ -88,11 +88,6 @@ namespace MediaBazaar.logic.services
                     else if (loggedEmpRole == "EMPLOYEE MANAGER")
                     {
                         sql = "SELECT * FROM Employee";
-                        cmd = new MySqlCommand(sql, conn);
-                    }
-                    else if (loggedEmpRole == "DEPOT MANAGER")
-                    {
-                        sql = "Select * from Employee where role IN ('Cashier', 'Depot worker')";
                         cmd = new MySqlCommand(sql, conn);
                     }
                     else

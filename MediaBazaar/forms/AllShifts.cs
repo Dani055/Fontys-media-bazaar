@@ -43,6 +43,9 @@ namespace MediaBazaar.forms
             {
                 string[] row = { wd.Id.ToString(), wd.FirstName, wd.LastName, wd.Role, wd.DepartmentName, wd.Shifts, wd.Missing.ToString()};
                 ListViewItem item = new ListViewItem(row);
+                item.Tag = wd;
+                item.UseItemStyleForSubItems = false;
+                item.SubItems[6].BackColor = wd.Missing ? Color.Tomato : Color.LightGreen;
                 lvShifts.Items.Add(item);
             }
 

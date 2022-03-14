@@ -81,13 +81,13 @@ namespace MediaBazaar.logic.services
 
                     if (loggedEmpRole == "DEPARTMENT MANAGER" || loggedEmpRole == "DEPOT MANAGER")
                     {
-                        sql = "SELECT * FROM Employee WHERE departmentId = @depID";
+                        sql = "SELECT * FROM Employee WHERE departmentId = @depID order by departmentId";
                         cmd = new MySqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("@depID", loggedEmp.DepartmentId);
                     }
                     else if (loggedEmpRole == "EMPLOYEE MANAGER")
                     {
-                        sql = "SELECT * FROM Employee";
+                        sql = "SELECT * FROM Employee order by departmentId";
                         cmd = new MySqlCommand(sql, conn);
                     }
                     else
@@ -126,6 +126,61 @@ namespace MediaBazaar.logic.services
             {
                 MessageBox.Show(ex.Message);
                 return new List<Employee>();
+            }
+        }
+
+        public static List<Employee> SearchEmployees(string keyword)
+        {
+            try
+            {
+                string sql;
+                MySqlCommand cmd;
+                string loggedEmpRole = loggedEmp.Role.ToUpper();
+                
+                if (loggedEmpRole == "DEPARTMENT MANAGER" || loggedEmpRole == "DEPOT MANAGER")
+                {
+                    sql = "SELECT * FROM Employee WHERE departmentId = @depID AND (firstName like @keyword or lastName like @keyword or address like @keyword or role like @keyword or phone like @keyword)";
+                    cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@depID", loggedEmp.DepartmentId);
+                }
+                else if (loggedEmpRole == "EMPLOYEE MANAGER")
+                {
+                    sql = "SELECT * FROM Employee WHERE firstName like @keyword or lastName like @keyword or address like @keyword or role like @keyword or phone like @keyword";
+                    cmd = new MySqlCommand(sql, conn);
+                }
+                else
+                {
+                    throw new Exception("You are not authorized to search employees.");
+                }
+                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                List<Employee> emps = new List<Employee>();
+                
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string uname = reader.GetString("username");
+                    string pwd = reader.GetString("password");
+                    string firstname = reader.GetString("firstName");
+                    string lastname = reader.GetString("lastName");
+                    string address = reader.GetString("address");
+                    double wage = reader.GetDouble("hourlyWage");
+                    string departmentid = reader["departmentId"].ToString();
+                    string role = reader["role"].ToString();
+                    string email = reader["email"].ToString();
+                    string phone = reader["phone"].ToString();
+                    string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
+                    bool isStudent = reader.GetBoolean("isStudent");
+                    Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) { IsStudent = isStudent };
+                    emps.Add(emp);
+                }
+                reader.Close();
+                return emps;       
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 

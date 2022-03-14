@@ -19,8 +19,19 @@ namespace MediaBazaar
         public ManageEmployees()
         {
             InitializeComponent();
+            HideUI();
         }
-
+        private void HideUI()
+        {
+            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            if (loggedEmpRole != "EMPLOYEE MANAGER")
+            {
+                btnAddEmployee.Enabled = false;
+                btnRemoveEmployee.Enabled = false;
+                btnEditInfo.Enabled = false;
+                btnManageShifts.Enabled = false;
+            }
+        }
         private void ManageEmployees_Load(object sender, EventArgs e)
         {
             RefreshEmployees();
@@ -28,13 +39,17 @@ namespace MediaBazaar
 
         private void RefreshEmployees()
         {
-            lvEmps.Items.Clear();
             List<Employee> emps = EmployeeService.GetEmployees();
+            PopulateListView(emps);
+        }
+        private void PopulateListView(List<Employee> emps)
+        {
+            lvEmps.Items.Clear();
             foreach (Employee emp in emps)
             {
                 string depName = DepartmentService.GetDepartmentByID(emp.DepartmentId)?.Name;
-                depName ??= String.Empty; 
-                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString() , depName , (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
+                depName ??= String.Empty;
+                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), depName, (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = emp;
                 item.UseItemStyleForSubItems = false;
@@ -44,7 +59,6 @@ namespace MediaBazaar
             }
             SetListViewColumnSizes(lvEmps, -2);
         }
-
         private void SetListViewColumnSizes(ListView lvw, int width)
         {
             foreach (ColumnHeader col in lvw.Columns)
@@ -107,5 +121,18 @@ namespace MediaBazaar
 
         }
 
+        private void btnSearchEmps_Click(object sender, EventArgs e)
+        {
+            string keyword = tbSearchEmps.Text.Trim();
+            try
+            {
+                List<Employee> emps = EmployeeService.SearchEmployees(keyword);
+                PopulateListView(emps);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

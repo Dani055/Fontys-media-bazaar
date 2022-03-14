@@ -71,6 +71,7 @@ namespace MediaBazaar.logic.services
                     "on e.id = w.employeeId " +
                     "left join Department as d " +
                     "on e.departmentId = d.departmentId";
+
                 if (EmployeeService.loggedEmp.Role != "Employee Manager")
                 {
                     sql += " WHERE e.departmentId = @deptId AND day = @date"; 
@@ -135,7 +136,11 @@ namespace MediaBazaar.logic.services
                 MessageBox.Show("Shift already exists for current workday. Consider removing it first");
                 return false;
             }
-
+            if (StudentNotWorkingNightShift(emp, workday))
+            {
+                Utils.ShowError("This person is a student and can only work an evening shift!");
+                return false;
+            }
             if (WorkedEveningShiftPrevDay(emp, workday))
             {
                 MessageBox.Show("You have selected morning shift and the previous day contains an evening shift!");
@@ -146,6 +151,7 @@ namespace MediaBazaar.logic.services
                 MessageBox.Show("Worktime of employee this week becomes more than 40 hours!");
                 return false;
             }
+
             using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
             try
             {
@@ -337,10 +343,18 @@ namespace MediaBazaar.logic.services
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
                 return true;
             }
 
+        }
+        public static bool StudentNotWorkingNightShift(Employee emp, Workday workday)
+        {
+            if (emp.IsStudent && (workday.Shifts.Contains("morning") || workday.Shifts.Contains("afternoon")))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

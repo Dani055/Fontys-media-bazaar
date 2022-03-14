@@ -47,6 +47,8 @@ namespace MediaBazaar
             this.btnEditInfo = new System.Windows.Forms.Button();
             this.btnViewShifts = new System.Windows.Forms.Button();
             this.btnManageShifts = new System.Windows.Forms.Button();
+            this.tbSearchEmps = new System.Windows.Forms.TextBox();
+            this.btnSearchEmps = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvEmps
@@ -69,10 +71,10 @@ namespace MediaBazaar
             this.lvEmps.FullRowSelect = true;
             this.lvEmps.GridLines = true;
             this.lvEmps.HideSelection = false;
-            this.lvEmps.Location = new System.Drawing.Point(4, 12);
+            this.lvEmps.Location = new System.Drawing.Point(12, 54);
             this.lvEmps.MultiSelect = false;
             this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(1260, 315);
+            this.lvEmps.Size = new System.Drawing.Size(1211, 315);
             this.lvEmps.TabIndex = 1;
             this.lvEmps.UseCompatibleStateImageBehavior = false;
             this.lvEmps.View = System.Windows.Forms.View.Details;
@@ -127,7 +129,7 @@ namespace MediaBazaar
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(25, 349);
+            this.btnAddEmployee.Location = new System.Drawing.Point(21, 396);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(150, 53);
             this.btnAddEmployee.TabIndex = 2;
@@ -137,7 +139,7 @@ namespace MediaBazaar
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(194, 349);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(190, 396);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
             this.btnRemoveEmployee.Size = new System.Drawing.Size(155, 53);
             this.btnRemoveEmployee.TabIndex = 3;
@@ -147,7 +149,7 @@ namespace MediaBazaar
             // 
             // btnEditInfo
             // 
-            this.btnEditInfo.Location = new System.Drawing.Point(368, 349);
+            this.btnEditInfo.Location = new System.Drawing.Point(364, 396);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(155, 53);
             this.btnEditInfo.TabIndex = 4;
@@ -157,7 +159,7 @@ namespace MediaBazaar
             // 
             // btnViewShifts
             // 
-            this.btnViewShifts.Location = new System.Drawing.Point(194, 424);
+            this.btnViewShifts.Location = new System.Drawing.Point(190, 471);
             this.btnViewShifts.Name = "btnViewShifts";
             this.btnViewShifts.Size = new System.Drawing.Size(150, 53);
             this.btnViewShifts.TabIndex = 5;
@@ -167,7 +169,7 @@ namespace MediaBazaar
             // 
             // btnManageShifts
             // 
-            this.btnManageShifts.Location = new System.Drawing.Point(19, 424);
+            this.btnManageShifts.Location = new System.Drawing.Point(15, 471);
             this.btnManageShifts.Name = "btnManageShifts";
             this.btnManageShifts.Size = new System.Drawing.Size(155, 53);
             this.btnManageShifts.TabIndex = 6;
@@ -175,11 +177,30 @@ namespace MediaBazaar
             this.btnManageShifts.UseVisualStyleBackColor = true;
             this.btnManageShifts.Click += new System.EventHandler(this.btnManageShifts_Click);
             // 
+            // tbSearchEmps
+            // 
+            this.tbSearchEmps.Location = new System.Drawing.Point(15, 12);
+            this.tbSearchEmps.Name = "tbSearchEmps";
+            this.tbSearchEmps.Size = new System.Drawing.Size(225, 27);
+            this.tbSearchEmps.TabIndex = 7;
+            // 
+            // btnSearchEmps
+            // 
+            this.btnSearchEmps.Location = new System.Drawing.Point(251, 12);
+            this.btnSearchEmps.Name = "btnSearchEmps";
+            this.btnSearchEmps.Size = new System.Drawing.Size(94, 29);
+            this.btnSearchEmps.TabIndex = 8;
+            this.btnSearchEmps.Text = "Search";
+            this.btnSearchEmps.UseVisualStyleBackColor = true;
+            this.btnSearchEmps.Click += new System.EventHandler(this.btnSearchEmps_Click);
+            // 
             // ManageEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 589);
+            this.ClientSize = new System.Drawing.Size(1235, 589);
+            this.Controls.Add(this.btnSearchEmps);
+            this.Controls.Add(this.tbSearchEmps);
             this.Controls.Add(this.btnManageShifts);
             this.Controls.Add(this.btnViewShifts);
             this.Controls.Add(this.btnEditInfo);
@@ -190,6 +211,7 @@ namespace MediaBazaar
             this.Text = "ManageEmployees";
             this.Load += new System.EventHandler(this.ManageEmployees_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -212,5 +234,7 @@ namespace MediaBazaar
         private System.Windows.Forms.Button btnManageShifts;
         private System.Windows.Forms.ColumnHeader colDepName;
         private System.Windows.Forms.ColumnHeader colIsStudent;
+        private System.Windows.Forms.TextBox tbSearchEmps;
+        private System.Windows.Forms.Button btnSearchEmps;
     }
 }

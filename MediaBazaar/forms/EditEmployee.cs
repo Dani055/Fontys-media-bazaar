@@ -25,6 +25,7 @@ namespace MediaBazaar.forms
             cbxDepartment.DataSource = departments;
             cbxDepartment.DisplayMember = "Name";
             cbxDepartment.ValueMember = "Id";
+            cbxRole_SelectedIndexChanged(new object { }, new EventArgs());
         }
         private void FillData()
         {
@@ -64,21 +65,35 @@ namespace MediaBazaar.forms
 
         private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxRole.Text.ToLower() == "department employee")
+            if (cbxRole.Text.ToLower() == "department employee" || cbxRole.Text.ToLower() == "department manager")
+            {
                 cbxDepartment.Enabled = true;
-            else
+            }
+
+            else {
                 cbxDepartment.Enabled = false;
+            }
 
 
-            if (cbxRole.Text.ToLower().Contains("manager"))
+
+            if (cbxRole.Text.ToLower() == "employee manager" || cbxRole.Text.ToLower() == "ceo")
+            {
                 ChangeDepartment("Management");
+            }
 
             else if (cbxRole.Text.ToLower() == "cashier")
+            {
                 ChangeDepartment("Sales");
-            else if (cbxRole.Text.ToLower() == "warehouse worker")
+            }
+            else if (cbxRole.Text.ToLower() == "warehouse worker" || cbxRole.Text.ToLower() == "depot manager")
+            {
                 ChangeDepartment("Warehouse");
+            }
             else
+            {
                 cbxDepartment.SelectedIndex = -1;
+            }
+
         }
         private void ChangeDepartment(string departmentToChange)
         {

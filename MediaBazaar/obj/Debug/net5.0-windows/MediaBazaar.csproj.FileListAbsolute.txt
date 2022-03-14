@@ -196,3 +196,4 @@ C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar
 C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
 C:\Users\Katsarski\Documents\Fontys\Semester 2\PRJ\media bazar repo\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditItem.resources
+C:\Users\NIKI\source\repos\media-bazaar-group-61\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.forms.EditItem.resources

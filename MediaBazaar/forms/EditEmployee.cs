@@ -61,5 +61,35 @@ namespace MediaBazaar.forms
             Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) { IsStudent = cbxStudent.Checked };
             EmployeeService.UpdateEmployee(newEmp);
         }
+
+        private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxRole.Text.ToLower() == "department employee")
+                cbxDepartment.Enabled = true;
+            else
+                cbxDepartment.Enabled = false;
+
+
+            if (cbxRole.Text.ToLower().Contains("manager"))
+                ChangeDepartment("Management");
+
+            else if (cbxRole.Text.ToLower() == "cashier")
+                ChangeDepartment("Sales");
+            else if (cbxRole.Text.ToLower() == "warehouse worker")
+                ChangeDepartment("Warehouse");
+            else
+                cbxDepartment.SelectedIndex = -1;
+        }
+        private void ChangeDepartment(string departmentToChange)
+        {
+            cbxDepartment.SelectedIndex = cbxDepartment.FindStringExact(departmentToChange);
+        }
+
+        private void cbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] restricted = { "Management", "Warehouse" };
+            if (restricted.Contains(cbxDepartment.Text) && cbxRole.Text.ToLower() == "department employee")
+                ChangeDepartment("Sales");
+        }
     }
 }

@@ -142,6 +142,7 @@ namespace MediaBazaar.forms
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(151, 28);
             this.cbxRole.TabIndex = 10;
+            this.cbxRole.SelectedIndexChanged += new System.EventHandler(this.cbxRole_SelectedIndexChanged);
             // 
             // cbxContractType
             // 
@@ -158,6 +159,7 @@ namespace MediaBazaar.forms
             // cbxDepartment
             // 
             this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDepartment.Enabled = false;
             this.cbxDepartment.FormattingEnabled = true;
             this.cbxDepartment.Items.AddRange(new object[] {
             "Unassigned"});
@@ -165,6 +167,7 @@ namespace MediaBazaar.forms
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(151, 28);
             this.cbxDepartment.TabIndex = 12;
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxDepartment_SelectedIndexChanged);
             // 
             // lblFirstName
             // 

@@ -853,23 +853,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Katsarski\\.nuget\\packages\\": {},
+    "C:\\Users\\NIKI\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
+      "projectUniqueName": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
       "projectName": "MediaBazaar",
-      "projectPath": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\MediaBazaar.csproj",
-      "packagesPath": "C:\\Users\\Katsarski\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Katsarski\\Documents\\Fontys\\Semester 2\\PRJ\\media bazar repo\\media-bazaar-group-6\\MediaBazaar\\obj\\",
+      "projectPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\MediaBazaar.csproj",
+      "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NIKI\\source\\repos\\media-bazaar-group-61\\MediaBazaar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Katsarski\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NIKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -919,7 +919,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

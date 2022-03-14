@@ -37,6 +37,9 @@ namespace MediaBazaar
                 string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString() , depName , (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = emp;
+                item.UseItemStyleForSubItems = false;
+                item.SubItems[11].BackColor = emp.IsStudent ? Color.Tomato : Color.LightGreen;
+
                 lvEmps.Items.Add(item);
             }
             SetListViewColumnSizes(lvEmps, -2);

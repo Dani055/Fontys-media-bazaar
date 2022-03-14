@@ -24,6 +24,7 @@ namespace MediaBazaar.forms
             cbxDepartment.DataSource = departments;
             cbxDepartment.DisplayMember = "Name";
             cbxDepartment.ValueMember = "Id";
+            cbxDepartment.SelectedIndex = -1;
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -37,12 +38,41 @@ namespace MediaBazaar.forms
             string address = tbxAddress.Text == string.Empty ? null : tbxAddress.Text;
             string email = tbxEmail.Text == string.Empty ? null : tbxEmail.Text;
             string phone = tbxPhone.Text == string.Empty ? null : tbxPhone.Text;
-            string departmentId = cbxDepartment.SelectedValue.ToString();
+            string departmentId = cbxDepartment.SelectedValue?.ToString() ?? "0";
             string role =  cbxRole.Text.ToString();
             string contractType = cbxContractType.Text.ToString();
             Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) {IsStudent = cbxStudent.Checked };           
 
             EmployeeService.AddEmployee(employeeToAdd);
+        }
+
+        private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             if (cbxRole.Text.ToLower() == "department employee")
+                cbxDepartment.Enabled = true;
+             else
+                cbxDepartment.Enabled = false;
+
+
+            if (cbxRole.Text.ToLower().Contains("manager"))
+                ChangeDepartment("Management");
+
+            else if (cbxRole.Text.ToLower() == "cashier")
+                ChangeDepartment("Sales");
+            else if (cbxRole.Text.ToLower() == "warehouse worker")
+                ChangeDepartment("Warehouse");
+            else
+                cbxDepartment.SelectedIndex = -1;
+        }
+        private void ChangeDepartment(string departmentToChange)
+        {
+            cbxDepartment.SelectedIndex = cbxDepartment.FindStringExact(departmentToChange);
+        }
+        private void cbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] restricted = {"Management", "Warehouse"};
+            if (restricted.Contains(cbxDepartment.Text) && cbxRole.Text.ToLower() == "department employee")
+                ChangeDepartment("Sales");
         }
     }
 }

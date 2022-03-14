@@ -51,6 +51,8 @@ namespace MediaBazaar
             // 
             // lvEmps
             // 
+            this.lvEmps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvEmps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
             this.colUsername,
@@ -67,10 +69,10 @@ namespace MediaBazaar
             this.lvEmps.FullRowSelect = true;
             this.lvEmps.GridLines = true;
             this.lvEmps.HideSelection = false;
-            this.lvEmps.Location = new System.Drawing.Point(11, 12);
+            this.lvEmps.Location = new System.Drawing.Point(4, 12);
             this.lvEmps.MultiSelect = false;
             this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(1171, 315);
+            this.lvEmps.Size = new System.Drawing.Size(1260, 315);
             this.lvEmps.TabIndex = 1;
             this.lvEmps.UseCompatibleStateImageBehavior = false;
             this.lvEmps.View = System.Windows.Forms.View.Details;
@@ -177,7 +179,7 @@ namespace MediaBazaar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 589);
+            this.ClientSize = new System.Drawing.Size(1269, 589);
             this.Controls.Add(this.btnManageShifts);
             this.Controls.Add(this.btnViewShifts);
             this.Controls.Add(this.btnEditInfo);

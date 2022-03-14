@@ -179,6 +179,7 @@ namespace MediaBazaar.forms
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(151, 28);
             this.cbxDepartment.TabIndex = 36;
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxDepartment_SelectedIndexChanged);
             // 
             // cbxContract
             // 
@@ -208,6 +209,7 @@ namespace MediaBazaar.forms
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(151, 28);
             this.cbxRole.TabIndex = 34;
+            this.cbxRole.SelectedIndexChanged += new System.EventHandler(this.cbxRole_SelectedIndexChanged);
             // 
             // lblPassword
             // 

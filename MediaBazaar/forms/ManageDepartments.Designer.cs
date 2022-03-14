@@ -50,11 +50,10 @@ namespace MediaBazaar.forms
             this.lvDepartments.GridLines = true;
             this.lvDepartments.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvDepartments.HideSelection = false;
-            this.lvDepartments.Location = new System.Drawing.Point(10, 9);
-            this.lvDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvDepartments.Location = new System.Drawing.Point(11, 12);
             this.lvDepartments.MultiSelect = false;
             this.lvDepartments.Name = "lvDepartments";
-            this.lvDepartments.Size = new System.Drawing.Size(288, 248);
+            this.lvDepartments.Size = new System.Drawing.Size(329, 329);
             this.lvDepartments.TabIndex = 2;
             this.lvDepartments.UseCompatibleStateImageBehavior = false;
             this.lvDepartments.View = System.Windows.Forms.View.Details;
@@ -70,28 +69,27 @@ namespace MediaBazaar.forms
             // 
             // btnAddDepartment
             // 
-            this.btnAddDepartment.Location = new System.Drawing.Point(19, 30);
-            this.btnAddDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddDepartment.Location = new System.Drawing.Point(22, 40);
             this.btnAddDepartment.Name = "btnAddDepartment";
-            this.btnAddDepartment.Size = new System.Drawing.Size(96, 40);
+            this.btnAddDepartment.Size = new System.Drawing.Size(110, 53);
             this.btnAddDepartment.TabIndex = 3;
             this.btnAddDepartment.Text = "Add department";
             this.btnAddDepartment.UseVisualStyleBackColor = true;
+            this.btnAddDepartment.Click += new System.EventHandler(this.btnAddDepartment_Click);
             // 
             // tbDepartmentName
             // 
-            this.tbDepartmentName.Location = new System.Drawing.Point(134, 47);
-            this.tbDepartmentName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbDepartmentName.Location = new System.Drawing.Point(153, 63);
             this.tbDepartmentName.Name = "tbDepartmentName";
-            this.tbDepartmentName.Size = new System.Drawing.Size(110, 23);
+            this.tbDepartmentName.Size = new System.Drawing.Size(125, 27);
             this.tbDepartmentName.TabIndex = 4;
             // 
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(130, 30);
+            this.lblDepartment.Location = new System.Drawing.Point(149, 40);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(103, 15);
+            this.lblDepartment.Size = new System.Drawing.Size(130, 20);
             this.lblDepartment.TabIndex = 5;
             this.lblDepartment.Text = "Department name";
             // 
@@ -100,31 +98,28 @@ namespace MediaBazaar.forms
             this.gbAddDept.Controls.Add(this.btnAddDepartment);
             this.gbAddDept.Controls.Add(this.lblDepartment);
             this.gbAddDept.Controls.Add(this.tbDepartmentName);
-            this.gbAddDept.Location = new System.Drawing.Point(10, 260);
-            this.gbAddDept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbAddDept.Location = new System.Drawing.Point(11, 347);
             this.gbAddDept.Name = "gbAddDept";
-            this.gbAddDept.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbAddDept.Size = new System.Drawing.Size(287, 103);
+            this.gbAddDept.Size = new System.Drawing.Size(328, 137);
             this.gbAddDept.TabIndex = 6;
             this.gbAddDept.TabStop = false;
             this.gbAddDept.Text = "Add department";
             // 
             // btnRemoveDepartment
             // 
-            this.btnRemoveDepartment.Location = new System.Drawing.Point(10, 368);
-            this.btnRemoveDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveDepartment.Location = new System.Drawing.Point(11, 491);
             this.btnRemoveDepartment.Name = "btnRemoveDepartment";
-            this.btnRemoveDepartment.Size = new System.Drawing.Size(136, 40);
+            this.btnRemoveDepartment.Size = new System.Drawing.Size(155, 53);
             this.btnRemoveDepartment.TabIndex = 7;
             this.btnRemoveDepartment.Text = "Remove department";
             this.btnRemoveDepartment.UseVisualStyleBackColor = true;
+            this.btnRemoveDepartment.Click += new System.EventHandler(this.btnRemoveDepartment_Click);
             // 
             // btnEditDepartment
             // 
-            this.btnEditDepartment.Location = new System.Drawing.Point(164, 368);
-            this.btnEditDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditDepartment.Location = new System.Drawing.Point(187, 491);
             this.btnEditDepartment.Name = "btnEditDepartment";
-            this.btnEditDepartment.Size = new System.Drawing.Size(133, 40);
+            this.btnEditDepartment.Size = new System.Drawing.Size(152, 53);
             this.btnEditDepartment.TabIndex = 8;
             this.btnEditDepartment.Text = "Edit department";
             this.btnEditDepartment.UseVisualStyleBackColor = true;
@@ -132,14 +127,13 @@ namespace MediaBazaar.forms
             // 
             // ManageDepartments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 422);
+            this.ClientSize = new System.Drawing.Size(352, 563);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.btnRemoveDepartment);
             this.Controls.Add(this.gbAddDept);
             this.Controls.Add(this.lvDepartments);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManageDepartments";
             this.Text = "ManageDepartments";
             this.Load += new System.EventHandler(this.ManageDepartments_Load);

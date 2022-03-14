@@ -19,7 +19,28 @@ namespace MediaBazaar.logic.services
         {
            UpdateDepartments();
         }
-        
+
+        public static void CreateDepartment(Department dep)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(Utils.connectionString);
+                using (conn)
+                {
+                    string query = "INSERT INTO Department (departmentName) VALUES(@name)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", dep.Name);
+                    conn.Open();
+                    if(cmd.ExecuteNonQuery() > 0)
+                        MessageBox.Show($"Successfuly added {dep.Name} department!");
+                }
+                UpdateDepartments();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static Department GetDepartmentByID(int id) {
 
             foreach (Department department in AllDepartments)
@@ -62,7 +83,6 @@ namespace MediaBazaar.logic.services
             //}
             #endregion 
         }
-
         public static List<Department> GetAllDepartments()
         {
             List<Department> departments = new List<Department>();
@@ -91,6 +111,50 @@ namespace MediaBazaar.logic.services
         {
             AllDepartments?.Clear();
             AllDepartments = GetAllDepartments();
+        }
+        public static void RemoveDepartment(int id)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(Utils.connectionString);
+                string query = "DELETE FROM Department WHERE departmentId = @depId";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@depId", id);
+                using (conn)
+                {
+                    conn.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                        Utils.ShowInfo("Successfuly removed department.");
+                }
+                UpdateDepartments();
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+        }
+        public static bool EditName(Department d)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(Utils.connectionString);
+                string query = "UPDATE Department SET departmentName = @newName WHERE departmentId = @depId";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@newName", d.Name);
+                cmd.Parameters.AddWithValue("@depId", d.Id);
+                using (conn)
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                UpdateDepartments();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+                return false;
+            }
         }
     }
 }

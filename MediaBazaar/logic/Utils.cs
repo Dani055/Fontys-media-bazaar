@@ -22,6 +22,10 @@ namespace MediaBazaar.logic
             MessageBox.Show(text, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public static DialogResult ShowConfirmation(string text)
+        {
+           return MessageBox.Show(text, caption:"Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);          
+        }
 
         public static string GetDateStringForMySQL(DateTime date)
         {

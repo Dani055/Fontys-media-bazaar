@@ -29,47 +29,45 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxNewName = new System.Windows.Forms.TextBox();
             this.lblDepartmentName = new System.Windows.Forms.Label();
             this.btnEditDepartment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbxNewName
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 45);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 23);
-            this.textBox1.TabIndex = 0;
+            this.tbxNewName.Location = new System.Drawing.Point(23, 60);
+            this.tbxNewName.Name = "tbxNewName";
+            this.tbxNewName.Size = new System.Drawing.Size(178, 27);
+            this.tbxNewName.TabIndex = 0;
             // 
             // lblDepartmentName
             // 
             this.lblDepartmentName.AutoSize = true;
-            this.lblDepartmentName.Location = new System.Drawing.Point(20, 18);
+            this.lblDepartmentName.Location = new System.Drawing.Point(42, 37);
             this.lblDepartmentName.Name = "lblDepartmentName";
-            this.lblDepartmentName.Size = new System.Drawing.Size(103, 15);
+            this.lblDepartmentName.Size = new System.Drawing.Size(130, 20);
             this.lblDepartmentName.TabIndex = 1;
             this.lblDepartmentName.Text = "Department name";
             // 
             // btnEditDepartment
             // 
-            this.btnEditDepartment.Location = new System.Drawing.Point(32, 92);
-            this.btnEditDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditDepartment.Location = new System.Drawing.Point(37, 123);
             this.btnEditDepartment.Name = "btnEditDepartment";
-            this.btnEditDepartment.Size = new System.Drawing.Size(118, 38);
+            this.btnEditDepartment.Size = new System.Drawing.Size(135, 51);
             this.btnEditDepartment.TabIndex = 2;
             this.btnEditDepartment.Text = "Edit department";
             this.btnEditDepartment.UseVisualStyleBackColor = true;
+            this.btnEditDepartment.Click += new System.EventHandler(this.btnEditDepartment_Click);
             // 
             // EditDepartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(195, 152);
+            this.ClientSize = new System.Drawing.Size(223, 203);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.lblDepartmentName);
-            this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Controls.Add(this.tbxNewName);
             this.Name = "EditDepartment";
             this.Text = "EditDepartment";
             this.Load += new System.EventHandler(this.EditDepartment_Load);
@@ -80,7 +78,7 @@ namespace MediaBazaar.forms
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxNewName;
         private System.Windows.Forms.Label lblDepartmentName;
         private System.Windows.Forms.Button btnEditDepartment;
     }

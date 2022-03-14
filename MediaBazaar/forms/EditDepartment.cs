@@ -26,9 +26,14 @@ namespace MediaBazaar.forms
         }
 
         private void EditDepartment_Load(object sender, EventArgs e)
+        {           
+            tbxNewName.Text = department.Name;
+        }
+
+        private void btnEditDepartment_Click(object sender, EventArgs e)
         {
-           
-            lblDepartmentName.Text = department.Name;
+            if (DepartmentService.EditName(new Department(department.Id, tbxNewName.Text)))
+            this.Close();
         }
     }
 }

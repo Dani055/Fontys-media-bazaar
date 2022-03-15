@@ -35,14 +35,14 @@ namespace MediaBazaar
             this.btnManageEmp = new System.Windows.Forms.Button();
             this.btnManageDepartments = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlNav = new System.Windows.Forms.Panel();
             this.btnSell = new System.Windows.Forms.Button();
             this.btnRestockReq = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbxProfile = new System.Windows.Forms.PictureBox();
             this.lblLoggedAs = new System.Windows.Forms.Label();
             this.pbxLogout = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.pnlNav.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogout)).BeginInit();
@@ -123,19 +123,20 @@ namespace MediaBazaar
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
-            // panel1
+            // pnlNav
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
-            this.panel1.Controls.Add(this.btnManageEmp);
-            this.panel1.Controls.Add(this.btnSell);
-            this.panel1.Controls.Add(this.btnManageDepartments);
-            this.panel1.Controls.Add(this.btnRestockReq);
-            this.panel1.Controls.Add(this.btnInventory);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(871, 106);
-            this.panel1.TabIndex = 9;
+            this.pnlNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.pnlNav.Controls.Add(this.btnManageEmp);
+            this.pnlNav.Controls.Add(this.btnSell);
+            this.pnlNav.Controls.Add(this.btnManageDepartments);
+            this.pnlNav.Controls.Add(this.btnRestockReq);
+            this.pnlNav.Controls.Add(this.btnInventory);
+            this.pnlNav.Location = new System.Drawing.Point(0, 66);
+            this.pnlNav.Name = "pnlNav";
+            this.pnlNav.Size = new System.Drawing.Size(871, 106);
+            this.pnlNav.TabIndex = 9;
             // 
             // btnSell
             // 
@@ -175,14 +176,13 @@ namespace MediaBazaar
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(136)))), ((int)(((byte)(197)))));
             this.panel2.Controls.Add(this.pbxProfile);
             this.panel2.Controls.Add(this.lblUsername);
             this.panel2.Controls.Add(this.lblLoggedAs);
             this.panel2.Controls.Add(this.lblRole);
-            this.panel2.Location = new System.Drawing.Point(0, 105);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(871, 66);
             this.panel2.TabIndex = 10;
@@ -229,12 +229,12 @@ namespace MediaBazaar
             this.ClientSize = new System.Drawing.Size(871, 451);
             this.Controls.Add(this.pbxLogout);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlNav);
             this.MinimumSize = new System.Drawing.Size(889, 498);
             this.Name = "Home";
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
-            this.panel1.ResumeLayout(false);
+            this.pnlNav.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).EndInit();
@@ -250,7 +250,7 @@ namespace MediaBazaar
         private System.Windows.Forms.Button btnManageEmp;
         private System.Windows.Forms.Button btnManageDepartments;
         private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlNav;
         private System.Windows.Forms.Button btnRestockReq;
         private System.Windows.Forms.Button btnSell;
         private System.Windows.Forms.Panel panel2;

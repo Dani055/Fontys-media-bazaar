@@ -18,8 +18,8 @@ namespace MediaBazaar
         public Home()
         {
             InitializeComponent();
-            lblRole.Text = EmployeeService.loggedEmp.Username;
-            lblUsername.Text = EmployeeService.loggedEmp.Role;
+            lblRole.Text = EmployeeService.loggedEmp.Role;
+            lblUsername.Text = $"Welcome, {EmployeeService.loggedEmp.Username}";
 
             string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
             if (loggedEmpRole == "DEPOT MANAGER")
@@ -113,6 +113,12 @@ namespace MediaBazaar
         {
             Sell sell = new Sell();
             sell.ShowDialog();
+        }
+
+        //Change color on disabled//
+        private void btnSell_EnabledChanged(object sender, EventArgs e) //Works for all buttons somehow.
+        {
+            (sender as Button).BackColor = (sender as Button).Enabled ? Color.FromArgb(255, 186, 8) : Color.FromArgb(181, 130, 0);
         }
     }
 }

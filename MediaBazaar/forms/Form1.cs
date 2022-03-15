@@ -37,10 +37,7 @@ namespace MediaBazaar
 
         private void home_Closed(object sender, EventArgs e)
         {
-
             this.Close();
         }
     }
-
-
 }

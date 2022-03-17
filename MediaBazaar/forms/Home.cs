@@ -116,7 +116,7 @@ namespace MediaBazaar
         }
 
         //Change color on disabled//
-        private void btnSell_EnabledChanged(object sender, EventArgs e) //Works for all buttons somehow.
+        private void ChangeButtonBGonDisabled(object sender, EventArgs e) 
         {
             (sender as Button).BackColor = (sender as Button).Enabled ? Color.FromArgb(255, 186, 8) : Color.FromArgb(181, 130, 0);
         }

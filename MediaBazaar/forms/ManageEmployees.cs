@@ -91,7 +91,15 @@ namespace MediaBazaar
         }
         private void btnRemoveEmployee_Click(object sender, EventArgs e)
         {
-            EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id);
+            try
+            {
+                EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                logic.Utils.ShowError("Select employee first");
+            }
+           
             RefreshEmployees();
         }
 

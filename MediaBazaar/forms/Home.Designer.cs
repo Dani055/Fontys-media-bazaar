@@ -87,6 +87,7 @@ namespace MediaBazaar
             this.btnManageEmp.TabIndex = 1;
             this.btnManageEmp.Text = "Manage Employees";
             this.btnManageEmp.UseVisualStyleBackColor = false;
+            this.btnManageEmp.EnabledChanged += new System.EventHandler(this.ChangeButtonBGonDisabled);
             this.btnManageEmp.Click += new System.EventHandler(this.btnManageEmp_Click);
             // 
             // btnManageDepartments
@@ -104,6 +105,7 @@ namespace MediaBazaar
             this.btnManageDepartments.TabIndex = 2;
             this.btnManageDepartments.Text = "Manage Departments";
             this.btnManageDepartments.UseVisualStyleBackColor = false;
+            this.btnManageDepartments.EnabledChanged += new System.EventHandler(this.ChangeButtonBGonDisabled);
             this.btnManageDepartments.Click += new System.EventHandler(this.btnManageDepartments_Click);
             // 
             // btnInventory
@@ -121,6 +123,7 @@ namespace MediaBazaar
             this.btnInventory.TabIndex = 3;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = false;
+            this.btnInventory.EnabledChanged += new System.EventHandler(this.ChangeButtonBGonDisabled);
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // pnlNav
@@ -153,7 +156,7 @@ namespace MediaBazaar
             this.btnSell.TabIndex = 3;
             this.btnSell.Text = "Sell screen";
             this.btnSell.UseVisualStyleBackColor = false;
-            this.btnSell.EnabledChanged += new System.EventHandler(this.btnSell_EnabledChanged);
+            this.btnSell.EnabledChanged += new System.EventHandler(this.ChangeButtonBGonDisabled);
             this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // btnRestockReq
@@ -171,7 +174,7 @@ namespace MediaBazaar
             this.btnRestockReq.TabIndex = 3;
             this.btnRestockReq.Text = "Restock requests";
             this.btnRestockReq.UseVisualStyleBackColor = false;
-            this.btnRestockReq.EnabledChanged += new System.EventHandler(this.btnSell_EnabledChanged);
+            this.btnRestockReq.EnabledChanged += new System.EventHandler(this.ChangeButtonBGonDisabled);
             this.btnRestockReq.Click += new System.EventHandler(this.btnRestockReq_Click);
             // 
             // panel2

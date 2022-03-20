@@ -120,10 +120,10 @@ namespace MediaBazaar
                 RefreshEmployees();
             }
 
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException ex)
             {
 
-                MessageBox.Show("No employee has been selected");
+                MessageBox.Show(ex.Message);
                 return;
 
             }
@@ -147,6 +147,6 @@ namespace MediaBazaar
         public void TogglePictureButtonSize(object sender, EventArgs e)
         {
             Utils.PicButtonHoverEffect(sender as PictureBox);
-        }    
+        }
     }
 }

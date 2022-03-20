@@ -144,6 +144,7 @@ namespace MediaBazaar.forms
             // btnAddShift
             // 
             this.btnAddShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddShift.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAddShift.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAddShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddShift.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

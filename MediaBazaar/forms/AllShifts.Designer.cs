@@ -41,12 +41,16 @@ namespace MediaBazaar.forms
             this.btnAttended = new System.Windows.Forms.Button();
             this.btnMissing = new System.Windows.Forms.Button();
             this.lblDepartment = new System.Windows.Forms.Label();
+            this.gbAttendance = new System.Windows.Forms.GroupBox();
+            this.gbAttendance.SuspendLayout();
             this.SuspendLayout();
             // 
             // calShifts
             // 
+            this.calShifts.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.calShifts.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.calShifts.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.calShifts.ForeColor = System.Drawing.SystemColors.MenuText;
             this.calShifts.Location = new System.Drawing.Point(25, 27);
             this.calShifts.Name = "calShifts";
             this.calShifts.TabIndex = 7;
@@ -110,9 +114,14 @@ namespace MediaBazaar.forms
             // 
             // btnAttended
             // 
-            this.btnAttended.Location = new System.Drawing.Point(322, 393);
+            this.btnAttended.BackColor = System.Drawing.Color.Transparent;
+            this.btnAttended.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAttended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttended.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAttended.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAttended.Location = new System.Drawing.Point(24, 39);
             this.btnAttended.Name = "btnAttended";
-            this.btnAttended.Size = new System.Drawing.Size(94, 29);
+            this.btnAttended.Size = new System.Drawing.Size(126, 45);
             this.btnAttended.TabIndex = 9;
             this.btnAttended.Text = "Attended";
             this.btnAttended.UseVisualStyleBackColor = true;
@@ -120,9 +129,14 @@ namespace MediaBazaar.forms
             // 
             // btnMissing
             // 
-            this.btnMissing.Location = new System.Drawing.Point(432, 393);
+            this.btnMissing.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMissing.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
+            this.btnMissing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMissing.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMissing.ForeColor = System.Drawing.Color.Crimson;
+            this.btnMissing.Location = new System.Drawing.Point(696, 39);
             this.btnMissing.Name = "btnMissing";
-            this.btnMissing.Size = new System.Drawing.Size(94, 29);
+            this.btnMissing.Size = new System.Drawing.Size(125, 45);
             this.btnMissing.TabIndex = 10;
             this.btnMissing.Text = "Missing";
             this.btnMissing.UseVisualStyleBackColor = true;
@@ -131,24 +145,38 @@ namespace MediaBazaar.forms
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDepartment.Location = new System.Drawing.Point(323, 25);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(236, 20);
+            this.lblDepartment.Size = new System.Drawing.Size(244, 20);
             this.lblDepartment.TabIndex = 11;
             this.lblDepartment.Text = "Viewing shifts for: All departments";
+            // 
+            // gbAttendance
+            // 
+            this.gbAttendance.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gbAttendance.Controls.Add(this.btnMissing);
+            this.gbAttendance.Controls.Add(this.btnAttended);
+            this.gbAttendance.Location = new System.Drawing.Point(313, 385);
+            this.gbAttendance.Name = "gbAttendance";
+            this.gbAttendance.Size = new System.Drawing.Size(839, 116);
+            this.gbAttendance.TabIndex = 12;
+            this.gbAttendance.TabStop = false;
+            this.gbAttendance.Text = "Attendance";
             // 
             // AllShifts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1178, 513);
+            this.Controls.Add(this.gbAttendance);
             this.Controls.Add(this.lblDepartment);
-            this.Controls.Add(this.btnMissing);
-            this.Controls.Add(this.btnAttended);
             this.Controls.Add(this.lvShifts);
             this.Controls.Add(this.calShifts);
             this.Name = "AllShifts";
             this.Text = "AllShifts";
+            this.gbAttendance.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +196,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Label lblDepartment;
         private System.Windows.Forms.ColumnHeader colDepartment;
         private System.Windows.Forms.ColumnHeader colRole;
+        private System.Windows.Forms.GroupBox gbAttendance;
     }
 }

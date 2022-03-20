@@ -36,7 +36,7 @@ namespace MediaBazaar.forms
         {
             tbxProductName.Text = prod.ProductName;
             tbxBarcode.Text = prod.ProductEAN;
-            for (int i=0; i<departments.Count; i++)
+            for (int i=0; i < departments.Count; i++)
             {
                 if (departments[i].Id == prod.DepartmentID)
                 {

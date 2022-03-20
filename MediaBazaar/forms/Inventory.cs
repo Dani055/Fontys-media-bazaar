@@ -22,15 +22,15 @@ namespace MediaBazaar.forms
         {
             InitializeComponent();
             RefreshProducts();
-            btnRemoveItem.Enabled = false;
+            pbxRemove.Enabled = false;
             btnSendRestockRequest.Enabled = false;
-            btnEditItem.Enabled = false;
+            pbxEdit.Enabled = false;
 
             string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
             if (loggedEmpRole != "DEPOT MANAGER")
             {
                 CanAccessControls = false;
-                btnAddItem.Enabled = false;
+                pbxAdd.Enabled = false;
             } else
             {
                 CanAccessControls = true;
@@ -84,14 +84,14 @@ namespace MediaBazaar.forms
         {
             if (lvProducts.SelectedItems.Count != 0 && CanAccessControls)
             {
-                btnRemoveItem.Enabled = true;
+                pbxRemove.Enabled = true;
                 btnSendRestockRequest.Enabled = true;
-                btnEditItem.Enabled = true;
+                pbxEdit.Enabled = true;
             } else
             {
-                btnRemoveItem.Enabled = false;
+                pbxRemove.Enabled = false;
                 btnSendRestockRequest.Enabled = false;
-                btnEditItem.Enabled = false;
+                pbxEdit.Enabled = false;
             }
 
             if (lvProducts.SelectedItems.Count != 0 && EmployeeService.loggedEmp.Role.ToUpper() == "DEPARTMENT MANAGER")
@@ -141,6 +141,11 @@ namespace MediaBazaar.forms
             int selectedID = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
             EditItem editItem = new EditItem(selectedID);
             editItem.ShowDialog();
+        }
+
+        private void Toggle_Hover(object sender, EventArgs e)
+        {
+            Utils.PicButtonHoverEffect(sender as PictureBox);
         }
     }
 }

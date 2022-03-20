@@ -36,15 +36,15 @@ namespace MediaBazaar.forms
             // 
             // tbxNewName
             // 
-            this.tbxNewName.Location = new System.Drawing.Point(23, 60);
+            this.tbxNewName.Location = new System.Drawing.Point(12, 32);
             this.tbxNewName.Name = "tbxNewName";
-            this.tbxNewName.Size = new System.Drawing.Size(178, 27);
+            this.tbxNewName.Size = new System.Drawing.Size(313, 27);
             this.tbxNewName.TabIndex = 0;
             // 
             // lblDepartmentName
             // 
             this.lblDepartmentName.AutoSize = true;
-            this.lblDepartmentName.Location = new System.Drawing.Point(42, 37);
+            this.lblDepartmentName.Location = new System.Drawing.Point(101, 9);
             this.lblDepartmentName.Name = "lblDepartmentName";
             this.lblDepartmentName.Size = new System.Drawing.Size(130, 20);
             this.lblDepartmentName.TabIndex = 1;
@@ -52,24 +52,30 @@ namespace MediaBazaar.forms
             // 
             // btnEditDepartment
             // 
-            this.btnEditDepartment.Location = new System.Drawing.Point(37, 123);
+            this.btnEditDepartment.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnEditDepartment.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnEditDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEditDepartment.ForeColor = System.Drawing.Color.White;
+            this.btnEditDepartment.Location = new System.Drawing.Point(0, 74);
             this.btnEditDepartment.Name = "btnEditDepartment";
-            this.btnEditDepartment.Size = new System.Drawing.Size(135, 51);
+            this.btnEditDepartment.Size = new System.Drawing.Size(337, 51);
             this.btnEditDepartment.TabIndex = 2;
             this.btnEditDepartment.Text = "Edit department";
-            this.btnEditDepartment.UseVisualStyleBackColor = true;
+            this.btnEditDepartment.UseVisualStyleBackColor = false;
             this.btnEditDepartment.Click += new System.EventHandler(this.btnEditDepartment_Click);
             // 
             // EditDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 203);
+            this.ClientSize = new System.Drawing.Size(337, 125);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.tbxNewName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditDepartment";
-            this.Text = "EditDepartment";
+            this.Text = "Edit Department";
             this.Load += new System.EventHandler(this.EditDepartment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

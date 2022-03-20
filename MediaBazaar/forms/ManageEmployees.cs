@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
+using MediaBazaar.logic;
 using MediaBazaar.logic.models;
 using MediaBazaar.logic.services;
 using MySql.Data.MySqlClient;
@@ -145,17 +146,7 @@ namespace MediaBazaar
 
         public void TogglePictureButtonSize(object sender, EventArgs e)
         {
-            PictureBox pb = sender as PictureBox;
-            int currentSize = pb.Size.Width;
-            int newSize = currentSize == 64 ? 60 : 64; //If current size is 64, switch it to 60 and other way around.
-            pb.Size = new Size(newSize, newSize);
-            Relocate(pb); //To center image
-        }
-        private void Relocate(PictureBox sender)
-        {
-            int x = sender.Location.X;
-            int y = sender.Location.Y;
-            sender.Location = sender.Size.Width == 64 ? new Point(x - 2, y - 2) : new Point(x + 2, y + 2);
-        }
+            Utils.PicButtonHoverEffect(sender as PictureBox);
+        }    
     }
 }

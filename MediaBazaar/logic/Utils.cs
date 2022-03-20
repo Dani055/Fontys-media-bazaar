@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MediaBazaar.logic
 {
-    internal static class Utils
+    public static class Utils
     {
         public static string connectionString { get; } = "server=eu01-sql.pebblehost.com;database=customer_251983_database;uid=customer_251983_database;password=xenOC70490U@a!pfkl7-;";
         public static string DbDateFormat = "yyyy-MM-dd";
@@ -30,6 +30,20 @@ namespace MediaBazaar.logic
         public static string GetDateStringForMySQL(DateTime date)
         {
             return $"{date.Year}-{date.Month}-{date.Day}";
+        }
+
+        public static void PicButtonHoverEffect(PictureBox pb)
+        {
+            int currentSize = pb.Size.Width;
+            int newSize = currentSize == 64 ? 60 : 64; //If current size is 64, switch it to 60 and other way around.
+            pb.Size = new System.Drawing.Size(newSize, newSize);
+            Relocate(pb); //To center image
+        }
+        private static void Relocate(PictureBox sender)
+        {
+            int x = sender.Location.X;
+            int y = sender.Location.Y;
+            sender.Location = sender.Size.Width == 64 ? new System.Drawing.Point(x - 2, y - 2) : new System.Drawing.Point(x + 2, y + 2);
         }
     }
 }

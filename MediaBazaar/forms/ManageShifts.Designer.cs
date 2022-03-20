@@ -43,6 +43,7 @@ namespace MediaBazaar.forms
             // 
             // calShifts
             // 
+            this.calShifts.BackColor = System.Drawing.Color.WhiteSmoke;
             this.calShifts.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.calShifts.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.calShifts.Location = new System.Drawing.Point(18, 19);
@@ -63,6 +64,7 @@ namespace MediaBazaar.forms
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.listBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 25;
@@ -111,6 +113,7 @@ namespace MediaBazaar.forms
             // 
             // gbManageShift
             // 
+            this.gbManageShift.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gbManageShift.Controls.Add(this.btnRemoveShift);
             this.gbManageShift.Controls.Add(this.btnAddShift);
             this.gbManageShift.Controls.Add(this.cbMorning);
@@ -125,6 +128,11 @@ namespace MediaBazaar.forms
             // 
             // btnRemoveShift
             // 
+            this.btnRemoveShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveShift.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRemoveShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveShift.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRemoveShift.ForeColor = System.Drawing.Color.IndianRed;
             this.btnRemoveShift.Location = new System.Drawing.Point(251, 189);
             this.btnRemoveShift.Name = "btnRemoveShift";
             this.btnRemoveShift.Size = new System.Drawing.Size(139, 37);
@@ -135,6 +143,11 @@ namespace MediaBazaar.forms
             // 
             // btnAddShift
             // 
+            this.btnAddShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddShift.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAddShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddShift.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddShift.ForeColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAddShift.Location = new System.Drawing.Point(55, 189);
             this.btnAddShift.Name = "btnAddShift";
             this.btnAddShift.Size = new System.Drawing.Size(138, 37);
@@ -147,6 +160,7 @@ namespace MediaBazaar.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 493);
             this.Controls.Add(this.gbManageShift);
             this.Controls.Add(this.listBox1);

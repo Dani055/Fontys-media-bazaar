@@ -106,5 +106,10 @@ namespace MediaBazaar.forms
             if (restricted.Contains(cbxDepartment.Text) && cbxRole.Text.ToLower() == "department employee")
                 ChangeDepartment("Sales");
         }
+
+        private void wageSlider_Scroll(object sender, EventArgs e)
+        {
+            numericWage.Value = wageSlider.Value;
+        }
     }
 }

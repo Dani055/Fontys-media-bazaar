@@ -58,11 +58,10 @@ namespace MediaBazaar.forms
             this.lvRestockRequests.FullRowSelect = true;
             this.lvRestockRequests.GridLines = true;
             this.lvRestockRequests.HideSelection = false;
-            this.lvRestockRequests.Location = new System.Drawing.Point(10, 9);
-            this.lvRestockRequests.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvRestockRequests.Location = new System.Drawing.Point(11, 12);
             this.lvRestockRequests.MultiSelect = false;
             this.lvRestockRequests.Name = "lvRestockRequests";
-            this.lvRestockRequests.Size = new System.Drawing.Size(995, 245);
+            this.lvRestockRequests.Size = new System.Drawing.Size(1137, 325);
             this.lvRestockRequests.TabIndex = 3;
             this.lvRestockRequests.UseCompatibleStateImageBehavior = false;
             this.lvRestockRequests.View = System.Windows.Forms.View.Details;
@@ -113,9 +112,15 @@ namespace MediaBazaar.forms
             // 
             // btnAcceptRequest
             // 
-            this.btnAcceptRequest.Location = new System.Drawing.Point(10, 282);
+            this.btnAcceptRequest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAcceptRequest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAcceptRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcceptRequest.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAcceptRequest.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAcceptRequest.Location = new System.Drawing.Point(849, 370);
+            this.btnAcceptRequest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAcceptRequest.Name = "btnAcceptRequest";
-            this.btnAcceptRequest.Size = new System.Drawing.Size(117, 52);
+            this.btnAcceptRequest.Size = new System.Drawing.Size(300, 69);
             this.btnAcceptRequest.TabIndex = 4;
             this.btnAcceptRequest.Text = "Accept Request";
             this.btnAcceptRequest.UseVisualStyleBackColor = true;
@@ -123,9 +128,15 @@ namespace MediaBazaar.forms
             // 
             // btnDenyRequest
             // 
-            this.btnDenyRequest.Location = new System.Drawing.Point(133, 282);
+            this.btnDenyRequest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDenyRequest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDenyRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDenyRequest.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDenyRequest.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnDenyRequest.Location = new System.Drawing.Point(12, 370);
+            this.btnDenyRequest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDenyRequest.Name = "btnDenyRequest";
-            this.btnDenyRequest.Size = new System.Drawing.Size(117, 52);
+            this.btnDenyRequest.Size = new System.Drawing.Size(300, 69);
             this.btnDenyRequest.TabIndex = 5;
             this.btnDenyRequest.Text = "Deny Request";
             this.btnDenyRequest.UseVisualStyleBackColor = true;
@@ -133,13 +144,12 @@ namespace MediaBazaar.forms
             // 
             // RestockRequests
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 374);
+            this.ClientSize = new System.Drawing.Size(1161, 499);
             this.Controls.Add(this.btnDenyRequest);
             this.Controls.Add(this.btnAcceptRequest);
             this.Controls.Add(this.lvRestockRequests);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RestockRequests";
             this.Text = "RestockRequests";
             this.ResumeLayout(false);

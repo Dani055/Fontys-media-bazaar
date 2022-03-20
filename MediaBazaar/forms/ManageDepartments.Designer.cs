@@ -69,9 +69,14 @@ namespace MediaBazaar.forms
             // 
             // btnAddDepartment
             // 
-            this.btnAddDepartment.Location = new System.Drawing.Point(22, 40);
+            this.btnAddDepartment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddDepartment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddDepartment.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAddDepartment.Location = new System.Drawing.Point(16, 40);
             this.btnAddDepartment.Name = "btnAddDepartment";
-            this.btnAddDepartment.Size = new System.Drawing.Size(110, 53);
+            this.btnAddDepartment.Size = new System.Drawing.Size(139, 53);
             this.btnAddDepartment.TabIndex = 3;
             this.btnAddDepartment.Text = "Add department";
             this.btnAddDepartment.UseVisualStyleBackColor = true;
@@ -79,15 +84,16 @@ namespace MediaBazaar.forms
             // 
             // tbDepartmentName
             // 
-            this.tbDepartmentName.Location = new System.Drawing.Point(153, 63);
+            this.tbDepartmentName.BackColor = System.Drawing.Color.White;
+            this.tbDepartmentName.Location = new System.Drawing.Point(176, 63);
             this.tbDepartmentName.Name = "tbDepartmentName";
-            this.tbDepartmentName.Size = new System.Drawing.Size(125, 27);
+            this.tbDepartmentName.Size = new System.Drawing.Size(130, 27);
             this.tbDepartmentName.TabIndex = 4;
             // 
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(149, 40);
+            this.lblDepartment.Location = new System.Drawing.Point(176, 40);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(130, 20);
             this.lblDepartment.TabIndex = 5;
@@ -100,23 +106,34 @@ namespace MediaBazaar.forms
             this.gbAddDept.Controls.Add(this.tbDepartmentName);
             this.gbAddDept.Location = new System.Drawing.Point(11, 347);
             this.gbAddDept.Name = "gbAddDept";
-            this.gbAddDept.Size = new System.Drawing.Size(328, 137);
+            this.gbAddDept.Size = new System.Drawing.Size(328, 116);
             this.gbAddDept.TabIndex = 6;
             this.gbAddDept.TabStop = false;
             this.gbAddDept.Text = "Add department";
             // 
             // btnRemoveDepartment
             // 
+            this.btnRemoveDepartment.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoveDepartment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveDepartment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRemoveDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRemoveDepartment.ForeColor = System.Drawing.Color.IndianRed;
             this.btnRemoveDepartment.Location = new System.Drawing.Point(11, 491);
             this.btnRemoveDepartment.Name = "btnRemoveDepartment";
             this.btnRemoveDepartment.Size = new System.Drawing.Size(155, 53);
             this.btnRemoveDepartment.TabIndex = 7;
             this.btnRemoveDepartment.Text = "Remove department";
-            this.btnRemoveDepartment.UseVisualStyleBackColor = true;
+            this.btnRemoveDepartment.UseVisualStyleBackColor = false;
             this.btnRemoveDepartment.Click += new System.EventHandler(this.btnRemoveDepartment_Click);
             // 
             // btnEditDepartment
             // 
+            this.btnEditDepartment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditDepartment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEditDepartment.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnEditDepartment.Location = new System.Drawing.Point(187, 491);
             this.btnEditDepartment.Name = "btnEditDepartment";
             this.btnEditDepartment.Size = new System.Drawing.Size(152, 53);
@@ -129,6 +146,7 @@ namespace MediaBazaar.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(352, 563);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.btnRemoveDepartment);

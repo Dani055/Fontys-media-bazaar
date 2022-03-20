@@ -71,11 +71,10 @@ namespace MediaBazaar.forms
             this.lvAllItems.FullRowSelect = true;
             this.lvAllItems.GridLines = true;
             this.lvAllItems.HideSelection = false;
-            this.lvAllItems.Location = new System.Drawing.Point(12, 49);
-            this.lvAllItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvAllItems.Location = new System.Drawing.Point(14, 65);
             this.lvAllItems.MultiSelect = false;
             this.lvAllItems.Name = "lvAllItems";
-            this.lvAllItems.Size = new System.Drawing.Size(786, 236);
+            this.lvAllItems.Size = new System.Drawing.Size(898, 151);
             this.lvAllItems.TabIndex = 3;
             this.lvAllItems.UseCompatibleStateImageBehavior = false;
             this.lvAllItems.View = System.Windows.Forms.View.Details;
@@ -118,6 +117,7 @@ namespace MediaBazaar.forms
             // 
             // gbCart
             // 
+            this.gbCart.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gbCart.Controls.Add(this.btnRemoveEntry);
             this.gbCart.Controls.Add(this.label1);
             this.gbCart.Controls.Add(this.tbxTotal);
@@ -126,59 +126,83 @@ namespace MediaBazaar.forms
             this.gbCart.Controls.Add(this.lvCart);
             this.gbCart.Controls.Add(this.btnAddAmountToCart);
             this.gbCart.Controls.Add(this.nmrAddAmountToCart);
-            this.gbCart.Location = new System.Drawing.Point(14, 326);
+            this.gbCart.Location = new System.Drawing.Point(14, 223);
+            this.gbCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbCart.Name = "gbCart";
-            this.gbCart.Size = new System.Drawing.Size(784, 275);
+            this.gbCart.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbCart.Size = new System.Drawing.Size(896, 327);
             this.gbCart.TabIndex = 4;
             this.gbCart.TabStop = false;
             this.gbCart.Text = "Cart";
             // 
             // btnRemoveEntry
             // 
-            this.btnRemoveEntry.Location = new System.Drawing.Point(287, 242);
+            this.btnRemoveEntry.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRemoveEntry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveEntry.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnRemoveEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveEntry.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRemoveEntry.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveEntry.Location = new System.Drawing.Point(395, 261);
+            this.btnRemoveEntry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveEntry.Name = "btnRemoveEntry";
-            this.btnRemoveEntry.Size = new System.Drawing.Size(153, 24);
+            this.btnRemoveEntry.Size = new System.Drawing.Size(175, 32);
             this.btnRemoveEntry.TabIndex = 18;
             this.btnRemoveEntry.Text = "Remove selected entry";
-            this.btnRemoveEntry.UseVisualStyleBackColor = true;
+            this.btnRemoveEntry.UseVisualStyleBackColor = false;
             this.btnRemoveEntry.Click += new System.EventHandler(this.btnRemoveEntry_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(657, 250);
+            this.label1.Location = new System.Drawing.Point(645, 208);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 17);
+            this.label1.Size = new System.Drawing.Size(66, 23);
             this.label1.TabIndex = 16;
             this.label1.Text = "TOTAL:";
             // 
             // tbxTotal
             // 
-            this.tbxTotal.Location = new System.Drawing.Point(719, 246);
+            this.tbxTotal.Location = new System.Drawing.Point(727, 206);
+            this.tbxTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbxTotal.Name = "tbxTotal";
             this.tbxTotal.ReadOnly = true;
-            this.tbxTotal.Size = new System.Drawing.Size(59, 23);
+            this.tbxTotal.Size = new System.Drawing.Size(113, 27);
             this.tbxTotal.TabIndex = 17;
             // 
             // btnResetCart
             // 
-            this.btnResetCart.Location = new System.Drawing.Point(145, 129);
+            this.btnResetCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(8)))));
+            this.btnResetCart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetCart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnResetCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetCart.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnResetCart.ForeColor = System.Drawing.Color.White;
+            this.btnResetCart.Location = new System.Drawing.Point(17, 260);
+            this.btnResetCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnResetCart.Name = "btnResetCart";
-            this.btnResetCart.Size = new System.Drawing.Size(110, 39);
+            this.btnResetCart.Size = new System.Drawing.Size(175, 32);
             this.btnResetCart.TabIndex = 8;
             this.btnResetCart.Text = "Reset Cart";
-            this.btnResetCart.UseVisualStyleBackColor = true;
+            this.btnResetCart.UseVisualStyleBackColor = false;
             this.btnResetCart.Click += new System.EventHandler(this.btnResetCart_Click);
             // 
             // btnSellCart
             // 
-            this.btnSellCart.Location = new System.Drawing.Point(29, 129);
+            this.btnSellCart.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSellCart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSellCart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnSellCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSellCart.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSellCart.ForeColor = System.Drawing.Color.White;
+            this.btnSellCart.Location = new System.Drawing.Point(600, 241);
+            this.btnSellCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSellCart.Name = "btnSellCart";
-            this.btnSellCart.Size = new System.Drawing.Size(110, 39);
+            this.btnSellCart.Size = new System.Drawing.Size(290, 51);
             this.btnSellCart.TabIndex = 7;
             this.btnSellCart.Text = "Sell Cart";
-            this.btnSellCart.UseVisualStyleBackColor = true;
+            this.btnSellCart.UseVisualStyleBackColor = false;
             this.btnSellCart.Click += new System.EventHandler(this.btnSellCart_Click);
             // 
             // lvCart
@@ -191,9 +215,10 @@ namespace MediaBazaar.forms
             this.lvCart.FullRowSelect = true;
             this.lvCart.GridLines = true;
             this.lvCart.HideSelection = false;
-            this.lvCart.Location = new System.Drawing.Point(287, 21);
+            this.lvCart.Location = new System.Drawing.Point(17, 28);
+            this.lvCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvCart.Name = "lvCart";
-            this.lvCart.Size = new System.Drawing.Size(491, 215);
+            this.lvCart.Size = new System.Drawing.Size(553, 224);
             this.lvCart.TabIndex = 15;
             this.lvCart.UseCompatibleStateImageBehavior = false;
             this.lvCart.View = System.Windows.Forms.View.Details;
@@ -218,31 +243,37 @@ namespace MediaBazaar.forms
             // 
             // btnAddAmountToCart
             // 
-            this.btnAddAmountToCart.Location = new System.Drawing.Point(29, 74);
+            this.btnAddAmountToCart.BackColor = System.Drawing.Color.Silver;
+            this.btnAddAmountToCart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddAmountToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAmountToCart.Location = new System.Drawing.Point(678, 65);
+            this.btnAddAmountToCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddAmountToCart.Name = "btnAddAmountToCart";
-            this.btnAddAmountToCart.Size = new System.Drawing.Size(153, 32);
+            this.btnAddAmountToCart.Size = new System.Drawing.Size(175, 43);
             this.btnAddAmountToCart.TabIndex = 5;
             this.btnAddAmountToCart.Text = "Add amount to cart";
-            this.btnAddAmountToCart.UseVisualStyleBackColor = true;
+            this.btnAddAmountToCart.UseVisualStyleBackColor = false;
             this.btnAddAmountToCart.Click += new System.EventHandler(this.btnAddAmountToCart_Click);
             // 
             // nmrAddAmountToCart
             // 
-            this.nmrAddAmountToCart.Location = new System.Drawing.Point(202, 81);
+            this.nmrAddAmountToCart.Location = new System.Drawing.Point(678, 30);
+            this.nmrAddAmountToCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nmrAddAmountToCart.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.nmrAddAmountToCart.Name = "nmrAddAmountToCart";
-            this.nmrAddAmountToCart.Size = new System.Drawing.Size(51, 23);
+            this.nmrAddAmountToCart.Size = new System.Drawing.Size(175, 27);
             this.nmrAddAmountToCart.TabIndex = 6;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(723, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(806, 16);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(106, 31);
             this.btnRefresh.TabIndex = 14;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -250,42 +281,45 @@ namespace MediaBazaar.forms
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(193, 12);
+            this.btnSearch.Location = new System.Drawing.Point(220, 14);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(86, 31);
             this.btnSearch.TabIndex = 13;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "🔍Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblSeatch
             // 
             this.lblSeatch.AutoSize = true;
-            this.lblSeatch.Location = new System.Drawing.Point(16, 15);
+            this.lblSeatch.Location = new System.Drawing.Point(18, 20);
             this.lblSeatch.Name = "lblSeatch";
-            this.lblSeatch.Size = new System.Drawing.Size(42, 15);
+            this.lblSeatch.Size = new System.Drawing.Size(53, 20);
             this.lblSeatch.TabIndex = 12;
             this.lblSeatch.Text = "Search";
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(64, 12);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSearch.Location = new System.Drawing.Point(73, 16);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(123, 23);
+            this.tbSearch.Size = new System.Drawing.Size(140, 27);
             this.tbSearch.TabIndex = 11;
             // 
             // Sell
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AcceptButton = this.btnSearch;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 620);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(928, 524);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSeatch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.gbCart);
             this.Controls.Add(this.lvAllItems);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Sell";
             this.Text = "Sell";
             this.gbCart.ResumeLayout(false);

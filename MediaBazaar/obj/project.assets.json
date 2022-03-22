@@ -278,6 +278,9 @@
       "MBazaarClassLibrary/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MySql.Data": "8.0.28"
+        },
         "compile": {
           "bin/placeholder/MBazaarClassLibrary.dll": {}
         },

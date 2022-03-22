@@ -7,11 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
-using MySql.Data.MySqlClient;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 
 namespace MediaBazaar.forms
 {
@@ -62,7 +60,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
 
@@ -82,13 +80,13 @@ namespace MediaBazaar.forms
                 {
                     if (InventoryService.DeleteProduct(selectedID))
                     {
-                        Utils.ShowInfo("Product updated");
+                        logic.VisualHelper.ShowInfo("Product updated");
                     }
                     RefreshProducts();
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(ex.Message);
+                    logic.VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -135,7 +133,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
 
@@ -151,7 +149,7 @@ namespace MediaBazaar.forms
             int amountToRestock = Convert.ToInt32(nmrRestockAmount.Value);
             if (amountToRestock == 0) 
             {
-                Utils.ShowError("Can't request amount of 0");
+                logic.VisualHelper.ShowError("Can't request amount of 0");
                 return; 
             }
 
@@ -160,13 +158,13 @@ namespace MediaBazaar.forms
             {
                 if (InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock))
                 {
-                    Utils.ShowInfo("Successfully created restock request");
+                    logic.VisualHelper.ShowInfo("Successfully created restock request");
                 }
 
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -180,7 +178,7 @@ namespace MediaBazaar.forms
 
         private void Toggle_Hover(object sender, EventArgs e)
         {
-            Utils.PicButtonHoverEffect(sender as PictureBox);
+            logic.VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
     }
 }

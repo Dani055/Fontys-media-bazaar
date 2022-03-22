@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using MediaBazaar.logic.models;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
-namespace MediaBazaar.logic.services
+namespace MBazaarClassLibrary.services
 {
     public static class InventoryService
     {

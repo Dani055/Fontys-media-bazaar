@@ -1,6 +1,6 @@
-﻿using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace MediaBazaar.forms
 {
@@ -27,7 +28,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
         }
 
@@ -83,7 +84,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
             
             
@@ -137,14 +138,14 @@ namespace MediaBazaar.forms
             {
                 if (WorkdayService.AddWorkday(emp, workday))
                 {
-                    Utils.ShowInfo("Shift added");
+                    logic.VisualHelper.ShowInfo("Shift added");
                     RefreshListBox(dateTime);
                     cbMorning.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
             
 
@@ -154,20 +155,20 @@ namespace MediaBazaar.forms
         {
             if (selectedWorkday == null)
             {
-                Utils.ShowError("No workday to delete!");
+                logic.VisualHelper.ShowError("No workday to delete!");
                 return;
             }
             try
             {
                 if (WorkdayService.DeleteWorkday(selectedWorkday))
                 {
-                    Utils.ShowInfo("Workday deleted");
+                    logic.VisualHelper.ShowInfo("Workday deleted");
                 }
 
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
             DateTime dateTime = calShifts.SelectionRange.Start;

@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
 namespace MediaBazaar.forms
@@ -42,7 +42,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
 
@@ -64,7 +64,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -140,7 +140,7 @@ namespace MediaBazaar.forms
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(ex.Message);
+                    logic.VisualHelper.ShowError(ex.Message);
                 }
                 
             }

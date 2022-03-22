@@ -1,6 +1,6 @@
-﻿using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,7 +65,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -77,12 +77,12 @@ namespace MediaBazaar.forms
             {
                 depid = Convert.ToInt32(lvDepartments.SelectedItems[0].Text);
 
-                DialogResult dr = Utils.ShowConfirmation("Are you sure that you want to delete selected department?");
+                DialogResult dr = logic.VisualHelper.ShowConfirmation("Are you sure that you want to delete selected department?");
                 if (dr == DialogResult.OK)
                 {
                     if (DepartmentService.RemoveDepartment(depid))
                     {
-                        Utils.ShowInfo("Department deleted");
+                        logic.VisualHelper.ShowInfo("Department deleted");
                         RefreshDepartments();
                     }
 ;
@@ -90,11 +90,11 @@ namespace MediaBazaar.forms
             }
             catch (ArgumentOutOfRangeException)
             {
-                Utils.ShowError("Please select department");
+                logic.VisualHelper.ShowError("Please select department");
             }
             catch(Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
         }
      

@@ -1,13 +1,12 @@
-﻿using MediaBazaar.logic.models;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using MBazaarClassLibrary.models;
+using MySql.Data.MySqlClient;
 
-namespace MediaBazaar.logic.services
+namespace MBazaarClassLibrary.services
 {
     //so i thought we could have all the data related to each object be handled by their own service
     //if this seems like a bad idea just move the classes in here to employee service
@@ -18,7 +17,7 @@ namespace MediaBazaar.logic.services
         public static List<Department> AllDepartments { get; set; }
         static DepartmentService()
         {
-           UpdateDepartments();
+            UpdateDepartments();
         }
 
         public static bool CreateDepartment(Department dep)
@@ -34,7 +33,7 @@ namespace MediaBazaar.logic.services
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", dep.Name);
                 conn.Open();
-                if(cmd.ExecuteNonQuery() > 0)
+                if (cmd.ExecuteNonQuery() > 0)
                 {
                     conn.Close();
                     UpdateDepartments();
@@ -47,7 +46,8 @@ namespace MediaBazaar.logic.services
                 conn.Close();
             }
         }
-        public static Department GetDepartmentByID(int id) {
+        public static Department GetDepartmentByID(int id)
+        {
 
             foreach (Department department in AllDepartments)
             {

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 
 namespace MediaBazaar.forms
 {
@@ -53,7 +53,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
             
 
@@ -77,17 +77,17 @@ namespace MediaBazaar.forms
                 }
                 if (WorkdayService.MarkAttendance(workdayId, false))
                 {
-                   Utils.ShowInfo("Attendance marked");
+                    logic.VisualHelper.ShowInfo("Attendance marked");
                    RefreshLV(calShifts.SelectionRange.Start);
                 }
              }
              catch (ArgumentOutOfRangeException)
              {
-                Utils.ShowError("Nothing selected");
+                logic.VisualHelper.ShowError("Nothing selected");
              }
              catch (Exception ex)
              {
-                 Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
              }           
 
         }
@@ -105,17 +105,17 @@ namespace MediaBazaar.forms
 
                 if (WorkdayService.MarkAttendance(workdayId, true))
                 {
-                    Utils.ShowInfo("Attendance marked");
+                    logic.VisualHelper.ShowInfo("Attendance marked");
                     RefreshLV(calShifts.SelectionRange.Start);
                 }
             }
             catch (ArgumentOutOfRangeException)
             {
-                Utils.ShowError("Nothing selected");
+                logic.VisualHelper.ShowError("Nothing selected");
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
         }
     }

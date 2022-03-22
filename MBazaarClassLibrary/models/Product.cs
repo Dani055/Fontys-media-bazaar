@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MBazaarClassLibrary.services;
 
 namespace MBazaarClassLibrary.models
 {
@@ -53,7 +54,7 @@ namespace MBazaarClassLibrary.models
             }
         }
 
-        /*public string[] GetDataArray()
+        public string[] GetDataArray()
         {
             string dept = DepartmentService.GetDepartmentByID(this.DepartmentID).Name;
 
@@ -69,6 +70,6 @@ namespace MBazaarClassLibrary.models
             };
 
             return listViewData;
-        }*/
+        }
     }
 }

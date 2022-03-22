@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -38,7 +38,7 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
             
         }

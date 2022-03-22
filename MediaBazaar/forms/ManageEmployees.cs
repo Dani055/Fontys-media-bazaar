@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
 namespace MediaBazaar
@@ -47,7 +47,7 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -104,17 +104,17 @@ namespace MediaBazaar
             {
                 if (EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id))
                 {
-                    Utils.ShowInfo("Employee removed");
+                    logic.VisualHelper.ShowInfo("Employee removed");
                 }
                 RefreshEmployees();
             }
             catch (ArgumentOutOfRangeException)
             {
-                Utils.ShowError("Select employee first");
+                logic.VisualHelper.ShowError("Select employee first");
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -155,13 +155,13 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
         }
 
         public void TogglePictureButtonSize(object sender, EventArgs e)
         {
-            Utils.PicButtonHoverEffect(sender as PictureBox);
+            logic.VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
     }
 }

@@ -140,6 +140,9 @@
         }
       },
       "MBazaarClassLibrary/1.0.0": {
+        "dependencies": {
+          "MySql.Data": "8.0.28"
+        },
         "runtime": {
           "MBazaarClassLibrary.dll": {}
         }

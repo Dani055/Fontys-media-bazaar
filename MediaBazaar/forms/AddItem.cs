@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 
 namespace MediaBazaar.forms
 {
@@ -30,7 +30,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -59,13 +59,13 @@ namespace MediaBazaar.forms
                 {
                     if (InventoryService.AddNewProduct(newProduct))
                     {
-                        Utils.ShowInfo("Product added");
+                        logic.VisualHelper.ShowInfo("Product added");
                     }
                     
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(ex.Message);
+                    logic.VisualHelper.ShowError(ex.Message);
                 }
 
             } 

@@ -8,9 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -37,7 +36,7 @@ namespace MediaBazaar.forms
 
             if (lvRestockRequests.SelectedItems[0].SubItems[2].Text != "Not processed yet")
             {
-                Utils.ShowError("Request has already been processed!");
+                logic.VisualHelper.ShowError("Request has already been processed!");
                 return;
             }
 
@@ -54,11 +53,11 @@ namespace MediaBazaar.forms
                     InventoryService.RestockProduct(productIDToRestock, amountToRestock);
                     RefreshRestockRequests();
 
-                    Utils.ShowInfo("Request accepted successfully.");
+                    logic.VisualHelper.ShowInfo("Request accepted successfully.");
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(ex.Message);
+                    logic.VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -76,7 +75,7 @@ namespace MediaBazaar.forms
 
             if (lvRestockRequests.SelectedItems[0].SubItems[2].Text != "Not processed yet")
             {
-                Utils.ShowError("Request has already been processed!");
+                logic.VisualHelper.ShowError("Request has already been processed!");
                 return;
             }
 
@@ -88,11 +87,11 @@ namespace MediaBazaar.forms
                 {
                     InventoryService.AcceptOrDenyRestockRequest(selectedID, false);
                     RefreshRestockRequests();
-                    Utils.ShowInfo("Request denied successfully.");
+                    logic.VisualHelper.ShowInfo("Request denied successfully.");
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(ex.Message);
+                    logic.VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -135,7 +134,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                Utils.ShowError(ex.Message);
+                logic.VisualHelper.ShowError(ex.Message);
             }
             
 

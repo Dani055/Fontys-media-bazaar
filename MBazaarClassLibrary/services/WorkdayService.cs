@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using MediaBazaar.logic.models;
+using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
-namespace MediaBazaar.logic.services
+namespace MBazaarClassLibrary.services
 {
     public static class WorkdayService
     {
@@ -72,7 +71,7 @@ namespace MediaBazaar.logic.services
 
                 if (EmployeeService.loggedEmp.Role != "Employee Manager")
                 {
-                    sql += " WHERE e.departmentId = @deptId AND day = @date"; 
+                    sql += " WHERE e.departmentId = @deptId AND day = @date";
                 }
                 else
                 {
@@ -293,7 +292,7 @@ namespace MediaBazaar.logic.services
                 cmd.Parameters.AddWithValue("@endDate", endWeek.ToString(Utils.DbDateFormat));
 
                 conn.Open();
-                
+
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

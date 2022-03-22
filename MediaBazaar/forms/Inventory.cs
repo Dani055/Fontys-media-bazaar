@@ -143,9 +143,5 @@ namespace MediaBazaar.forms
             editItem.ShowDialog();
         }
 
-        private void Toggle_Hover(object sender, EventArgs e)
-        {
-            Utils.PicButtonHoverEffect(sender as PictureBox);
-        }
     }
 }

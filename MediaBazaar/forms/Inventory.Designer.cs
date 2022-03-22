@@ -206,7 +206,7 @@ namespace MediaBazaar.forms
             this.pbxRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxRemove.TabIndex = 15;
             this.pbxRemove.TabStop = false;
-            this.pbxRemove.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.pbxRemove.Click += new System.EventHandler(this.btnRemoveItem_Click);
             // 
             // pnlControls
             // 
@@ -235,7 +235,6 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.lvProducts);
             this.Name = "Inventory";
             this.Text = "Inventory";
-            this.MouseHover += new System.EventHandler(this.Toggle_Hover);
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).EndInit();

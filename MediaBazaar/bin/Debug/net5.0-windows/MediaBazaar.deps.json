@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "MediaBazaar/1.0.0": {
         "dependencies": {
+          "MBazaarClassLibrary": "1.0.0",
           "MySql.Data": "8.0.28"
         },
         "runtime": {
@@ -136,6 +137,11 @@
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
           "System.Drawing.Common": "4.7.0"
+        }
+      },
+      "MBazaarClassLibrary/1.0.0": {
+        "runtime": {
+          "MBazaarClassLibrary.dll": {}
         }
       }
     }
@@ -278,6 +284,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "MBazaarClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -22,14 +22,19 @@ namespace MediaBazaar.forms
         public EditItem(int productId)
         {
             InitializeComponent();
-            departments = DepartmentService.GetAllDepartments();
-            prod = InventoryService.GetProductByID(productId);
-            cbxDepartment.DataSource = departments;
-            cbxDepartment.DisplayMember = "Name";
-            cbxDepartment.ValueMember = "Id";
-
-            PopulateInputs();
-
+            try
+            {
+                departments = DepartmentService.GetAllDepartments();
+                prod = InventoryService.GetProductByID(productId);
+                cbxDepartment.DataSource = departments;
+                cbxDepartment.DisplayMember = "Name";
+                cbxDepartment.ValueMember = "Id";
+                PopulateInputs();
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
         }
 
         private void PopulateInputs()
@@ -69,11 +74,15 @@ namespace MediaBazaar.forms
                 price = Convert.ToDouble(nmrPrice.Value);
 
                 editProduct = new Product(prodID, prodName, prodEAN, deptID, amountInStock, minStock, price);
-                InventoryService.EditProduct(editProduct);
+                if (InventoryService.EditProduct(editProduct))
+                {
+                    Utils.ShowInfo("Product updated");
+                }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ShowError(ex.Message);
             }
         }
     }

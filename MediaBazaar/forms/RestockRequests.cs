@@ -45,14 +45,22 @@ namespace MediaBazaar.forms
 
             if (dialogResult == DialogResult.Yes)
             {
-                InventoryService.AcceptOrDenyRestockRequest(selectedID, true);
+                try
+                {
+                    InventoryService.AcceptOrDenyRestockRequest(selectedID, true);
 
-                int amountToRestock = Convert.ToInt32(lvRestockRequests.SelectedItems[0].SubItems[7].Text);
-                int productIDToRestock = Convert.ToInt32(lvRestockRequests.SelectedItems[0].SubItems[3].Text);
-                InventoryService.RestockProduct(productIDToRestock, amountToRestock);
-                RefreshRestockRequests();
+                    int amountToRestock = Convert.ToInt32(lvRestockRequests.SelectedItems[0].SubItems[7].Text);
+                    int productIDToRestock = Convert.ToInt32(lvRestockRequests.SelectedItems[0].SubItems[3].Text);
+                    InventoryService.RestockProduct(productIDToRestock, amountToRestock);
+                    RefreshRestockRequests();
 
-                Utils.ShowInfo("Request accepted successfully.");
+                    Utils.ShowInfo("Request accepted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowError(ex.Message);
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -76,9 +84,17 @@ namespace MediaBazaar.forms
 
             if (dialogResult == DialogResult.Yes)
             {
-                InventoryService.AcceptOrDenyRestockRequest(selectedID, false);
-                RefreshRestockRequests();
-                Utils.ShowInfo("Request denied successfully.");
+                try
+                {
+                    InventoryService.AcceptOrDenyRestockRequest(selectedID, false);
+                    RefreshRestockRequests();
+                    Utils.ShowInfo("Request denied successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowError(ex.Message);
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -90,29 +106,40 @@ namespace MediaBazaar.forms
         private void RefreshRestockRequests()
         {
             lvRestockRequests.Items.Clear();
-            List<RestockRequest> rrs = InventoryService.GetRestockRequests();
-
-            foreach (RestockRequest rr in rrs)
+            try
             {
-                string[] data = rr.GetDataArray();
+                List<RestockRequest> rrs = InventoryService.GetRestockRequests();
+                foreach (RestockRequest rr in rrs)
+                {
+                    string[] data = rr.GetDataArray();
 
-                ListViewItem entry = new ListViewItem(data);
+                    ListViewItem entry = new ListViewItem(data);
 
-                if (data[8] == "Pending")
-                {
-                    entry.SubItems[8].BackColor = Color.FromArgb(64, 245, 226, 39);
-                } else if (data[8] == "Accepted")
-                {
-                    entry.SubItems[8].BackColor = Color.FromArgb(64,8, 255, 0);
-                } else if (data[8] == "Denied")
-                {
-                    entry.SubItems[8].BackColor = Color.FromArgb(64,255, 0, 0);
+                    if (data[8] == "Pending")
+                    {
+                        entry.SubItems[8].BackColor = Color.FromArgb(64, 245, 226, 39);
+                    }
+                    else if (data[8] == "Accepted")
+                    {
+                        entry.SubItems[8].BackColor = Color.FromArgb(64, 8, 255, 0);
+                    }
+                    else if (data[8] == "Denied")
+                    {
+                        entry.SubItems[8].BackColor = Color.FromArgb(64, 255, 0, 0);
+                    }
+
+                    entry.UseItemStyleForSubItems = false;
+
+                    lvRestockRequests.Items.Add(entry);
                 }
-
-                entry.UseItemStyleForSubItems = false;
-
-                lvRestockRequests.Items.Add(entry);
             }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+            
+
+            
         }
 
 

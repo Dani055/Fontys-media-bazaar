@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
 
 namespace MediaBazaar.logic.services
 {
@@ -47,7 +42,7 @@ namespace MediaBazaar.logic.services
             return products;
         }
 
-        public static void AddNewProduct(Product newProduct)
+        public static bool AddNewProduct(Product newProduct)
         {
             using (conn)
             {
@@ -61,28 +56,21 @@ namespace MediaBazaar.logic.services
                 cmd.Parameters.AddWithValue("@minStock", newProduct.MinStock);
                 cmd.Parameters.AddWithValue("@price", newProduct.Price);
 
-                try
+                conn.Open();
+                if (cmd.ExecuteNonQuery() > 0)
                 {
-                    conn.Open();
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Successfuly added new product");
-                    }
+                    return true;
                 }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                finally 
-                { 
-                    conn.Close(); 
-                }
+                return false;
             }
         }
 
-        public static void EditProduct (Product prod)
+        public static bool EditProduct(Product prod)
         {
-            if (prod == null) { return; }
+            if (prod == null)
+            {
+                throw new Exception("No product");
+            }
 
             string query = "UPDATE Product SET productName = @newName, productEan = @newEan, departmentId = @newDept, amountInStock = @newAmountInStock, minStock = @newMinStock, price = @newPrice WHERE productId = @id";
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -94,29 +82,24 @@ namespace MediaBazaar.logic.services
             cmd.Parameters.AddWithValue("@newPrice", prod.Price);
             cmd.Parameters.AddWithValue("@id", prod.ProductID);
 
-            try
+            using (conn)
             {
+
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 0)
                 {
-                    Utils.ShowError("Error updating item");
-                } else
+                    return false;
+                }
+                else
                 {
-                    Utils.ShowInfo("Successfully updated product");
+                    return true;
                 }
             }
-            catch (Exception e)
-            {
-                Utils.ShowError(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+
 
         }
 
-        public static void DeleteProduct (int prodID)
+        public static bool DeleteProduct(int prodID)
         {
             using (conn)
             {
@@ -124,30 +107,19 @@ namespace MediaBazaar.logic.services
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@productId", prodID);
 
-                try
+                conn.Open();
+                if (cmd.ExecuteNonQuery() > 0)
                 {
-                    conn.Open();
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Product deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error deleting product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    return true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
+                    return false;
                 }
             }
         }
 
-        public static int GetAmountInStock (int id)
+        public static int GetAmountInStock(int id)
         {
             string query = "select amountInStock from Product where productId = @prodId";
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -156,22 +128,16 @@ namespace MediaBazaar.logic.services
 
             try
             {
-                using (conn)
-                {
-                    conn.Open();
-                    result = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            } 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                conn.Open();
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+                return result;
             }
             finally
             {
                 conn.Close();
             }
 
-            return result;
+
         }
 
         public static List<Product> SearchProducts(string str)
@@ -203,13 +169,12 @@ namespace MediaBazaar.logic.services
 
                 }
                 reader.Close();
-                conn.Close();
             }
 
             return foundProducts;
         }
 
-        public static Product GetProductByID (int id)
+        public static Product GetProductByID(int id)
         {
             Product foundProduct = null;
 
@@ -235,24 +200,22 @@ namespace MediaBazaar.logic.services
                     foundProduct = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
                 }
                 reader.Close();
-                conn.Close();
-            } catch (Exception ex)
-            {
-                Utils.ShowError(ex.Message);
+                return foundProduct;
             }
-
-            return foundProduct;
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        public static void SellProduct (int id, int sellingAmount)
+        public static bool SellProduct(int id, int sellingAmount)
         {
             int currentAmountInStock = GetAmountInStock(id);
             int newQuantity = currentAmountInStock - sellingAmount;
 
             if (sellingAmount > currentAmountInStock)
             {
-                Utils.ShowError("One or more entries were not sold due to insufficient storage quantity");
-                return;
+                throw new Exception("One or more entries were not sold due to insufficient storage quantity");
             }
 
             string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId";
@@ -264,35 +227,34 @@ namespace MediaBazaar.logic.services
             {
                 conn.Open();
 
-                if (cmd.ExecuteNonQuery() == 0)
+                if (cmd.ExecuteNonQuery() > 0)
                 {
-                    Utils.ShowError("Error selling item");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                    conn.Close();
+                    Product p = GetProductByID(id);
+                    int newAmountInStock = p.AmountInStock;
+                    int minimumStock = p.MinStock;
 
+                    if (newAmountInStock < minimumStock)
+                    {
+                        int amountToRestock = (minimumStock - newAmountInStock) + minimumStock;
+                        CreateRestockRequest(id, amountToRestock);
+                    }
+                    return true;
+                }
+                return false;
             }
             finally
             {
                 conn.Close();
             }
-
-            Product p = GetProductByID(id);
-            int newAmountInStock = p.AmountInStock;
-            int minimumStock = p.MinStock;
-
-            if (newAmountInStock < minimumStock)
-            {
-                int amountToRestock = (minimumStock - newAmountInStock) + minimumStock;
-                CreateRestockRequest(id, amountToRestock);
-            }
         }
 
-        public static void RestockProduct(int id, int amount)
+        public static bool RestockProduct(int id, int amount)
         {
-            if (amount <= 0) { return; }
+            if (amount <= 0)
+            {
+                return false;
+            }
 
             int currentQuantity = GetAmountInStock(id);
             int newQuantity = currentQuantity + amount;
@@ -308,13 +270,9 @@ namespace MediaBazaar.logic.services
 
                 if (cmd.ExecuteNonQuery() == 0)
                 {
-                    Utils.ShowError("Error restocking item");
+                    return false;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
+                return true;
             }
             finally
             {
@@ -322,7 +280,7 @@ namespace MediaBazaar.logic.services
             }
         }
 
-        public static void CreateRestockRequest (int productID, int amountToRestock)
+        public static bool CreateRestockRequest(int productID, int amountToRestock)
         {
             string query = "INSERT INTO RestockRequest (dateCreated,productId,amount) VALUES (@dateCreated,@productId,@amount)";
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -335,13 +293,9 @@ namespace MediaBazaar.logic.services
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 0)
                 {
-                    Utils.ShowError("Error creating restock request");
+                    return false;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
+                return true;
             }
             finally
             {
@@ -379,11 +333,12 @@ namespace MediaBazaar.logic.services
                     if (!reader.IsDBNull(reader.GetOrdinal("dateProcessed")))
                     {
                         dateProcessed = reader.GetDateTime(reader.GetOrdinal("dateProcessed"));
-                    } else
+                    }
+                    else
                     {
                         dateProcessed = DateTime.MinValue;
                     }
-                        
+
                     int amountToRestock = reader.GetInt32("amount");
                     string status = reader.GetString("Status");
 
@@ -391,13 +346,12 @@ namespace MediaBazaar.logic.services
                     restockRequests.Add(rr);
                 }
                 reader.Close();
-                conn.Close();
             }
 
             return restockRequests;
         }
 
-        public static void AcceptOrDenyRestockRequest(int id, bool accept)
+        public static bool AcceptOrDenyRestockRequest(int id, bool accept)
         {
             DateTime currentDate = DateTime.Now;
             string dateString = $"{currentDate.Year}-{currentDate.Month}-{currentDate.Day}";
@@ -406,7 +360,8 @@ namespace MediaBazaar.logic.services
             if (accept == true)
             {
                 query = "UPDATE RestockRequest SET status = 'Accepted', dateProcessed = @newDate WHERE requestId = @reqId";
-            } else
+            }
+            else
             {
                 query = "UPDATE RestockRequest SET status = 'Denied', dateProcessed = @newDate WHERE requestId = @reqId";
             }
@@ -420,13 +375,9 @@ namespace MediaBazaar.logic.services
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 0)
                 {
-                    Utils.ShowError("Error accepting request");
+                    return false;
                 }
-
-            }
-            catch (Exception ex)
-            {
-                Utils.ShowError(ex.Message);
+                return true;
             }
             finally
             {

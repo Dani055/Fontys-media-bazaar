@@ -21,7 +21,14 @@ namespace MediaBazaar.forms
         public ManageShifts(int empID)
         {
             InitializeComponent();
-            emp = EmployeeService.GetEmployeeByID(empID);
+            try
+            {
+                emp = EmployeeService.GetEmployeeByID(empID);
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
         }
 
         private void ManageShifts_Load(object sender, EventArgs e)
@@ -36,40 +43,50 @@ namespace MediaBazaar.forms
 
             string date = dateTime.ToString(Utils.DbDateFormat);
             string prevDate = dateTime.AddDays(-1).ToString(Utils.DbDateFormat);
-            selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
-
-            Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
-            if (prevWorkday != null)
+            try
             {
-                if (prevWorkday.Shifts.IndexOf("evening") != -1)
+                selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
+
+                Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
+
+                if (prevWorkday != null)
                 {
-                    cbMorning.Enabled = false;
+                    if (prevWorkday.Shifts.IndexOf("evening") != -1)
+                    {
+                        cbMorning.Enabled = false;
+                    }
+                    else
+                    {
+                        cbMorning.Enabled = true;
+                    }
                 }
                 else
                 {
                     cbMorning.Enabled = true;
                 }
+                listBox1.Items.Clear();
+                if (selectedWorkday == null)
+                {
+
+                    listBox1.Items.Add("Nothing Scheduled for this date");
+
+                    return;
+                }
+
+                listBox1.Items.Add("Assigned shifts:");
+                List<string> shifts = selectedWorkday.Shifts.Split("#").ToList();
+                foreach (string s in shifts)
+                {
+                    listBox1.Items.Add(s);
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                cbMorning.Enabled = true;
-            }
-            listBox1.Items.Clear();
-            if (selectedWorkday == null) {
-
-                listBox1.Items.Add("Nothing Scheduled for this date");
-
-                return;
-            }
-
-            listBox1.Items.Add("Assigned shifts:");
-            List<string> shifts = selectedWorkday.Shifts.Split("#").ToList();
-            foreach (string s in shifts)
-            {
-                listBox1.Items.Add(s);
+                Utils.ShowError(ex.Message);
             }
             
-
+            
         }
 
         private void calShifts_DateSelected(object sender, DateRangeEventArgs e)
@@ -116,12 +133,20 @@ namespace MediaBazaar.forms
             string date = dateTime.ToString(Utils.DbDateFormat);
             
             Workday workday = new Workday(emp.Id, date, shifts, false);
-
-            if (WorkdayService.AddWorkday(emp, workday))
+            try
             {
-                RefreshListBox(dateTime);
-                cbMorning.Enabled = true;
+                if (WorkdayService.AddWorkday(emp, workday))
+                {
+                    Utils.ShowInfo("Shift added");
+                    RefreshListBox(dateTime);
+                    cbMorning.Enabled = true;
+                }
             }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+            
 
         }
 
@@ -129,10 +154,22 @@ namespace MediaBazaar.forms
         {
             if (selectedWorkday == null)
             {
-                MessageBox.Show("No workday to delete!");
+                Utils.ShowError("No workday to delete!");
                 return;
             }
-            WorkdayService.DeleteWorkday(selectedWorkday);
+            try
+            {
+                if (WorkdayService.DeleteWorkday(selectedWorkday))
+                {
+                    Utils.ShowInfo("Workday deleted");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
             DateTime dateTime = calShifts.SelectionRange.Start;
             RefreshListBox(dateTime);
             cbMorning.Enabled = true;

@@ -29,12 +29,20 @@ namespace MediaBazaar.forms
         private void RefreshProducts()
         {
             lvAllItems.Items.Clear();
-            List<Product> products = InventoryService.GetAllProducts();
-
-            foreach (Product p in products)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvAllItems.Items.Add(entry);
+                List<Product> products = InventoryService.GetAllProducts();
+
+                foreach (Product p in products)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvAllItems.Items.Add(entry);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
 
 
@@ -43,17 +51,22 @@ namespace MediaBazaar.forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchStr = tbSearch.Text;
-
-            List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
-
-
             lvAllItems.Items.Clear();
 
-            foreach (Product p in foundProducts)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvAllItems.Items.Add(entry);
+                List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
+                foreach (Product p in foundProducts)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvAllItems.Items.Add(entry);
+                }
             }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
         }
 
 
@@ -121,8 +134,15 @@ namespace MediaBazaar.forms
             {
                 int productId = Convert.ToInt32(lvCart.Items[i].SubItems[0].Text);
                 int amountToSell = Convert.ToInt32(lvCart.Items[i].SubItems[2].Text);
-
-                InventoryService.SellProduct(productId, amountToSell);
+                try
+                {
+                    InventoryService.SellProduct(productId, amountToSell);
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowError(ex.Message);
+                }
+                
             }
 
             lvCart.Items.Clear();

@@ -44,15 +44,15 @@ namespace MediaBazaar.forms
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nmrRestockAmount = new System.Windows.Forms.NumericUpDown();
+            this.pnlControls = new System.Windows.Forms.Panel();
             this.pbxAdd = new System.Windows.Forms.PictureBox();
             this.pbxEdit = new System.Windows.Forms.PictureBox();
             this.pbxRemove = new System.Windows.Forms.PictureBox();
-            this.pnlControls = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).BeginInit();
+            this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRemove)).BeginInit();
-            this.pnlControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvProducts
@@ -175,49 +175,49 @@ namespace MediaBazaar.forms
             this.nmrRestockAmount.Size = new System.Drawing.Size(134, 27);
             this.nmrRestockAmount.TabIndex = 13;
             // 
+            // pnlControls
+            // 
+            this.pnlControls.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlControls.Controls.Add(this.pbxRemove);
+            this.pnlControls.Controls.Add(this.pbxEdit);
+            this.pnlControls.Controls.Add(this.pbxAdd);
+            this.pnlControls.Location = new System.Drawing.Point(14, 447);
+            this.pnlControls.Name = "pnlControls";
+            this.pnlControls.Size = new System.Drawing.Size(308, 76);
+            this.pnlControls.TabIndex = 16;
+            // 
             // pbxAdd
             // 
             this.pbxAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbxAdd.Image")));
-            this.pbxAdd.Location = new System.Drawing.Point(20, 7);
+            this.pbxAdd.Location = new System.Drawing.Point(14, 7);
             this.pbxAdd.Name = "pbxAdd";
-            this.pbxAdd.Size = new System.Drawing.Size(60, 60);
+            this.pbxAdd.Size = new System.Drawing.Size(63, 65);
             this.pbxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxAdd.TabIndex = 15;
+            this.pbxAdd.TabIndex = 17;
             this.pbxAdd.TabStop = false;
             this.pbxAdd.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // pbxEdit
             // 
             this.pbxEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbxEdit.Image")));
-            this.pbxEdit.Location = new System.Drawing.Point(126, 7);
+            this.pbxEdit.Location = new System.Drawing.Point(123, 7);
             this.pbxEdit.Name = "pbxEdit";
-            this.pbxEdit.Size = new System.Drawing.Size(60, 60);
+            this.pbxEdit.Size = new System.Drawing.Size(63, 65);
             this.pbxEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxEdit.TabIndex = 15;
+            this.pbxEdit.TabIndex = 18;
             this.pbxEdit.TabStop = false;
             this.pbxEdit.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // pbxRemove
             // 
             this.pbxRemove.Image = ((System.Drawing.Image)(resources.GetObject("pbxRemove.Image")));
-            this.pbxRemove.Location = new System.Drawing.Point(230, 7);
+            this.pbxRemove.Location = new System.Drawing.Point(225, 8);
             this.pbxRemove.Name = "pbxRemove";
-            this.pbxRemove.Size = new System.Drawing.Size(60, 60);
+            this.pbxRemove.Size = new System.Drawing.Size(63, 65);
             this.pbxRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxRemove.TabIndex = 15;
+            this.pbxRemove.TabIndex = 18;
             this.pbxRemove.TabStop = false;
-            this.pbxRemove.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
-            // pnlControls
-            // 
-            this.pnlControls.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pnlControls.Controls.Add(this.pbxRemove);
-            this.pnlControls.Controls.Add(this.pbxAdd);
-            this.pnlControls.Controls.Add(this.pbxEdit);
-            this.pnlControls.Location = new System.Drawing.Point(12, 440);
-            this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(308, 76);
-            this.pnlControls.TabIndex = 16;
+            this.pbxRemove.Click += new System.EventHandler(this.btnRemoveItem_Click);
             // 
             // Inventory
             // 
@@ -235,12 +235,11 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.lvProducts);
             this.Name = "Inventory";
             this.Text = "Inventory";
-            this.MouseHover += new System.EventHandler(this.Toggle_Hover);
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).EndInit();
+            this.pnlControls.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRemove)).EndInit();
-            this.pnlControls.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,9 +261,9 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nmrRestockAmount;
-        private System.Windows.Forms.PictureBox pbxAdd;
-        private System.Windows.Forms.PictureBox pbxEdit;
-        private System.Windows.Forms.PictureBox pbxRemove;
         private System.Windows.Forms.Panel pnlControls;
+        private System.Windows.Forms.PictureBox pbxAdd;
+        private System.Windows.Forms.PictureBox pbxRemove;
+        private System.Windows.Forms.PictureBox pbxEdit;
     }
 }

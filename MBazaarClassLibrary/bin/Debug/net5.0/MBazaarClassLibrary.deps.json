@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "MBazaarClassLibrary/1.0.0": {
+        "runtime": {
+          "MBazaarClassLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MBazaarClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

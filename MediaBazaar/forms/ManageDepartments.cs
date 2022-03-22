@@ -58,8 +58,16 @@ namespace MediaBazaar.forms
         private void btnAddDepartment_Click(object sender, EventArgs e)
         {
             Department d = new Department(tbDepartmentName.Text);
-            DepartmentService.CreateDepartment(d);
-            RefreshDepartments();
+            try
+            {
+                DepartmentService.CreateDepartment(d);
+                RefreshDepartments();
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
         }
 
         private void btnRemoveDepartment_Click(object sender, EventArgs e)
@@ -72,13 +80,21 @@ namespace MediaBazaar.forms
                 DialogResult dr = Utils.ShowConfirmation("Are you sure that you want to delete selected department?");
                 if (dr == DialogResult.OK)
                 {
-                    DepartmentService.RemoveDepartment(depid);
-                    RefreshDepartments();
+                    if (DepartmentService.RemoveDepartment(depid))
+                    {
+                        Utils.ShowInfo("Department deleted");
+                        RefreshDepartments();
+                    }
+;
                 }
             }
             catch (ArgumentOutOfRangeException)
             {
                 Utils.ShowError("Please select department");
+            }
+            catch(Exception ex)
+            {
+                Utils.ShowError(ex.Message);
             }
         }
      

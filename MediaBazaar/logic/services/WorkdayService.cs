@@ -14,14 +14,14 @@ namespace MediaBazaar.logic.services
 
         public static Workday GetEmployeeWorkday(Employee emp, string date)
         {
-            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee Manager")
-            {
-                MessageBox.Show("You are not an Employee manager!");
-                return null;
-            }
+            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
             try
             {
+
+                if (EmployeeService.loggedEmp.Role != "Employee Manager")
+                {
+                    throw new Exception("You are not an Employee Manager");
+                }
 
                 string sql = "SELECT * FROM Workday WHERE employeeId = @id AND day = @date";
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
@@ -42,26 +42,24 @@ namespace MediaBazaar.logic.services
 
                     Workday workday = new Workday(id, empId, day, shifts, missing);
                     return workday;
-
                 }
                 else
                 {
                     return null;
                 }
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show(ex.ToString());
-                return null;
+                connection.Close();
             }
         }
         public static List<DetailedWorkday> GetWorkdays(string date)
         {
-            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+
             if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
             {
-                MessageBox.Show("You are not authorized!");
-                return null;
+                throw new Exception("You are not authorized");
             }
             try
             {
@@ -80,8 +78,10 @@ namespace MediaBazaar.logic.services
                 {
                     sql += " WHERE day = @date";
                 }
+
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 cmd.Parameters.AddWithValue("@date", date);
+
                 if (EmployeeService.loggedEmp.Role != "Employee Manager")
                 {
                     cmd.Parameters.AddWithValue("@deptId", EmployeeService.loggedEmp.DepartmentId);
@@ -116,43 +116,37 @@ namespace MediaBazaar.logic.services
                 }
                 return workdays;
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show(ex.ToString());
-                return null;
+                connection.Close();
             }
         }
         public static bool AddWorkday(Employee emp, Workday workday)
         {
             if (EmployeeService.loggedEmp.Role != "Employee Manager")
             {
-                MessageBox.Show("You are not an Employee manager!");
-                return false;
+                throw new Exception("You are not an Employee Manager!");
             }
             Workday foundDay = WorkdayService.GetEmployeeWorkday(emp, workday.Date);
 
             if (foundDay != null)
             {
-                MessageBox.Show("Shift already exists for current workday. Consider removing it first");
-                return false;
+                throw new Exception("Shift already exists for current workday. Consider removing it first");
             }
             if (StudentNotWorkingNightShift(emp, workday))
             {
-                Utils.ShowError("This person is a student and can only work an evening shift!");
-                return false;
+                throw new Exception("This person is a student and can only work an evening shift!");
             }
             if (WorkedEveningShiftPrevDay(emp, workday))
             {
-                MessageBox.Show("You have selected morning shift and the previous day contains an evening shift!");
-                return false;
+                throw new Exception("You have selected morning shift and the previous day contains an evening shift!");
             }
             if (OverworkingThisWeek(emp, workday))
             {
-                MessageBox.Show("Worktime of employee this week becomes more than 40 hours!");
-                return false;
+                throw new Exception("Worktime of employee this week becomes more than 40 hours!");
             }
 
-            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
             try
             {
 
@@ -166,33 +160,26 @@ namespace MediaBazaar.logic.services
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Successfully added shift.");
                     return true;
                 }
                 return false;
-
-
             }
-            catch (Exception ex)
+            finally
             {
-
-                MessageBox.Show(ex.ToString());
-                return false;
-
+                connection.Close();
             }
         }
         public static bool MarkAttendance(string workdayId, bool missing)
         {
-            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+
             if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
             {
-                MessageBox.Show("You are not authorized!");
-                return false;
+                throw new Exception("You are not authorized!");
             }
             if (workdayId == null)
             {
-                MessageBox.Show("No workday selected!");
-                return false;
+                throw new Exception("No workday selected!");
             }
             try
             {
@@ -204,24 +191,21 @@ namespace MediaBazaar.logic.services
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Attendance marked successfully");
                     return true;
                 }
                 return false;
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show(ex.ToString());
-                return false;
+                connection.Close();
             }
         }
         public static bool DeleteWorkday(Workday workday)
         {
-            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
             if (EmployeeService.loggedEmp.Role != "Employee Manager")
             {
-                MessageBox.Show("You are not an Employee manager!");
-                return false;
+                throw new Exception("You are not an Employee manager!");
             }
             try
             {
@@ -232,15 +216,13 @@ namespace MediaBazaar.logic.services
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Workday deleted successfully!");
                     return true;
                 }
                 return false;
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show(ex.ToString());
-                return false;
+                connection.Close();
             }
         }
         public static bool WorkedEveningShiftPrevDay(Employee emp, Workday workday)
@@ -299,10 +281,11 @@ namespace MediaBazaar.logic.services
                 startWeek = currDate.AddDays(-6);
                 endWeek = currDate;
             }
-            
+
+            MySqlConnection conn = new MySqlConnection(Utils.connectionString);
+            List<Workday> workdays = new List<Workday>();
             try
             {
-                MySqlConnection conn = new MySqlConnection(Utils.connectionString);
                 string sql = "Select * from Workday WHERE employeeId = @employeeId AND day BETWEEN @startDate and @endDate";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@employeeId", emp.Id);
@@ -310,7 +293,7 @@ namespace MediaBazaar.logic.services
                 cmd.Parameters.AddWithValue("@endDate", endWeek.ToString(Utils.DbDateFormat));
 
                 conn.Open();
-                List<Workday> workdays = new List<Workday>();
+                
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -324,29 +307,24 @@ namespace MediaBazaar.logic.services
                     workdays.Add(workday);
                 }
                 reader.Close();
-                conn.Close();
-
-                int totalHours = 0;
-                int maxHours = 40;
-                foreach (Workday wd in workdays)
-                {
-                    int shifts = wd.Shifts.Split("#").Count();
-                    totalHours += shifts * 4;
-                }
-                if ((workdayToAdd.Shifts.Split("#").Count() * 4) + totalHours > maxHours)
-                {
-                    return true;
-                }
-
-                return false;
             }
-            catch (Exception ex)
+            finally
             {
+                conn.Close();
+            }
 
-                MessageBox.Show(ex.Message);
+            int totalHours = 0;
+            int maxHours = 40;
+            foreach (Workday wd in workdays)
+            {
+                int shifts = wd.Shifts.Split("#").Count();
+                totalHours += shifts * 4;
+            }
+            if ((workdayToAdd.Shifts.Split("#").Count() * 4) + totalHours > maxHours)
+            {
                 return true;
             }
-
+            return false;
         }
         public static bool StudentNotWorkingNightShift(Employee emp, Workday workday)
         {

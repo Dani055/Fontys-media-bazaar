@@ -40,8 +40,16 @@ namespace MediaBazaar
 
         private void RefreshEmployees()
         {
-            List<Employee> emps = EmployeeService.GetEmployees();
-            PopulateListView(emps);
+            try
+            {
+                List<Employee> emps = EmployeeService.GetEmployees();
+                PopulateListView(emps);
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
         }
         private void PopulateListView(List<Employee> emps)
         {
@@ -50,11 +58,11 @@ namespace MediaBazaar
             {
                 string depName = DepartmentService.GetDepartmentByID(emp.DepartmentId)?.Name;
                 depName ??= String.Empty;
-                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), depName, (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
+                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), emp.ContractType, depName, (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = emp;
                 item.UseItemStyleForSubItems = false;
-                item.SubItems[11].BackColor = emp.IsStudent ? Color.Tomato : Color.LightGreen;
+                item.SubItems[12].BackColor = emp.IsStudent ? Color.Tomato : Color.LightGreen;
 
                 lvEmps.Items.Add(item);
             }
@@ -94,14 +102,21 @@ namespace MediaBazaar
         {
             try
             {
-                EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id);
+                if (EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id))
+                {
+                    Utils.ShowInfo("Employee removed");
+                }
+                RefreshEmployees();
             }
             catch (ArgumentOutOfRangeException)
             {
-                logic.Utils.ShowError("Select employee first");
+                Utils.ShowError("Select employee first");
             }
-           
-            RefreshEmployees();
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
         }
 
         private void btnViewShifts_Click(object sender, EventArgs e)
@@ -140,7 +155,7 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Utils.ShowError(ex.Message);
             }
         }
 

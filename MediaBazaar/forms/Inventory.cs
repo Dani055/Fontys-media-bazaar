@@ -50,13 +50,21 @@ namespace MediaBazaar.forms
         private void RefreshProducts()
         {
             lvProducts.Items.Clear();
-            List<Product> products = InventoryService.GetAllProducts();
-
-            foreach (Product p in products)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvProducts.Items.Add(entry);
+                List<Product> products = InventoryService.GetAllProducts();
+
+                foreach (Product p in products)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvProducts.Items.Add(entry);
+                }
             }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
 
 
         }
@@ -70,8 +78,19 @@ namespace MediaBazaar.forms
             
             if (dialogResult == DialogResult.Yes)
             {
-                InventoryService.DeleteProduct(selectedID);
-                RefreshProducts();
+                try
+                {
+                    if (InventoryService.DeleteProduct(selectedID))
+                    {
+                        Utils.ShowInfo("Product updated");
+                    }
+                    RefreshProducts();
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowError(ex.Message);
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -103,17 +122,22 @@ namespace MediaBazaar.forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchStr = tbSearch.Text;
-
-            List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
-
-
             lvProducts.Items.Clear();
-
-            foreach (Product p in foundProducts)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvProducts.Items.Add(entry);
+                List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
+
+                foreach (Product p in foundProducts)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvProducts.Items.Add(entry);
+                }
             }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
 
         }
 
@@ -132,8 +156,19 @@ namespace MediaBazaar.forms
             }
 
             int productIdToRestock = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
-            InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock);
-            Utils.ShowInfo("Successfully created restock request");
+            try
+            {
+                if (InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock))
+                {
+                    Utils.ShowInfo("Successfully created restock request");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Utils.ShowError(ex.Message);
+            }
+
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)

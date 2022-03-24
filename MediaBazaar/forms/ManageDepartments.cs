@@ -65,7 +65,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -77,12 +77,12 @@ namespace MediaBazaar.forms
             {
                 depid = Convert.ToInt32(lvDepartments.SelectedItems[0].Text);
 
-                DialogResult dr = logic.VisualHelper.ShowConfirmation("Are you sure that you want to delete selected department?");
+                DialogResult dr = VisualHelper.ShowConfirmation("Are you sure that you want to delete selected department?");
                 if (dr == DialogResult.OK)
                 {
                     if (DepartmentService.RemoveDepartment(depid))
                     {
-                        logic.VisualHelper.ShowInfo("Department deleted");
+                        VisualHelper.ShowInfo("Department deleted");
                         RefreshDepartments();
                     }
 ;
@@ -90,11 +90,11 @@ namespace MediaBazaar.forms
             }
             catch (ArgumentOutOfRangeException)
             {
-                logic.VisualHelper.ShowError("Please select department");
+                VisualHelper.ShowError("Please select department");
             }
             catch(Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
      

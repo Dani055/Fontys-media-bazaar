@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MBazaarClassLibrary.data_access;
 using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
@@ -13,120 +14,37 @@ namespace MBazaarClassLibrary.services
 
         public static Workday GetEmployeeWorkday(Employee emp, string date)
         {
-            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            try
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
             {
-
-                if (EmployeeService.loggedEmp.Role != "Employee Manager")
-                {
-                    throw new Exception("You are not an Employee Manager");
-                }
-
-                string sql = "SELECT * FROM Workday WHERE employeeId = @id AND day = @date";
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-                cmd.Parameters.AddWithValue("@id", emp.Id);
-                cmd.Parameters.AddWithValue("@date", date);
-                connection.Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    int id = reader.GetInt32("workdayId");
-                    int empId = reader.GetInt32("employeeId");
-                    string day = reader.GetString("day");
-                    string shifts = reader.GetString("shifts");
-                    bool missing = reader.GetBoolean("missing");
-
-                    Workday workday = new Workday(id, empId, day, shifts, missing);
-                    return workday;
-                }
-                else
-                {
-                    return null;
-                }
+                throw new Exception("You are not authorized!");
             }
-            finally
-            {
-                connection.Close();
-            }
+
+            return DataAccessWorkday.GetEmpWorkdayQuery(emp, date);
         }
         public static List<DetailedWorkday> GetWorkdays(string date)
         {
             MySqlConnection connection = new MySqlConnection(Utils.connectionString);
 
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager" && EmployeeService.loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized");
             }
-            try
+            if (EmployeeService.loggedEmp.Role == "Employee Manager" || EmployeeService.loggedEmp.Role == "CEO")
             {
-
-                string sql = "SELECT workdayId, employeeId, firstName, lastName, role, day, e.departmentId, departmentName ,shifts, missing FROM Workday as w " +
-                    "inner join Employee as e " +
-                    "on e.id = w.employeeId " +
-                    "left join Department as d " +
-                    "on e.departmentId = d.departmentId";
-
-                if (EmployeeService.loggedEmp.Role != "Employee Manager")
-                {
-                    sql += " WHERE e.departmentId = @deptId AND day = @date";
-                }
-                else
-                {
-                    sql += " WHERE day = @date";
-                }
-
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-                cmd.Parameters.AddWithValue("@date", date);
-
-                if (EmployeeService.loggedEmp.Role != "Employee Manager")
-                {
-                    cmd.Parameters.AddWithValue("@deptId", EmployeeService.loggedEmp.DepartmentId);
-                }
-
-                List<DetailedWorkday> workdays = new List<DetailedWorkday>();
-                connection.Open();
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        int id = reader.GetInt32("workdayId");
-                        int empId = reader.GetInt32("employeeId");
-                        string day = reader.GetString("day");
-                        string shifts = reader.GetString("shifts");
-                        bool missing = reader.GetBoolean("missing");
-                        string firstName = reader.GetString("firstName");
-                        string lastName = reader.GetString("lastName");
-                        string role = reader["role"].ToString();
-                        string departmentId = reader["departmentId"].ToString();
-                        string departmentName = reader["departmentName"].ToString();
-
-                        DetailedWorkday workday = new DetailedWorkday(id, empId, day, shifts, missing, firstName, lastName, role, departmentId, departmentName);
-                        workdays.Add(workday);
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-                return workdays;
+                return DataAccessWorkday.GetAllWorkdaysQuery(date);
             }
-            finally
+            else
             {
-                connection.Close();
+                return DataAccessWorkday.GetDepartmentWorkdaysQuery(date, EmployeeService.loggedEmp.DepartmentId);
             }
         }
         public static bool AddWorkday(Employee emp, Workday workday)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee Manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
             {
-                throw new Exception("You are not an Employee Manager!");
+                throw new Exception("You are not authorized!");
             }
-            Workday foundDay = WorkdayService.GetEmployeeWorkday(emp, workday.Date);
+            Workday foundDay = DataAccessWorkday.GetEmpWorkdayQuery(emp, workday.Date);
 
             if (foundDay != null)
             {
@@ -145,34 +63,12 @@ namespace MBazaarClassLibrary.services
                 throw new Exception("Worktime of employee this week becomes more than 40 hours!");
             }
 
-            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            try
-            {
-
-                string sql = "INSERT INTO Workday (employeeId, day, shifts, missing) VALUES (@employeeId, @day, @shifts, @missing)";
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-                cmd.Parameters.AddWithValue("@employeeId", workday.EmpID);
-                cmd.Parameters.AddWithValue("@day", workday.Date);
-                cmd.Parameters.AddWithValue("@shifts", workday.Shifts);
-                cmd.Parameters.AddWithValue("@missing", workday.Missing);
-                connection.Open();
-
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+            return DataAccessWorkday.AddWorkdayQuery(workday);
+            
         }
         public static bool MarkAttendance(string workdayId, bool missing)
         {
-            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized!");
             }
@@ -180,55 +76,22 @@ namespace MBazaarClassLibrary.services
             {
                 throw new Exception("No workday selected!");
             }
-            try
-            {
-                string sql = "UPDATE Workday SET missing = @missing WHERE workdayId = @workdayId";
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-                cmd.Parameters.AddWithValue("@workdayId", workdayId);
-                cmd.Parameters.AddWithValue("@missing", missing);
-                connection.Open();
-
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+            return DataAccessWorkday.MarkAttendanceQuery(workdayId, missing);
+            
         }
         public static bool DeleteWorkday(Workday workday)
         {
-            MySqlConnection connection = new MySqlConnection(Utils.connectionString);
-            if (EmployeeService.loggedEmp.Role != "Employee Manager")
+            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not an Employee manager!");
             }
-            try
-            {
-                string sql = "DELETE from Workday WHERE workdayId = @workdayId";
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
-                cmd.Parameters.AddWithValue("@workdayId", workday.Id);
-                connection.Open();
-
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+            return DataAccessWorkday.DeleteWorkdayQuery(workday);
         }
         public static bool WorkedEveningShiftPrevDay(Employee emp, Workday workday)
         {
             DateTime prevDate = DateTime.Parse(workday.Date);
             prevDate = prevDate.AddDays(-1);
-            Workday prevWorkday = GetEmployeeWorkday(emp, prevDate.ToString(Utils.DbDateFormat));
+            Workday prevWorkday = DataAccessWorkday.GetEmpWorkdayQuery(emp, prevDate.ToString(Utils.DbDateFormat));
 
             if (workday.Shifts.IndexOf("morning") != -1)
             {
@@ -281,36 +144,7 @@ namespace MBazaarClassLibrary.services
                 endWeek = currDate;
             }
 
-            MySqlConnection conn = new MySqlConnection(Utils.connectionString);
-            List<Workday> workdays = new List<Workday>();
-            try
-            {
-                string sql = "Select * from Workday WHERE employeeId = @employeeId AND day BETWEEN @startDate and @endDate";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@employeeId", emp.Id);
-                cmd.Parameters.AddWithValue("@startDate", startWeek.ToString(Utils.DbDateFormat));
-                cmd.Parameters.AddWithValue("@endDate", endWeek.ToString(Utils.DbDateFormat));
-
-                conn.Open();
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = reader.GetInt32("workdayId");
-                    int empId = reader.GetInt32("employeeId");
-                    string day = reader.GetString("day");
-                    string shifts = reader.GetString("shifts");
-                    bool missing = reader.GetBoolean("missing");
-
-                    Workday workday = new Workday(id, empId, day, shifts, missing);
-                    workdays.Add(workday);
-                }
-                reader.Close();
-            }
-            finally
-            {
-                conn.Close();
-            }
+            List<Workday> workdays = DataAccessWorkday.GetEmpWorkdaysBetweenDatesQuery(emp, startWeek, endWeek);
 
             int totalHours = 0;
             int maxHours = 40;

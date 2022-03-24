@@ -32,7 +32,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -82,13 +82,13 @@ namespace MediaBazaar.forms
             {
                 if (EmployeeService.UpdateEmployee(newEmp))
                 {
-                    logic.VisualHelper.ShowInfo("Employee information edited");
+                    VisualHelper.ShowInfo("Employee information edited");
                 }
 
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }

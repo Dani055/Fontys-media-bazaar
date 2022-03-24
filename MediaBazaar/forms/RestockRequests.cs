@@ -36,7 +36,7 @@ namespace MediaBazaar.forms
 
             if (lvRestockRequests.SelectedItems[0].SubItems[2].Text != "Not processed yet")
             {
-                logic.VisualHelper.ShowError("Request has already been processed!");
+                VisualHelper.ShowError("Request has already been processed!");
                 return;
             }
 
@@ -53,11 +53,11 @@ namespace MediaBazaar.forms
                     InventoryService.RestockProduct(productIDToRestock, amountToRestock);
                     RefreshRestockRequests();
 
-                    logic.VisualHelper.ShowInfo("Request accepted successfully.");
+                    VisualHelper.ShowInfo("Request accepted successfully.");
                 }
                 catch (Exception ex)
                 {
-                    logic.VisualHelper.ShowError(ex.Message);
+                    VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -75,7 +75,7 @@ namespace MediaBazaar.forms
 
             if (lvRestockRequests.SelectedItems[0].SubItems[2].Text != "Not processed yet")
             {
-                logic.VisualHelper.ShowError("Request has already been processed!");
+                VisualHelper.ShowError("Request has already been processed!");
                 return;
             }
 
@@ -87,11 +87,11 @@ namespace MediaBazaar.forms
                 {
                     InventoryService.AcceptOrDenyRestockRequest(selectedID, false);
                     RefreshRestockRequests();
-                    logic.VisualHelper.ShowInfo("Request denied successfully.");
+                    VisualHelper.ShowInfo("Request denied successfully.");
                 }
                 catch (Exception ex)
                 {
-                    logic.VisualHelper.ShowError(ex.Message);
+                    VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -134,7 +134,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
             
 

@@ -47,7 +47,7 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -104,17 +104,17 @@ namespace MediaBazaar
             {
                 if (EmployeeService.RemoveEmployee((lvEmps.SelectedItems[0].Tag as Employee).Id))
                 {
-                    logic.VisualHelper.ShowInfo("Employee removed");
+                    VisualHelper.ShowInfo("Employee removed");
                 }
                 RefreshEmployees();
             }
             catch (ArgumentOutOfRangeException)
             {
-                logic.VisualHelper.ShowError("Select employee first");
+                VisualHelper.ShowError("Select employee first");
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -155,13 +155,13 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
 
         public void TogglePictureButtonSize(object sender, EventArgs e)
         {
-            logic.VisualHelper.PicButtonHoverEffect(sender as PictureBox);
+            VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
     }
 }

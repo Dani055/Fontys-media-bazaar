@@ -30,7 +30,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -59,13 +59,13 @@ namespace MediaBazaar.forms
                 {
                     if (InventoryService.AddNewProduct(newProduct))
                     {
-                        logic.VisualHelper.ShowInfo("Product added");
+                        VisualHelper.ShowInfo("Product added");
                     }
                     
                 }
                 catch (Exception ex)
                 {
-                    logic.VisualHelper.ShowError(ex.Message);
+                    VisualHelper.ShowError(ex.Message);
                 }
 
             } 

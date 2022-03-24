@@ -53,7 +53,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
             
 
@@ -77,17 +77,17 @@ namespace MediaBazaar.forms
                 }
                 if (WorkdayService.MarkAttendance(workdayId, false))
                 {
-                    logic.VisualHelper.ShowInfo("Attendance marked");
+                    VisualHelper.ShowInfo("Attendance marked");
                    RefreshLV(calShifts.SelectionRange.Start);
                 }
              }
              catch (ArgumentOutOfRangeException)
              {
-                logic.VisualHelper.ShowError("Nothing selected");
+                VisualHelper.ShowError("Nothing selected");
              }
              catch (Exception ex)
              {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
              }           
 
         }
@@ -105,17 +105,17 @@ namespace MediaBazaar.forms
 
                 if (WorkdayService.MarkAttendance(workdayId, true))
                 {
-                    logic.VisualHelper.ShowInfo("Attendance marked");
+                    VisualHelper.ShowInfo("Attendance marked");
                     RefreshLV(calShifts.SelectionRange.Start);
                 }
             }
             catch (ArgumentOutOfRangeException)
             {
-                logic.VisualHelper.ShowError("Nothing selected");
+                VisualHelper.ShowError("Nothing selected");
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
     }

@@ -28,7 +28,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
 
@@ -84,7 +84,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
             
             
@@ -138,14 +138,14 @@ namespace MediaBazaar.forms
             {
                 if (WorkdayService.AddWorkday(emp, workday))
                 {
-                    logic.VisualHelper.ShowInfo("Shift added");
+                    VisualHelper.ShowInfo("Shift added");
                     RefreshListBox(dateTime);
                     cbMorning.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
             
 
@@ -155,20 +155,20 @@ namespace MediaBazaar.forms
         {
             if (selectedWorkday == null)
             {
-                logic.VisualHelper.ShowError("No workday to delete!");
+                VisualHelper.ShowError("No workday to delete!");
                 return;
             }
             try
             {
                 if (WorkdayService.DeleteWorkday(selectedWorkday))
                 {
-                    logic.VisualHelper.ShowInfo("Workday deleted");
+                    VisualHelper.ShowInfo("Workday deleted");
                 }
 
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
             DateTime dateTime = calShifts.SelectionRange.Start;

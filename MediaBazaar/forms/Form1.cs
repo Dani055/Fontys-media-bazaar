@@ -38,7 +38,7 @@ namespace MediaBazaar
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
             
         }

@@ -33,7 +33,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
 
@@ -76,13 +76,13 @@ namespace MediaBazaar.forms
                 editProduct = new Product(prodID, prodName, prodEAN, deptID, amountInStock, minStock, price);
                 if (InventoryService.EditProduct(editProduct))
                 {
-                    logic.VisualHelper.ShowInfo("Product updated");
+                    VisualHelper.ShowInfo("Product updated");
                 }
 
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
         }
     }

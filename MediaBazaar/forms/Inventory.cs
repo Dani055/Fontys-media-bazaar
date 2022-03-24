@@ -60,7 +60,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
 
@@ -80,13 +80,13 @@ namespace MediaBazaar.forms
                 {
                     if (InventoryService.DeleteProduct(selectedID))
                     {
-                        logic.VisualHelper.ShowInfo("Product updated");
+                        VisualHelper.ShowInfo("Product updated");
                     }
                     RefreshProducts();
                 }
                 catch (Exception ex)
                 {
-                    logic.VisualHelper.ShowError(ex.Message);
+                   VisualHelper.ShowError(ex.Message);
                 }
 
             }
@@ -133,7 +133,7 @@ namespace MediaBazaar.forms
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
 
@@ -149,7 +149,7 @@ namespace MediaBazaar.forms
             int amountToRestock = Convert.ToInt32(nmrRestockAmount.Value);
             if (amountToRestock == 0) 
             {
-                logic.VisualHelper.ShowError("Can't request amount of 0");
+                VisualHelper.ShowError("Can't request amount of 0");
                 return; 
             }
 
@@ -158,13 +158,13 @@ namespace MediaBazaar.forms
             {
                 if (InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock))
                 {
-                    logic.VisualHelper.ShowInfo("Successfully created restock request");
+                    VisualHelper.ShowInfo("Successfully created restock request");
                 }
 
             }
             catch (Exception ex)
             {
-                logic.VisualHelper.ShowError(ex.Message);
+                VisualHelper.ShowError(ex.Message);
             }
 
         }
@@ -178,7 +178,7 @@ namespace MediaBazaar.forms
 
         private void Toggle_Hover(object sender, EventArgs e)
         {
-            logic.VisualHelper.PicButtonHoverEffect(sender as PictureBox);
+            VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
     }
 }

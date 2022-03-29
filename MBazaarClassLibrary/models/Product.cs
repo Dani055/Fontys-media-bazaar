@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
-using MySql.Data.MySqlClient;
+using MBazaarClassLibrary.services;
 
-namespace MediaBazaar.logic.models
+namespace MBazaarClassLibrary.models
 {
     public class Product : IComparable<Product>
     {
@@ -19,7 +17,7 @@ namespace MediaBazaar.logic.models
         public int MinStock { get; set; }
         public double Price { get; set; }
 
-        public Product (int id, string name, string ean, int deptID, int amountInStock, int minStock, double price)
+        public Product(int id, string name, string ean, int deptID, int amountInStock, int minStock, double price)
         {
             this.ProductID = id;
             this.ProductName = name;
@@ -45,10 +43,12 @@ namespace MediaBazaar.logic.models
             if (this.ProductID < otherProduct.ProductID)
             {
                 return -1;
-            } else if (this.ProductID > otherProduct.ProductID)
+            }
+            else if (this.ProductID > otherProduct.ProductID)
             {
                 return 1;
-            } else
+            }
+            else
             {
                 return 0;
             }

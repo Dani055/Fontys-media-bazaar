@@ -1,0 +1,12 @@
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.csproj.AssemblyReference.cache
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.AssemblyInfoInputs.cache
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.AssemblyInfo.cs
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.deps.json
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.dll
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\ref\MBazaarClassLibrary.dll
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.pdb
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.dll
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\ref\MBazaarClassLibrary.dll
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.pdb

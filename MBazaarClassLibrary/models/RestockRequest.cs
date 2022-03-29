@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
 
-namespace MediaBazaar.logic.models
+namespace MBazaarClassLibrary.models
 {
     public class RestockRequest
     {
@@ -31,7 +28,7 @@ namespace MediaBazaar.logic.models
 
         public string[] GetDataArray()
         {
-            
+
             string[] listViewData =
             {
                 RequestId.ToString(),

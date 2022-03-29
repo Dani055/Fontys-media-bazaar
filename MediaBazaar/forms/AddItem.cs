@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar.forms;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 
 namespace MediaBazaar.forms
 {
@@ -20,10 +21,18 @@ namespace MediaBazaar.forms
         public AddItem()
         {
             InitializeComponent();
-            departments = DepartmentService.GetAllDepartments();
-            cbxDepartment.DataSource = departments;
-            cbxDepartment.DisplayMember = "Name";
-            cbxDepartment.ValueMember = "Id";
+            try
+            {
+                departments = DepartmentService.GetAllDepartments();
+                cbxDepartment.DataSource = departments;
+                cbxDepartment.DisplayMember = "Name";
+                cbxDepartment.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -46,7 +55,19 @@ namespace MediaBazaar.forms
                 price = Convert.ToDouble(nmrPrice.Value);
 
                 newProduct = new Product(prodName, prodEAN, deptID, amountInStock, minStock, price);
-                InventoryService.AddNewProduct(newProduct);
+                try
+                {
+                    if (InventoryService.AddNewProduct(newProduct))
+                    {
+                        VisualHelper.ShowInfo("Product added");
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    VisualHelper.ShowError(ex.Message);
+                }
+
             } 
             catch (Exception ex)
             {

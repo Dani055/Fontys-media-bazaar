@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.logic.models
+namespace MBazaarClassLibrary.models
 {
     public class Department
     {
@@ -12,8 +12,9 @@ namespace MediaBazaar.logic.models
 
         public string Name { get; private set; }
 
-        public Department(int id, string name) {
-        
+        public Department(int id, string name)
+        {
+
             Id = id;
             Name = name;
         }

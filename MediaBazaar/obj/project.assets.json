@@ -274,6 +274,19 @@
             "rid": "win"
           }
         }
+      },
+      "MBazaarClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MySql.Data": "8.0.28"
+        },
+        "compile": {
+          "bin/placeholder/MBazaarClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MBazaarClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -845,10 +858,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "MBazaarClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../MBazaarClassLibrary/MBazaarClassLibrary.csproj",
+      "msbuildProject": "../MBazaarClassLibrary/MBazaarClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
+      "MBazaarClassLibrary >= 1.0.0",
       "MySql.Data >= 8.0.28"
     ]
   },
@@ -878,7 +897,11 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

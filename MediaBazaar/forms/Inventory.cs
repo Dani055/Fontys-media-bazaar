@@ -7,11 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MediaBazaar.forms;
-using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
-using MySql.Data.MySqlClient;
+using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 
 namespace MediaBazaar.forms
 {
@@ -50,13 +48,21 @@ namespace MediaBazaar.forms
         private void RefreshProducts()
         {
             lvProducts.Items.Clear();
-            List<Product> products = InventoryService.GetAllProducts();
-
-            foreach (Product p in products)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvProducts.Items.Add(entry);
+                List<Product> products = InventoryService.GetAllProducts();
+
+                foreach (Product p in products)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvProducts.Items.Add(entry);
+                }
             }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
 
 
         }
@@ -70,8 +76,19 @@ namespace MediaBazaar.forms
             
             if (dialogResult == DialogResult.Yes)
             {
-                InventoryService.DeleteProduct(selectedID);
-                RefreshProducts();
+                try
+                {
+                    if (InventoryService.DeleteProduct(selectedID))
+                    {
+                        VisualHelper.ShowInfo("Product updated");
+                    }
+                    RefreshProducts();
+                }
+                catch (Exception ex)
+                {
+                   VisualHelper.ShowError(ex.Message);
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -103,17 +120,22 @@ namespace MediaBazaar.forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchStr = tbSearch.Text;
-
-            List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
-
-
             lvProducts.Items.Clear();
-
-            foreach (Product p in foundProducts)
+            try
             {
-                ListViewItem entry = new ListViewItem(p.GetDataArray());
-                lvProducts.Items.Add(entry);
+                List<Product> foundProducts = InventoryService.SearchProducts(searchStr);
+
+                foreach (Product p in foundProducts)
+                {
+                    ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    lvProducts.Items.Add(entry);
+                }
             }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
 
         }
 
@@ -127,13 +149,24 @@ namespace MediaBazaar.forms
             int amountToRestock = Convert.ToInt32(nmrRestockAmount.Value);
             if (amountToRestock == 0) 
             {
-                Utils.ShowError("Can't request amount of 0");
+                VisualHelper.ShowError("Can't request amount of 0");
                 return; 
             }
 
             int productIdToRestock = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
-            InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock);
-            Utils.ShowInfo("Successfully created restock request");
+            try
+            {
+                if (InventoryService.CreateRestockRequest(productIdToRestock, amountToRestock))
+                {
+                    VisualHelper.ShowInfo("Successfully created restock request");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)
@@ -143,5 +176,9 @@ namespace MediaBazaar.forms
             editItem.ShowDialog();
         }
 
+        private void Toggle_Hover(object sender, EventArgs e)
+        {
+            VisualHelper.PicButtonHoverEffect(sender as PictureBox);
+        }
     }
 }

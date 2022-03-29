@@ -1,5 +1,6 @@
-﻿using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,8 +33,16 @@ namespace MediaBazaar.forms
 
         private void btnEditDepartment_Click(object sender, EventArgs e)
         {
-            if (DepartmentService.EditName(new Department(department.Id, tbxNewName.Text)))
-            this.Close();
+            try
+            {
+                if (DepartmentService.EditName(new Department(department.Id, tbxNewName.Text)))
+                    this.Close();
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
     }
 }

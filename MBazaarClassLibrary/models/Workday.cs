@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.logic.models
+namespace MBazaarClassLibrary.models
 {
     public class Workday
     {
@@ -15,7 +15,7 @@ namespace MediaBazaar.logic.models
         public string Shifts { get; set; }
         public bool Missing { get; set; }
 
-        public Workday(int id, int empId, string date, string shifts, bool missing) 
+        public Workday(int id, int empId, string date, string shifts, bool missing)
         {
             Id = id;
             EmpID = empId;

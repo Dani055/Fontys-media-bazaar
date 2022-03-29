@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.logic.models
+namespace MBazaarClassLibrary.models
 {
     public class Employee
     {
@@ -22,7 +22,7 @@ namespace MediaBazaar.logic.models
         public string ContractType { get; set; }
         public bool IsStudent { get; set; } //It is not in constructor because it is false by default. It can be changed after creation
 
-        public Employee(int id, string username, string pass, string firstname, string lastname,double wage, string address, string departmentid, string role, string email, string phone, string contract)
+        public Employee(int id, string username, string pass, string firstname, string lastname, double wage, string address, string departmentid, string role, string email, string phone, string contract)
         {
             Id = id;
             Username = username;
@@ -40,7 +40,7 @@ namespace MediaBazaar.logic.models
             {
                 phone = null;
             }
-            if(contract == "")
+            if (contract == "")
                 contract = null;
             Email = email;
             Phone = phone;

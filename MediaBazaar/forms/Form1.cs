@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MediaBazaar.logic.services;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -25,14 +26,21 @@ namespace MediaBazaar
             string username = tbUsername.Text;
             string password = tbPassword.Text;
 
-            bool result = EmployeeService.Login(username, password);
-            if (result)
+            try
             {
-                Home home = new Home();
-                this.Hide();
-                home.ShowDialog();
-                this.Show();
+                if (EmployeeService.Login(username, password))
+                {
+                    Home home = new Home();
+                    this.Hide();
+                    home.ShowDialog();
+                    this.Show();
+                }
             }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+            
         }
 
         private void home_Closed(object sender, EventArgs e)

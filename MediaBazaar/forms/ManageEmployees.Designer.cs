@@ -39,6 +39,7 @@ namespace MediaBazaar
             this.colFirstname = new System.Windows.Forms.ColumnHeader();
             this.colLastname = new System.Windows.Forms.ColumnHeader();
             this.colWage = new System.Windows.Forms.ColumnHeader();
+            this.colContract = new System.Windows.Forms.ColumnHeader();
             this.colDepName = new System.Windows.Forms.ColumnHeader();
             this.colDepartmentID = new System.Windows.Forms.ColumnHeader();
             this.colEmail = new System.Windows.Forms.ColumnHeader();
@@ -73,6 +74,7 @@ namespace MediaBazaar
             this.colFirstname,
             this.colLastname,
             this.colWage,
+            this.colContract,
             this.colDepName,
             this.colDepartmentID,
             this.colEmail,
@@ -84,7 +86,7 @@ namespace MediaBazaar
             this.lvEmps.Location = new System.Drawing.Point(14, 56);
             this.lvEmps.MultiSelect = false;
             this.lvEmps.Name = "lvEmps";
-            this.lvEmps.Size = new System.Drawing.Size(1105, 350);
+            this.lvEmps.Size = new System.Drawing.Size(1453, 399);
             this.lvEmps.TabIndex = 1;
             this.lvEmps.UseCompatibleStateImageBehavior = false;
             this.lvEmps.View = System.Windows.Forms.View.Details;
@@ -116,6 +118,10 @@ namespace MediaBazaar
             // colWage
             // 
             this.colWage.Text = "Hourly wage";
+            // 
+            // colContract
+            // 
+            this.colContract.Text = "Contract";
             // 
             // colDepName
             // 
@@ -159,7 +165,7 @@ namespace MediaBazaar
             this.pbxAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbxAdd.Image")));
-            this.pbxAdd.Location = new System.Drawing.Point(14, 11);
+            this.pbxAdd.Location = new System.Drawing.Point(188, 11);
             this.pbxAdd.Name = "pbxAdd";
             this.pbxAdd.Size = new System.Drawing.Size(60, 60);
             this.pbxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -175,7 +181,7 @@ namespace MediaBazaar
             this.pbxRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxRemove.Image = ((System.Drawing.Image)(resources.GetObject("pbxRemove.Image")));
-            this.pbxRemove.Location = new System.Drawing.Point(268, 11);
+            this.pbxRemove.Location = new System.Drawing.Point(442, 11);
             this.pbxRemove.Name = "pbxRemove";
             this.pbxRemove.Padding = new System.Windows.Forms.Padding(2);
             this.pbxRemove.Size = new System.Drawing.Size(60, 60);
@@ -192,7 +198,7 @@ namespace MediaBazaar
             this.pbxEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbxEdit.Image")));
-            this.pbxEdit.Location = new System.Drawing.Point(522, 11);
+            this.pbxEdit.Location = new System.Drawing.Point(696, 11);
             this.pbxEdit.Name = "pbxEdit";
             this.pbxEdit.Padding = new System.Windows.Forms.Padding(2);
             this.pbxEdit.Size = new System.Drawing.Size(60, 60);
@@ -209,7 +215,7 @@ namespace MediaBazaar
             this.pbxManageShift.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxManageShift.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxManageShift.Image = ((System.Drawing.Image)(resources.GetObject("pbxManageShift.Image")));
-            this.pbxManageShift.Location = new System.Drawing.Point(776, 11);
+            this.pbxManageShift.Location = new System.Drawing.Point(950, 11);
             this.pbxManageShift.Name = "pbxManageShift";
             this.pbxManageShift.Padding = new System.Windows.Forms.Padding(2);
             this.pbxManageShift.Size = new System.Drawing.Size(60, 60);
@@ -226,7 +232,7 @@ namespace MediaBazaar
             this.pbxSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pbxSchedule.Image")));
-            this.pbxSchedule.Location = new System.Drawing.Point(1030, 11);
+            this.pbxSchedule.Location = new System.Drawing.Point(1204, 11);
             this.pbxSchedule.Name = "pbxSchedule";
             this.pbxSchedule.Size = new System.Drawing.Size(60, 60);
             this.pbxSchedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -247,9 +253,9 @@ namespace MediaBazaar
             this.pnlTools.Controls.Add(this.pbxRemove);
             this.pnlTools.Controls.Add(this.pbxManageShift);
             this.pnlTools.Controls.Add(this.pbxEdit);
-            this.pnlTools.Location = new System.Drawing.Point(15, 427);
+            this.pnlTools.Location = new System.Drawing.Point(15, 461);
             this.pnlTools.Name = "pnlTools";
-            this.pnlTools.Size = new System.Drawing.Size(1104, 80);
+            this.pnlTools.Size = new System.Drawing.Size(1452, 80);
             this.pnlTools.TabIndex = 10;
             // 
             // ManageEmployees
@@ -258,7 +264,7 @@ namespace MediaBazaar
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1133, 522);
+            this.ClientSize = new System.Drawing.Size(1481, 557);
             this.Controls.Add(this.pnlTools);
             this.Controls.Add(this.btnSearchEmps);
             this.Controls.Add(this.tbSearchEmps);
@@ -302,5 +308,6 @@ namespace MediaBazaar
         private System.Windows.Forms.PictureBox pbxSchedule;
         private System.Windows.Forms.Panel pnlTools;
         private System.Windows.Forms.ToolTip ttpMain;
+        private System.Windows.Forms.ColumnHeader colContract;
     }
 }

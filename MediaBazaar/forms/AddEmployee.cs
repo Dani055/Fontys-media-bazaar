@@ -1,5 +1,6 @@
-﻿using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,11 +21,19 @@ namespace MediaBazaar.forms
             InitializeComponent();
             cbxRole.SelectedIndex = 0;
             cbxContractType.SelectedIndex = 0;
-            departments = DepartmentService.GetAllDepartments();
-            cbxDepartment.DataSource = departments;
-            cbxDepartment.DisplayMember = "Name";
-            cbxDepartment.ValueMember = "Id";
-            cbxDepartment.SelectedIndex = -1;
+            try
+            {
+                departments = DepartmentService.GetAllDepartments();
+                cbxDepartment.DataSource = departments;
+                cbxDepartment.DisplayMember = "Name";
+                cbxDepartment.ValueMember = "Id";
+                cbxDepartment.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -41,9 +50,20 @@ namespace MediaBazaar.forms
             string departmentId = cbxDepartment.SelectedValue?.ToString() ?? "0";
             string role =  cbxRole.Text.ToString();
             string contractType = cbxContractType.Text.ToString();
-            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) {IsStudent = cbxStudent.Checked };           
+            Employee employeeToAdd = new Employee(id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) {IsStudent = cbxStudent.Checked };
 
-            EmployeeService.AddEmployee(employeeToAdd);
+            try
+            {
+                if (EmployeeService.AddEmployee(employeeToAdd))
+                {
+                    VisualHelper.ShowInfo("Employee added");
+                }
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)

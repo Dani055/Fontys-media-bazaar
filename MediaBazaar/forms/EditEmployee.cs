@@ -1,5 +1,6 @@
-﻿using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,13 +20,21 @@ namespace MediaBazaar.forms
         public EditEmployee(int empID)
         {
             InitializeComponent();
-            emp = EmployeeService.GetEmployeeByID(empID);
-            departments = DepartmentService.GetAllDepartments();
-            cbxDepartment.DataSource = departments;
-            cbxDepartment.DisplayMember = "Name";
-            cbxDepartment.ValueMember = "Id";
-            FillData();
-            cbxRole_SelectedIndexChanged(new object { }, new EventArgs());
+            try
+            {
+                emp = EmployeeService.GetEmployeeByID(empID);
+                departments = DepartmentService.GetAllDepartments();
+                cbxDepartment.DataSource = departments;
+                cbxDepartment.DisplayMember = "Name";
+                cbxDepartment.ValueMember = "Id";
+                FillData();
+                cbxRole_SelectedIndexChanged(new object { }, new EventArgs());
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
         private void FillData()
         {
@@ -69,7 +78,19 @@ namespace MediaBazaar.forms
             string role = cbxRole.Text.ToString();
             string contractType = cbxContract.Text.ToString();
             Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) { IsStudent = cbxStudent.Checked };
-            EmployeeService.UpdateEmployee(newEmp);
+            try
+            {
+                if (EmployeeService.UpdateEmployee(newEmp))
+                {
+                    VisualHelper.ShowInfo("Employee information edited");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)

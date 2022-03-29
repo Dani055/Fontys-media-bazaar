@@ -1,6 +1,6 @@
-﻿using MediaBazaar.logic;
-using MediaBazaar.logic.models;
-using MediaBazaar.logic.services;
+﻿using MBazaarClassLibrary;
+using MBazaarClassLibrary.services;
+using MBazaarClassLibrary.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,8 +58,16 @@ namespace MediaBazaar.forms
         private void btnAddDepartment_Click(object sender, EventArgs e)
         {
             Department d = new Department(tbDepartmentName.Text);
-            DepartmentService.CreateDepartment(d);
-            RefreshDepartments();
+            try
+            {
+                DepartmentService.CreateDepartment(d);
+                RefreshDepartments();
+            }
+            catch (Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
+            }
+
         }
 
         private void btnRemoveDepartment_Click(object sender, EventArgs e)
@@ -69,16 +77,24 @@ namespace MediaBazaar.forms
             {
                 depid = Convert.ToInt32(lvDepartments.SelectedItems[0].Text);
 
-                DialogResult dr = Utils.ShowConfirmation("Are you sure that you want to delete selected department?");
+                DialogResult dr = VisualHelper.ShowConfirmation("Are you sure that you want to delete selected department?");
                 if (dr == DialogResult.OK)
                 {
-                    DepartmentService.RemoveDepartment(depid);
-                    RefreshDepartments();
+                    if (DepartmentService.RemoveDepartment(depid))
+                    {
+                        VisualHelper.ShowInfo("Department deleted");
+                        RefreshDepartments();
+                    }
+;
                 }
             }
             catch (ArgumentOutOfRangeException)
             {
-                Utils.ShowError("Please select department");
+                VisualHelper.ShowError("Please select department");
+            }
+            catch(Exception ex)
+            {
+                VisualHelper.ShowError(ex.Message);
             }
         }
      

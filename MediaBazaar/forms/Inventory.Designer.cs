@@ -45,18 +45,23 @@ namespace MediaBazaar.forms
             this.label1 = new System.Windows.Forms.Label();
             this.nmrRestockAmount = new System.Windows.Forms.NumericUpDown();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.pbxAdd = new System.Windows.Forms.PictureBox();
-            this.pbxEdit = new System.Windows.Forms.PictureBox();
             this.pbxRemove = new System.Windows.Forms.PictureBox();
+            this.pbxEdit = new System.Windows.Forms.PictureBox();
+            this.pbxAdd = new System.Windows.Forms.PictureBox();
+            this.pnlTools = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).BeginInit();
             this.pnlControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRemove)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).BeginInit();
+            this.pnlTools.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvProducts
             // 
+            this.lvProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
             this.colName,
@@ -71,7 +76,7 @@ namespace MediaBazaar.forms
             this.lvProducts.Location = new System.Drawing.Point(14, 57);
             this.lvProducts.MultiSelect = false;
             this.lvProducts.Name = "lvProducts";
-            this.lvProducts.Size = new System.Drawing.Size(895, 357);
+            this.lvProducts.Size = new System.Drawing.Size(889, 357);
             this.lvProducts.TabIndex = 2;
             this.lvProducts.UseCompatibleStateImageBehavior = false;
             this.lvProducts.View = System.Windows.Forms.View.Details;
@@ -121,6 +126,7 @@ namespace MediaBazaar.forms
             // 
             // btnSendRestockRequest
             // 
+            this.btnSendRestockRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSendRestockRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(8)))));
             this.btnSendRestockRequest.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSendRestockRequest.FlatAppearance.BorderSize = 0;
@@ -128,7 +134,7 @@ namespace MediaBazaar.forms
             this.btnSendRestockRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendRestockRequest.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSendRestockRequest.ForeColor = System.Drawing.Color.Indigo;
-            this.btnSendRestockRequest.Location = new System.Drawing.Point(740, 440);
+            this.btnSendRestockRequest.Location = new System.Drawing.Point(744, 11);
             this.btnSendRestockRequest.Name = "btnSendRestockRequest";
             this.btnSendRestockRequest.Size = new System.Drawing.Size(169, 76);
             this.btnSendRestockRequest.TabIndex = 8;
@@ -149,7 +155,8 @@ namespace MediaBazaar.forms
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(824, 20);
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(818, 20);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(86, 31);
@@ -160,86 +167,109 @@ namespace MediaBazaar.forms
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(578, 447);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(585, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 20);
+            this.label1.Size = new System.Drawing.Size(143, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Amount to restock";
             // 
             // nmrRestockAmount
             // 
-            this.nmrRestockAmount.Location = new System.Drawing.Point(578, 471);
+            this.nmrRestockAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nmrRestockAmount.Location = new System.Drawing.Point(585, 46);
             this.nmrRestockAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nmrRestockAmount.Name = "nmrRestockAmount";
-            this.nmrRestockAmount.Size = new System.Drawing.Size(134, 27);
+            this.nmrRestockAmount.Size = new System.Drawing.Size(143, 27);
             this.nmrRestockAmount.TabIndex = 13;
             // 
             // pnlControls
             // 
-            this.pnlControls.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlControls.BackColor = System.Drawing.Color.Wheat;
             this.pnlControls.Controls.Add(this.pbxRemove);
             this.pnlControls.Controls.Add(this.pbxEdit);
             this.pnlControls.Controls.Add(this.pbxAdd);
-            this.pnlControls.Location = new System.Drawing.Point(14, 447);
+            this.pnlControls.Location = new System.Drawing.Point(14, 11);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(308, 76);
+            this.pnlControls.Size = new System.Drawing.Size(378, 76);
             this.pnlControls.TabIndex = 16;
-            // 
-            // pbxAdd
-            // 
-            this.pbxAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbxAdd.Image")));
-            this.pbxAdd.Location = new System.Drawing.Point(14, 7);
-            this.pbxAdd.Name = "pbxAdd";
-            this.pbxAdd.Size = new System.Drawing.Size(63, 65);
-            this.pbxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxAdd.TabIndex = 17;
-            this.pbxAdd.TabStop = false;
-            this.pbxAdd.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
-            // pbxEdit
-            // 
-            this.pbxEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbxEdit.Image")));
-            this.pbxEdit.Location = new System.Drawing.Point(123, 7);
-            this.pbxEdit.Name = "pbxEdit";
-            this.pbxEdit.Size = new System.Drawing.Size(63, 65);
-            this.pbxEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxEdit.TabIndex = 18;
-            this.pbxEdit.TabStop = false;
-            this.pbxEdit.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // pbxRemove
             // 
             this.pbxRemove.Image = ((System.Drawing.Image)(resources.GetObject("pbxRemove.Image")));
-            this.pbxRemove.Location = new System.Drawing.Point(225, 8);
+            this.pbxRemove.Location = new System.Drawing.Point(306, 9);
             this.pbxRemove.Name = "pbxRemove";
-            this.pbxRemove.Size = new System.Drawing.Size(63, 65);
+            this.pbxRemove.Size = new System.Drawing.Size(60, 60);
             this.pbxRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxRemove.TabIndex = 18;
             this.pbxRemove.TabStop = false;
             this.pbxRemove.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            this.pbxRemove.MouseEnter += new System.EventHandler(this.Toggle_Hover);
+            this.pbxRemove.MouseLeave += new System.EventHandler(this.Toggle_Hover);
+            // 
+            // pbxEdit
+            // 
+            this.pbxEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbxEdit.Image")));
+            this.pbxEdit.Location = new System.Drawing.Point(153, 9);
+            this.pbxEdit.Name = "pbxEdit";
+            this.pbxEdit.Size = new System.Drawing.Size(60, 60);
+            this.pbxEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxEdit.TabIndex = 18;
+            this.pbxEdit.TabStop = false;
+            this.pbxEdit.Click += new System.EventHandler(this.btnEditItem_Click);
+            this.pbxEdit.MouseEnter += new System.EventHandler(this.Toggle_Hover);
+            this.pbxEdit.MouseLeave += new System.EventHandler(this.Toggle_Hover);
+            // 
+            // pbxAdd
+            // 
+            this.pbxAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbxAdd.Image")));
+            this.pbxAdd.Location = new System.Drawing.Point(11, 9);
+            this.pbxAdd.Name = "pbxAdd";
+            this.pbxAdd.Size = new System.Drawing.Size(60, 60);
+            this.pbxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxAdd.TabIndex = 17;
+            this.pbxAdd.TabStop = false;
+            this.pbxAdd.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.pbxAdd.MouseEnter += new System.EventHandler(this.Toggle_Hover);
+            this.pbxAdd.MouseLeave += new System.EventHandler(this.Toggle_Hover);
+            // 
+            // pnlTools
+            // 
+            this.pnlTools.Controls.Add(this.pnlControls);
+            this.pnlTools.Controls.Add(this.nmrRestockAmount);
+            this.pnlTools.Controls.Add(this.label1);
+            this.pnlTools.Controls.Add(this.btnSendRestockRequest);
+            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlTools.Location = new System.Drawing.Point(0, 433);
+            this.pnlTools.Name = "pnlTools";
+            this.pnlTools.Size = new System.Drawing.Size(920, 98);
+            this.pnlTools.TabIndex = 17;
             // 
             // Inventory
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 531);
-            this.Controls.Add(this.pnlControls);
-            this.Controls.Add(this.nmrRestockAmount);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(920, 531);
+            this.Controls.Add(this.pnlTools);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnSendRestockRequest);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lvProducts);
+            this.MinimumSize = new System.Drawing.Size(938, 578);
             this.Name = "Inventory";
             this.Text = "Inventory";
+            this.Load += new System.EventHandler(this.Inventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).EndInit();
             this.pnlControls.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRemove)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).EndInit();
+            this.pnlTools.ResumeLayout(false);
+            this.pnlTools.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +295,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.PictureBox pbxAdd;
         private System.Windows.Forms.PictureBox pbxRemove;
         private System.Windows.Forms.PictureBox pbxEdit;
+        private System.Windows.Forms.Panel pnlTools;
     }
 }

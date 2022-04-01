@@ -22,7 +22,12 @@ namespace MediaBazaar.forms
             InitializeComponent();
             RefreshRestockRequests();
 
-            if (EmployeeService.loggedEmp.Role.ToUpper() != "DEPOT MANAGER")
+            if (EmployeeService.loggedEmp.Role.ToUpper() == "DEPOT MANAGER" || EmployeeService.loggedEmp.Role.ToUpper() == "CEO")
+            {
+                btnAcceptRequest.Enabled = true;
+                btnDenyRequest.Enabled = true;
+            }
+            else
             {
                 btnAcceptRequest.Enabled = false;
                 btnDenyRequest.Enabled = false;

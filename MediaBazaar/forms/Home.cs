@@ -61,7 +61,14 @@ namespace MediaBazaar
                 btnSell.Enabled = false;
             }
 
-
+            if (loggedEmpRole == "CEO")
+            {
+                btnManageEmp.Enabled = true;
+                btnManageDepartments.Enabled = true;
+                btnInventory.Enabled = true;
+                btnRestockReq.Enabled = true;
+                btnSell.Enabled = true;
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

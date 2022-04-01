@@ -29,6 +29,11 @@ namespace MediaBazaar.forms
                 cbxDepartment.ValueMember = "Id";
                 FillData();
                 cbxRole_SelectedIndexChanged(new object { }, new EventArgs());
+                if (cbxRole.Text == "CEO")
+                {
+                    cbxRole.Enabled = false;
+                    cbxRole.SelectedIndex = cbxRole.Items.IndexOf("CEO");
+                }
             }
             catch (Exception ex)
             {
@@ -78,6 +83,12 @@ namespace MediaBazaar.forms
             string role = cbxRole.Text.ToString();
             string contractType = cbxContract.Text.ToString();
             Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) { IsStudent = cbxStudent.Checked };
+            if (role == "CEO")
+            {
+                DialogResult result = MessageBox.Show("Are you sure that you want to make this person CEO?", caption:"Are you sure you want to continue?", icon:MessageBoxIcon.Warning, buttons:MessageBoxButtons.YesNo);
+                if (result.Equals(DialogResult.No))
+                    return;
+            }
             try
             {
                 if (EmployeeService.UpdateEmployee(newEmp))
@@ -96,34 +107,20 @@ namespace MediaBazaar.forms
         private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxRole.Text.ToLower() == "department employee" || cbxRole.Text.ToLower() == "department manager")
-            {
                 cbxDepartment.Enabled = true;
-            }
-
-            else {
+            else 
                 cbxDepartment.Enabled = false;
-            }
 
-
-
+            if (cbxRole.Text == "CEO" && EmployeeService.loggedEmp.Role != "CEO")
+                cbxRole.SelectedIndex = 0;
             if (cbxRole.Text.ToLower() == "employee manager" || cbxRole.Text.ToLower() == "ceo")
-            {
                 ChangeDepartment("Management");
-            }
-
             else if (cbxRole.Text.ToLower() == "cashier")
-            {
                 ChangeDepartment("Sales");
-            }
             else if (cbxRole.Text.ToLower() == "warehouse worker" || cbxRole.Text.ToLower() == "depot manager")
-            {
                 ChangeDepartment("Warehouse");
-            }
             else if (cbxRole.Text.ToLower() == "unassigned")
-            {
-                cbxDepartment.SelectedIndex = -1;
-            }
-
+                ChangeDepartment("Unassigned");
         }
         private void ChangeDepartment(string departmentToChange)
         {

@@ -64,7 +64,8 @@ namespace MediaBazaar
             // 
             // lvEmps
             // 
-            this.lvEmps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lvEmps.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvEmps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
@@ -165,7 +166,7 @@ namespace MediaBazaar
             this.pbxAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbxAdd.Image")));
-            this.pbxAdd.Location = new System.Drawing.Point(188, 11);
+            this.pbxAdd.Location = new System.Drawing.Point(200, 11);
             this.pbxAdd.Name = "pbxAdd";
             this.pbxAdd.Size = new System.Drawing.Size(60, 60);
             this.pbxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -181,7 +182,7 @@ namespace MediaBazaar
             this.pbxRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxRemove.Image = ((System.Drawing.Image)(resources.GetObject("pbxRemove.Image")));
-            this.pbxRemove.Location = new System.Drawing.Point(442, 11);
+            this.pbxRemove.Location = new System.Drawing.Point(454, 11);
             this.pbxRemove.Name = "pbxRemove";
             this.pbxRemove.Padding = new System.Windows.Forms.Padding(2);
             this.pbxRemove.Size = new System.Drawing.Size(60, 60);
@@ -198,7 +199,7 @@ namespace MediaBazaar
             this.pbxEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbxEdit.Image")));
-            this.pbxEdit.Location = new System.Drawing.Point(696, 11);
+            this.pbxEdit.Location = new System.Drawing.Point(708, 11);
             this.pbxEdit.Name = "pbxEdit";
             this.pbxEdit.Padding = new System.Windows.Forms.Padding(2);
             this.pbxEdit.Size = new System.Drawing.Size(60, 60);
@@ -215,7 +216,7 @@ namespace MediaBazaar
             this.pbxManageShift.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxManageShift.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxManageShift.Image = ((System.Drawing.Image)(resources.GetObject("pbxManageShift.Image")));
-            this.pbxManageShift.Location = new System.Drawing.Point(950, 11);
+            this.pbxManageShift.Location = new System.Drawing.Point(962, 11);
             this.pbxManageShift.Name = "pbxManageShift";
             this.pbxManageShift.Padding = new System.Windows.Forms.Padding(2);
             this.pbxManageShift.Size = new System.Drawing.Size(60, 60);
@@ -232,7 +233,7 @@ namespace MediaBazaar
             this.pbxSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbxSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxSchedule.Image = ((System.Drawing.Image)(resources.GetObject("pbxSchedule.Image")));
-            this.pbxSchedule.Location = new System.Drawing.Point(1204, 11);
+            this.pbxSchedule.Location = new System.Drawing.Point(1216, 11);
             this.pbxSchedule.Name = "pbxSchedule";
             this.pbxSchedule.Size = new System.Drawing.Size(60, 60);
             this.pbxSchedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -245,17 +246,16 @@ namespace MediaBazaar
             // 
             // pnlTools
             // 
-            this.pnlTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTools.BackColor = System.Drawing.Color.PeachPuff;
             this.pnlTools.Controls.Add(this.pbxAdd);
             this.pnlTools.Controls.Add(this.pbxSchedule);
             this.pnlTools.Controls.Add(this.pbxRemove);
             this.pnlTools.Controls.Add(this.pbxManageShift);
             this.pnlTools.Controls.Add(this.pbxEdit);
-            this.pnlTools.Location = new System.Drawing.Point(15, 461);
+            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlTools.Location = new System.Drawing.Point(2, 475);
             this.pnlTools.Name = "pnlTools";
-            this.pnlTools.Size = new System.Drawing.Size(1452, 80);
+            this.pnlTools.Size = new System.Drawing.Size(1477, 80);
             this.pnlTools.TabIndex = 10;
             // 
             // ManageEmployees

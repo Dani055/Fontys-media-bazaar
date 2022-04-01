@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj": {}
+    "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj": {
+    "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj",
         "projectName": "MBazaarClassLibrary",
-        "projectPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj",
-        "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nitro\\Desktop\\media-bazaar-group-6\\MBazaarClassLibrary\\obj\\",
+        "projectPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MBazaarClassLibrary\\MBazaarClassLibrary.csproj",
+        "packagesPath": "C:\\Users\\NIKI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NIKI\\Source\\Repos\\media-bazaar-group-6\\MBazaarClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NIKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

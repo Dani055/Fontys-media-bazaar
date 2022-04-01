@@ -213,7 +213,8 @@ namespace MediaBazaar.forms
             "Department Manager",
             "Department Employee",
             "Cashier",
-            "Warehouse Worker"});
+            "Warehouse Worker",
+            "CEO"});
             this.cbxRole.Location = new System.Drawing.Point(273, 106);
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(151, 28);

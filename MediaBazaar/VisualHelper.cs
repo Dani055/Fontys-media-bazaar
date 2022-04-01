@@ -41,6 +41,6 @@ namespace MediaBazaar
             int x = sender.Location.X;
             int y = sender.Location.Y;
             sender.Location = sender.Size.Width == 64 ? new System.Drawing.Point(x - 2, y - 2) : new System.Drawing.Point(x + 2, y + 2);
-        }
+        }       
     }
 }

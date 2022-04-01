@@ -25,13 +25,12 @@ namespace MediaBazaar
         private void HideUI()
         {
             string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
-            if (loggedEmpRole != "EMPLOYEE MANAGER")
+            if (loggedEmpRole == "EMPLOYEE MANAGER" || loggedEmpRole == "CEO")
             {
-                pbxAdd.Enabled = false;
-                pbxRemove.Enabled = false;
-                pbxEdit.Enabled = false;
-                pbxManageShift.Enabled = false;
+                pnlTools.Visible = true;
             }
+            else
+                pnlTools.Visible = false;
         }
         private void ManageEmployees_Load(object sender, EventArgs e)
         {
@@ -85,7 +84,7 @@ namespace MediaBazaar
 
             catch (ArgumentOutOfRangeException) {
 
-                MessageBox.Show("No employee has been selected");
+                VisualHelper.ShowError("Select employee first");
                 return;
 
             }
@@ -112,10 +111,6 @@ namespace MediaBazaar
             {
                 VisualHelper.ShowError("Select employee first");
             }
-            catch (Exception ex)
-            {
-                VisualHelper.ShowError(ex.Message);
-            }
 
         }
 
@@ -137,10 +132,8 @@ namespace MediaBazaar
 
             catch (ArgumentOutOfRangeException ex)
             {
-
-                MessageBox.Show(ex.Message);
+                VisualHelper.ShowError("Select employee first");
                 return;
-
             }
 
         }

@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageDepartments));
             this.lvDepartments = new System.Windows.Forms.ListView();
             this.colID = new System.Windows.Forms.ColumnHeader();
             this.colDeptName = new System.Windows.Forms.ColumnHeader();
@@ -152,6 +153,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.btnRemoveDepartment);
             this.Controls.Add(this.gbAddDept);
             this.Controls.Add(this.lvDepartments);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageDepartments";
             this.Text = "ManageDepartments";
             this.Load += new System.EventHandler(this.ManageDepartments_Load);

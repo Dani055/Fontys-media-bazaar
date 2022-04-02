@@ -269,6 +269,7 @@ namespace MediaBazaar
             this.Controls.Add(this.btnSearchEmps);
             this.Controls.Add(this.tbSearchEmps);
             this.Controls.Add(this.lvEmps);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1151, 569);
             this.Name = "ManageEmployees";
             this.Padding = new System.Windows.Forms.Padding(2);

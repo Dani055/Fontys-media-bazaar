@@ -20,6 +20,8 @@ namespace MediaBazaar
         public Home()
         {
             InitializeComponent();
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            tmr.Start();
             lblRole.Text = EmployeeService.loggedEmp.Role;
             lblUsername.Text = $"Welcome, {EmployeeService.loggedEmp.Username}";
 
@@ -128,6 +130,11 @@ namespace MediaBazaar
         private void ChangeButtonBGonDisabled(object sender, EventArgs e) 
         {
             (sender as Button).BackColor = (sender as Button).Enabled ? Color.FromArgb(255, 186, 8) : Color.FromArgb(181, 130, 0);
+        }
+
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

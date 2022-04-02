@@ -44,8 +44,6 @@ namespace MediaBazaar.forms
             {
                 VisualHelper.ShowError(ex.Message);
             }
-
-
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

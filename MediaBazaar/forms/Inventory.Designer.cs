@@ -259,6 +259,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lvProducts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(938, 578);
             this.Name = "Inventory";
             this.Text = "Inventory";

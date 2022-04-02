@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDepartment));
             this.tbxNewName = new System.Windows.Forms.TextBox();
             this.lblDepartmentName = new System.Windows.Forms.Label();
             this.btnEditDepartment = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.tbxNewName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditDepartment";
             this.Text = "Edit Department";
             this.Load += new System.EventHandler(this.EditDepartment_Load);

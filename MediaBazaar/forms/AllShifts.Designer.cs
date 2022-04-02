@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllShifts));
             this.calShifts = new System.Windows.Forms.MonthCalendar();
             this.lvShifts = new System.Windows.Forms.ListView();
             this.colShiftId = new System.Windows.Forms.ColumnHeader();
@@ -174,6 +175,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.lvShifts);
             this.Controls.Add(this.calShifts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AllShifts";
             this.Text = "AllShifts";
             this.gbAttendance.ResumeLayout(false);

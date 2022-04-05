@@ -29,13 +29,14 @@ namespace MediaBazaar.forms
         private void EditDepartment_Load(object sender, EventArgs e)
         {           
             tbxNewName.Text = department.Name;
+            chbxEssential.Checked = department.IsEssential;
         }
 
         private void btnEditDepartment_Click(object sender, EventArgs e)
         {
             try
             {
-                if (DepartmentService.EditName(new Department(department.Id, tbxNewName.Text)))
+                if (DepartmentService.UpdateDepartment(new Department(department.Id, tbxNewName.Text)))
                     this.Close();
             }
             catch (Exception ex)

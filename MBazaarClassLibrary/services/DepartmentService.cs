@@ -29,9 +29,10 @@ namespace MBazaarClassLibrary.services
                     throw new Exception("Department name is required");
                 }
 
-                string query = "INSERT INTO Department (departmentName) VALUES(@name)";
+                string query = "INSERT INTO Department (departmentName, essential) VALUES(@name, @essential)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", dep.Name);
+                cmd.Parameters.AddWithValue("@essential", dep.IsEssential);
                 conn.Open();
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -102,7 +103,10 @@ namespace MBazaarClassLibrary.services
                 MySqlDataReader r = command.ExecuteReader();
                 while (r.Read())
                 {
-                    departments.Add(new Department(r.GetInt32("departmentId"), r.GetString("DepartmentName")));
+                    Department dp = new Department(r.GetInt32("departmentId"), r.GetString("DepartmentName"));
+                    if (r.GetBoolean("essential") == true)
+                        dp.IsEssential = true;
+                    departments.Add(dp);
                 }
                 return departments;
             }
@@ -116,6 +120,11 @@ namespace MBazaarClassLibrary.services
         }
         public static bool RemoveDepartment(int id)
         {
+            Department dep = GetDepartmentByID(id);
+            if (dep.IsEssential && EmployeeService.loggedEmp.Role != "CEO")
+            {
+                throw new Exception("You can't delete this department!");              
+            }
             try
             {
                 string query = "DELETE FROM Department WHERE departmentId = @depId";
@@ -136,7 +145,7 @@ namespace MBazaarClassLibrary.services
                 conn.Close();
             }
         }
-        public static bool EditName(Department d)
+        public static bool UpdateDepartment(Department d)
         {
             try
             {

@@ -33,10 +33,12 @@ namespace MediaBazaar.forms
             this.lvDepartments = new System.Windows.Forms.ListView();
             this.colID = new System.Windows.Forms.ColumnHeader();
             this.colDeptName = new System.Windows.Forms.ColumnHeader();
+            this.colEssential = new System.Windows.Forms.ColumnHeader();
             this.btnAddDepartment = new System.Windows.Forms.Button();
             this.tbDepartmentName = new System.Windows.Forms.TextBox();
             this.lblDepartment = new System.Windows.Forms.Label();
             this.gbAddDept = new System.Windows.Forms.GroupBox();
+            this.chbxEssential = new System.Windows.Forms.CheckBox();
             this.btnRemoveDepartment = new System.Windows.Forms.Button();
             this.btnEditDepartment = new System.Windows.Forms.Button();
             this.gbAddDept.SuspendLayout();
@@ -46,7 +48,8 @@ namespace MediaBazaar.forms
             // 
             this.lvDepartments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
-            this.colDeptName});
+            this.colDeptName,
+            this.colEssential});
             this.lvDepartments.FullRowSelect = true;
             this.lvDepartments.GridLines = true;
             this.lvDepartments.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -54,7 +57,7 @@ namespace MediaBazaar.forms
             this.lvDepartments.Location = new System.Drawing.Point(11, 12);
             this.lvDepartments.MultiSelect = false;
             this.lvDepartments.Name = "lvDepartments";
-            this.lvDepartments.Size = new System.Drawing.Size(329, 329);
+            this.lvDepartments.Size = new System.Drawing.Size(414, 329);
             this.lvDepartments.TabIndex = 2;
             this.lvDepartments.UseCompatibleStateImageBehavior = false;
             this.lvDepartments.View = System.Windows.Forms.View.Details;
@@ -66,7 +69,12 @@ namespace MediaBazaar.forms
             // colDeptName
             // 
             this.colDeptName.Text = "Department";
-            this.colDeptName.Width = 240;
+            this.colDeptName.Width = 220;
+            // 
+            // colEssential
+            // 
+            this.colEssential.Text = "Essential";
+            this.colEssential.Width = 120;
             // 
             // btnAddDepartment
             // 
@@ -86,7 +94,7 @@ namespace MediaBazaar.forms
             // tbDepartmentName
             // 
             this.tbDepartmentName.BackColor = System.Drawing.Color.White;
-            this.tbDepartmentName.Location = new System.Drawing.Point(176, 63);
+            this.tbDepartmentName.Location = new System.Drawing.Point(192, 46);
             this.tbDepartmentName.Name = "tbDepartmentName";
             this.tbDepartmentName.Size = new System.Drawing.Size(130, 27);
             this.tbDepartmentName.TabIndex = 4;
@@ -94,7 +102,7 @@ namespace MediaBazaar.forms
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(176, 40);
+            this.lblDepartment.Location = new System.Drawing.Point(192, 23);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(130, 20);
             this.lblDepartment.TabIndex = 5;
@@ -102,15 +110,26 @@ namespace MediaBazaar.forms
             // 
             // gbAddDept
             // 
+            this.gbAddDept.Controls.Add(this.chbxEssential);
             this.gbAddDept.Controls.Add(this.btnAddDepartment);
             this.gbAddDept.Controls.Add(this.lblDepartment);
             this.gbAddDept.Controls.Add(this.tbDepartmentName);
-            this.gbAddDept.Location = new System.Drawing.Point(11, 347);
+            this.gbAddDept.Location = new System.Drawing.Point(54, 347);
             this.gbAddDept.Name = "gbAddDept";
             this.gbAddDept.Size = new System.Drawing.Size(328, 116);
             this.gbAddDept.TabIndex = 6;
             this.gbAddDept.TabStop = false;
             this.gbAddDept.Text = "Add department";
+            // 
+            // chbxEssential
+            // 
+            this.chbxEssential.AutoSize = true;
+            this.chbxEssential.Location = new System.Drawing.Point(192, 79);
+            this.chbxEssential.Name = "chbxEssential";
+            this.chbxEssential.Size = new System.Drawing.Size(88, 24);
+            this.chbxEssential.TabIndex = 6;
+            this.chbxEssential.Text = "Essential";
+            this.chbxEssential.UseVisualStyleBackColor = true;
             // 
             // btnRemoveDepartment
             // 
@@ -135,7 +154,7 @@ namespace MediaBazaar.forms
             this.btnEditDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEditDepartment.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnEditDepartment.Location = new System.Drawing.Point(187, 491);
+            this.btnEditDepartment.Location = new System.Drawing.Point(273, 491);
             this.btnEditDepartment.Name = "btnEditDepartment";
             this.btnEditDepartment.Size = new System.Drawing.Size(152, 53);
             this.btnEditDepartment.TabIndex = 8;
@@ -148,11 +167,12 @@ namespace MediaBazaar.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(352, 563);
+            this.ClientSize = new System.Drawing.Size(437, 563);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.btnRemoveDepartment);
             this.Controls.Add(this.gbAddDept);
             this.Controls.Add(this.lvDepartments);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageDepartments";
             this.Text = "ManageDepartments";
@@ -174,5 +194,7 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.GroupBox gbAddDept;
         private System.Windows.Forms.Button btnRemoveDepartment;
         private System.Windows.Forms.Button btnEditDepartment;
+        private System.Windows.Forms.CheckBox chbxEssential;
+        private System.Windows.Forms.ColumnHeader colEssential;
     }
 }

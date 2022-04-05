@@ -58,7 +58,7 @@ namespace MediaBazaar.forms
             this.btnEditDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEditDepartment.ForeColor = System.Drawing.Color.White;
-            this.btnEditDepartment.Location = new System.Drawing.Point(0, 74);
+            this.btnEditDepartment.Location = new System.Drawing.Point(0, 72);
             this.btnEditDepartment.Name = "btnEditDepartment";
             this.btnEditDepartment.Size = new System.Drawing.Size(337, 51);
             this.btnEditDepartment.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace MediaBazaar.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 125);
+            this.ClientSize = new System.Drawing.Size(337, 123);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.tbxNewName);

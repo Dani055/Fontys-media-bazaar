@@ -136,5 +136,7 @@ namespace MediaBazaar
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        
     }
 }

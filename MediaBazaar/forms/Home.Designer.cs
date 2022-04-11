@@ -29,6 +29,7 @@ namespace MediaBazaar
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
@@ -42,10 +43,14 @@ namespace MediaBazaar
             this.pbxProfile = new System.Windows.Forms.PictureBox();
             this.lblLoggedAs = new System.Windows.Forms.Label();
             this.pbxLogout = new System.Windows.Forms.PictureBox();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.tmr = new System.Windows.Forms.Timer(this.components);
             this.pnlNav.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -225,14 +230,45 @@ namespace MediaBazaar
             this.pbxLogout.TabStop = false;
             this.pbxLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogo.Image")));
+            this.pbxLogo.Location = new System.Drawing.Point(51, 201);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(331, 219);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxLogo.TabIndex = 12;
+            this.pbxLogo.TabStop = false;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTime.Location = new System.Drawing.Point(571, 201);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(277, 81);
+            this.lblTime.TabIndex = 13;
+            this.lblTime.Text = "00:00:00";
+            // 
+            // tmr
+            // 
+            this.tmr.Interval = 1000;
+            this.tmr.Tick += new System.EventHandler(this.tmr_Tick);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 451);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.pbxLogout);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlNav);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(889, 498);
             this.Name = "Home";
             this.Text = "Home";
@@ -242,7 +278,9 @@ namespace MediaBazaar
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -260,5 +298,8 @@ namespace MediaBazaar
         private System.Windows.Forms.PictureBox pbxProfile;
         private System.Windows.Forms.PictureBox pbxLogout;
         private System.Windows.Forms.Label lblLoggedAs;
+        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Timer tmr;
     }
 }

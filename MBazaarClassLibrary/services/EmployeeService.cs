@@ -74,7 +74,7 @@ namespace MBazaarClassLibrary.services
                     cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@depID", loggedEmp.DepartmentId);
                 }
-                else if (loggedEmpRole == "EMPLOYEE MANAGER")
+                else if (loggedEmpRole == "EMPLOYEE MANAGER" || loggedEmpRole == "CEO")
                 {
                     sql = "SELECT * FROM Employee order by departmentId";
                     cmd = new MySqlCommand(sql, conn);

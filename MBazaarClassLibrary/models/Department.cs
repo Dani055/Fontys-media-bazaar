@@ -11,10 +11,10 @@ namespace MBazaarClassLibrary.models
         public int Id { get; private set; }
 
         public string Name { get; private set; }
+        public bool IsEssential { get; set; }
 
         public Department(int id, string name)
         {
-
             Id = id;
             Name = name;
         }

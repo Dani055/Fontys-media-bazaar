@@ -19,25 +19,25 @@ namespace MediaBazaar.forms
         public Inventory()
         {
             InitializeComponent();
-            RefreshProducts();
-            pbxRemove.Enabled = false;
-            btnSendRestockRequest.Enabled = false;
-            pbxEdit.Enabled = false;
+            RefreshProducts();           
+            pnlTools.Visible = false;
+        }
 
+        private void Inventory_Load(object sender, EventArgs e)
+        {
+            lvProducts.Items[0].Selected = true;          
             string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
             if (loggedEmpRole != "DEPOT MANAGER")
             {
-                CanAccessControls = false;
-                pbxAdd.Enabled = false;
-            } else
+                CanAccessControls = false;              
+                pnlTools.Visible = false;
+            }
+            else
             {
                 CanAccessControls = true;
+                pnlTools.Visible = true;
             }
-
-
-            //lvProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
-
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             AddItem addItem = new AddItem();
@@ -99,17 +99,23 @@ namespace MediaBazaar.forms
 
         private void lvProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvProducts.SelectedItems.Count != 0 && CanAccessControls)
+            pnlTools.Visible = CanAccessControls;
+            if (lvProducts.SelectedItems.Count == 0)
             {
-                pbxRemove.Enabled = true;
-                btnSendRestockRequest.Enabled = true;
-                pbxEdit.Enabled = true;
-            } else
-            {
-                pbxRemove.Enabled = false;
-                btnSendRestockRequest.Enabled = false;
-                pbxEdit.Enabled = false;
-            }
+                pnlTools.Visible = false;
+                //pbxRemove.Enabled = true;
+                //btnSendRestockRequest.Enabled = true;
+                //pbxEdit.Enabled = true;
+                //pnlTools.Visible = true;
+               
+            } 
+            //else
+            //{              
+            //    pbxRemove.Enabled = false;
+            //    btnSendRestockRequest.Enabled = false;
+            //    pbxEdit.Enabled = false;
+            //    pnlTools.Visible = false;
+            //}
 
             if (lvProducts.SelectedItems.Count != 0 && EmployeeService.loggedEmp.Role.ToUpper() == "DEPARTMENT MANAGER")
             {
@@ -180,5 +186,6 @@ namespace MediaBazaar.forms
         {
             VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
+
     }
 }

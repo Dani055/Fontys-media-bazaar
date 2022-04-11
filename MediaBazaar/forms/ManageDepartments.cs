@@ -30,8 +30,10 @@ namespace MediaBazaar.forms
             lvDepartments.Items.Clear();
             foreach (var department in DepartmentService.AllDepartments)
             {
-                string[] row = { department.Id.ToString(), department.Name };
+                string[] row = { department.Id.ToString(), department.Name, department.IsEssential.ToString() };
                 ListViewItem item = new ListViewItem(row);
+                item.UseItemStyleForSubItems = false;
+                item.SubItems[2].BackColor = department.IsEssential ? Color.LightGreen : Color.White;
                 lvDepartments.Items.Add(item);
             }
         }
@@ -58,6 +60,7 @@ namespace MediaBazaar.forms
         private void btnAddDepartment_Click(object sender, EventArgs e)
         {
             Department d = new Department(tbDepartmentName.Text);
+            d.IsEssential = chbxEssential.Checked; //If checked true, otherwise false.
             try
             {
                 DepartmentService.CreateDepartment(d);
@@ -80,12 +83,19 @@ namespace MediaBazaar.forms
                 DialogResult dr = VisualHelper.ShowConfirmation("Are you sure that you want to delete selected department?");
                 if (dr == DialogResult.OK)
                 {
-                    if (DepartmentService.RemoveDepartment(depid))
+                    try
                     {
-                        VisualHelper.ShowInfo("Department deleted");
-                        RefreshDepartments();
+                        if (DepartmentService.RemoveDepartment(depid))
+                        {
+                            VisualHelper.ShowInfo("Department deleted");
+                            RefreshDepartments();
+                        }
                     }
-;
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, caption:"Action restricted", icon:MessageBoxIcon.Error, buttons:MessageBoxButtons.OK);
+                    }
                 }
             }
             catch (ArgumentOutOfRangeException)

@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddItem));
             this.tbxProductName = new System.Windows.Forms.TextBox();
             this.tbxBarcode = new System.Windows.Forms.TextBox();
             this.nmrPrice = new System.Windows.Forms.NumericUpDown();
@@ -201,6 +202,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.nmrPrice);
             this.Controls.Add(this.tbxBarcode);
             this.Controls.Add(this.tbxProductName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddItem";
             this.Text = "Add Item";
             ((System.ComponentModel.ISupportInitialize)(this.nmrPrice)).EndInit();

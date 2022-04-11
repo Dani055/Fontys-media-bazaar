@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RestockRequests));
             this.lvRestockRequests = new System.Windows.Forms.ListView();
             this.colID = new System.Windows.Forms.ColumnHeader();
             this.colDateCreated = new System.Windows.Forms.ColumnHeader();
@@ -150,6 +151,7 @@ namespace MediaBazaar.forms
             this.Controls.Add(this.btnDenyRequest);
             this.Controls.Add(this.btnAcceptRequest);
             this.Controls.Add(this.lvRestockRequests);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RestockRequests";
             this.Text = "RestockRequests";
             this.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace MediaBazaar.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDepartment));
             this.tbxNewName = new System.Windows.Forms.TextBox();
             this.lblDepartmentName = new System.Windows.Forms.Label();
             this.btnEditDepartment = new System.Windows.Forms.Button();
@@ -57,7 +58,7 @@ namespace MediaBazaar.forms
             this.btnEditDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditDepartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEditDepartment.ForeColor = System.Drawing.Color.White;
-            this.btnEditDepartment.Location = new System.Drawing.Point(0, 74);
+            this.btnEditDepartment.Location = new System.Drawing.Point(0, 72);
             this.btnEditDepartment.Name = "btnEditDepartment";
             this.btnEditDepartment.Size = new System.Drawing.Size(337, 51);
             this.btnEditDepartment.TabIndex = 2;
@@ -69,11 +70,12 @@ namespace MediaBazaar.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 125);
+            this.ClientSize = new System.Drawing.Size(337, 123);
             this.Controls.Add(this.btnEditDepartment);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.tbxNewName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditDepartment";
             this.Text = "Edit Department";
             this.Load += new System.EventHandler(this.EditDepartment_Load);

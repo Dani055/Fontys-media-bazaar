@@ -35,7 +35,7 @@ namespace MediaBazaar.forms
         {
             try
             {
-                if (DepartmentService.EditName(new Department(department.Id, tbxNewName.Text)))
+                if (DepartmentService.UpdateDepartment(new Department(department.Id, tbxNewName.Text)))
                     this.Close();
             }
             catch (Exception ex)

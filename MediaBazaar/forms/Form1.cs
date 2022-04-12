@@ -28,13 +28,13 @@ namespace MediaBazaar
 
             try
             {
-                if (EmployeeService.Login(username, password))
-                {
+                DesktopUtils.loggedEmployee = EmployeeService.Login(username, password);
+
                     Home home = new Home();
                     this.Hide();
                     home.ShowDialog();
                     this.Show();
-                }
+                
             }
             catch (Exception ex)
             {

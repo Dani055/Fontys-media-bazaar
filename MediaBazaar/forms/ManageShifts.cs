@@ -46,9 +46,9 @@ namespace MediaBazaar.forms
             string prevDate = dateTime.AddDays(-1).ToString(Utils.DbDateFormat);
             try
             {
-                selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date);
+                selectedWorkday = WorkdayService.GetEmployeeWorkday(emp, date, DesktopUtils.loggedEmployee);
 
-                Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate);
+                Workday prevWorkday = WorkdayService.GetEmployeeWorkday(emp, prevDate, DesktopUtils.loggedEmployee);
 
                 if (prevWorkday != null)
                 {
@@ -136,7 +136,7 @@ namespace MediaBazaar.forms
             Workday workday = new Workday(emp.Id, date, shifts, false);
             try
             {
-                if (WorkdayService.AddWorkday(emp, workday))
+                if (WorkdayService.AddWorkday(emp, workday, DesktopUtils.loggedEmployee))
                 {
                     VisualHelper.ShowInfo("Shift added");
                     RefreshListBox(dateTime);
@@ -160,7 +160,7 @@ namespace MediaBazaar.forms
             }
             try
             {
-                if (WorkdayService.DeleteWorkday(selectedWorkday))
+                if (WorkdayService.DeleteWorkday(selectedWorkday, DesktopUtils.loggedEmployee))
                 {
                     VisualHelper.ShowInfo("Workday deleted");
                 }

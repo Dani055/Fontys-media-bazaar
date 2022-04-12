@@ -118,10 +118,10 @@ namespace MBazaarClassLibrary.services
             AllDepartments?.Clear();
             AllDepartments = GetAllDepartments();
         }
-        public static bool RemoveDepartment(int id)
+        public static bool RemoveDepartment(int id, Employee loggedEmp)
         {
             Department dep = GetDepartmentByID(id);
-            if (dep.IsEssential && EmployeeService.loggedEmp.Role != "CEO")
+            if (dep.IsEssential && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You can't delete this department!");              
             }

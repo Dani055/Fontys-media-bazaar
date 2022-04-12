@@ -22,3 +22,15 @@ C:\Users\NIKI\source\repos\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\ne
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\refint\MBazaarClassLibrary.dll
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.pdb
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\ref\MBazaarClassLibrary.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.deps.json
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\bin\Debug\net5.0\MBazaarClassLibrary.pdb
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.csproj.AssemblyReference.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.AssemblyInfoInputs.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.AssemblyInfo.cs
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.csproj.CoreCompileInputs.cache
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\refint\MBazaarClassLibrary.dll
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\MBazaarClassLibrary.pdb
+D:\GROUP PROJECT\media-bazaar-group-6\MBazaarClassLibrary\obj\Debug\net5.0\ref\MBazaarClassLibrary.dll

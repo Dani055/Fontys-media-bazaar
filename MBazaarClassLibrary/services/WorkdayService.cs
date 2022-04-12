@@ -12,35 +12,35 @@ namespace MBazaarClassLibrary.services
     public static class WorkdayService
     {
 
-        public static Workday GetEmployeeWorkday(Employee emp, string date)
+        public static Workday GetEmployeeWorkday(Employee emp, string date, Employee loggedEmp)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
+            if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized!");
             }
 
             return DataAccessWorkday.GetEmpWorkdayQuery(emp, date);
         }
-        public static List<DetailedWorkday> GetWorkdays(string date)
+        public static List<DetailedWorkday> GetWorkdays(string date, Employee loggedEmp)
         {
             MySqlConnection connection = new MySqlConnection(Utils.connectionString);
 
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "Depot Manager" && EmployeeService.loggedEmp.Role != "CEO")
+            if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "Department Manager" && loggedEmp.Role != "Depot Manager" && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized");
             }
-            if (EmployeeService.loggedEmp.Role == "Employee Manager" || EmployeeService.loggedEmp.Role == "CEO")
+            if (loggedEmp.Role == "Employee Manager" || loggedEmp.Role == "CEO")
             {
                 return DataAccessWorkday.GetAllWorkdaysQuery(date);
             }
             else
             {
-                return DataAccessWorkday.GetDepartmentWorkdaysQuery(date, EmployeeService.loggedEmp.DepartmentId);
+                return DataAccessWorkday.GetDepartmentWorkdaysQuery(date, loggedEmp.DepartmentId);
             }
         }
-        public static bool AddWorkday(Employee emp, Workday workday)
+        public static bool AddWorkday(Employee emp, Workday workday, Employee loggedEmp)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
+            if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized!");
             }
@@ -66,9 +66,9 @@ namespace MBazaarClassLibrary.services
             return DataAccessWorkday.AddWorkdayQuery(workday);
             
         }
-        public static bool MarkAttendance(string workdayId, bool missing)
+        public static bool MarkAttendance(string workdayId, bool missing, Employee loggedEmp)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "Department Manager" && EmployeeService.loggedEmp.Role != "CEO")
+            if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "Department Manager" && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not authorized!");
             }
@@ -79,9 +79,9 @@ namespace MBazaarClassLibrary.services
             return DataAccessWorkday.MarkAttendanceQuery(workdayId, missing);
             
         }
-        public static bool DeleteWorkday(Workday workday)
+        public static bool DeleteWorkday(Workday workday, Employee loggedEmp)
         {
-            if (EmployeeService.loggedEmp.Role != "Employee Manager" && EmployeeService.loggedEmp.Role != "CEO")
+            if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "CEO")
             {
                 throw new Exception("You are not an Employee manager!");
             }

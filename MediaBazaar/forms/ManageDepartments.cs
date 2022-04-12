@@ -85,7 +85,7 @@ namespace MediaBazaar.forms
                 {
                     try
                     {
-                        if (DepartmentService.RemoveDepartment(depid))
+                        if (DepartmentService.RemoveDepartment(depid, DesktopUtils.loggedEmployee))
                         {
                             VisualHelper.ShowInfo("Department deleted");
                             RefreshDepartments();

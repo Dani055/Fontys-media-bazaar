@@ -18,13 +18,13 @@ namespace MediaBazaar.forms
         public AllShifts()
         {
             InitializeComponent();
-            if (EmployeeService.loggedEmp.Role == "Employee manager")
+            if (DesktopUtils.loggedEmployee.Role == "Employee manager")
             {
                 lblDepartment.Text = "Viewing shifts for: all departments";
             }
             else
             {
-                lblDepartment.Text = $"Viewing shifts for {EmployeeService.loggedEmp.DepartmentId} ID";
+                lblDepartment.Text = $"Viewing shifts for {DesktopUtils.loggedEmployee.DepartmentId} ID";
             }
             DateTime dateTime = calShifts.SelectionRange.Start;
             RefreshLV(dateTime);
@@ -35,7 +35,7 @@ namespace MediaBazaar.forms
             string date = dt.ToString(Utils.DbDateFormat);
             try
             {
-                List<DetailedWorkday> workdays = WorkdayService.GetWorkdays(date);
+                List<DetailedWorkday> workdays = WorkdayService.GetWorkdays(date, DesktopUtils.loggedEmployee);
                 lvShifts.Items.Clear();
                 if (workdays == null)
                 {
@@ -75,7 +75,7 @@ namespace MediaBazaar.forms
                 {
                     return;
                 }
-                if (WorkdayService.MarkAttendance(workdayId, false))
+                if (WorkdayService.MarkAttendance(workdayId, false, DesktopUtils.loggedEmployee))
                 {
                     VisualHelper.ShowInfo("Attendance marked");
                    RefreshLV(calShifts.SelectionRange.Start);
@@ -103,7 +103,7 @@ namespace MediaBazaar.forms
                     return;
                 }
 
-                if (WorkdayService.MarkAttendance(workdayId, true))
+                if (WorkdayService.MarkAttendance(workdayId, true, DesktopUtils.loggedEmployee))
                 {
                     VisualHelper.ShowInfo("Attendance marked");
                     RefreshLV(calShifts.SelectionRange.Start);

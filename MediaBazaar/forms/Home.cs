@@ -22,10 +22,10 @@ namespace MediaBazaar
             InitializeComponent();
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
             tmr.Start();
-            lblRole.Text = EmployeeService.loggedEmp.Role;
-            lblUsername.Text = $"Welcome, {EmployeeService.loggedEmp.Username}";
+            lblRole.Text = DesktopUtils.loggedEmployee.Role;
+            lblUsername.Text = $"Welcome, {DesktopUtils.loggedEmployee.Username}";
 
-            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            string loggedEmpRole = DesktopUtils.loggedEmployee.Role.ToUpper();
             if (loggedEmpRole == "DEPOT MANAGER")
             {
                 btnManageDepartments.Enabled = false;
@@ -75,7 +75,7 @@ namespace MediaBazaar
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            EmployeeService.loggedEmp = null;
+            DesktopUtils.loggedEmployee = null;
             closedByButton = true;
             this.Dispose();
         }

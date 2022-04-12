@@ -111,7 +111,7 @@ namespace MediaBazaar.forms
             else 
                 cbxDepartment.Enabled = false;
 
-            if (cbxRole.Text == "CEO" && EmployeeService.loggedEmp.Role != "CEO")
+            if (cbxRole.Text == "CEO" && DesktopUtils.loggedEmployee.Role != "CEO")
                 cbxRole.SelectedIndex = 0;
             if (cbxRole.Text.ToLower() == "employee manager" || cbxRole.Text.ToLower() == "ceo")
                 ChangeDepartment("Management");

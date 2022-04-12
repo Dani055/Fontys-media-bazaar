@@ -24,7 +24,7 @@ namespace MediaBazaar
         }
         private void HideUI()
         {
-            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            string loggedEmpRole = DesktopUtils.loggedEmployee.Role.ToUpper();
             if (loggedEmpRole == "EMPLOYEE MANAGER" || loggedEmpRole == "CEO")
             {
                 pnlTools.Visible = true;
@@ -34,14 +34,14 @@ namespace MediaBazaar
         }
         private void ManageEmployees_Load(object sender, EventArgs e)
         {
-            RefreshEmployees();
+            RefreshEmployees(DesktopUtils.loggedEmployee);
         }
 
-        private void RefreshEmployees()
+        private void RefreshEmployees(Employee loggedEmp)
         {
             try
             {
-                List<Employee> emps = EmployeeService.GetEmployees();
+                List<Employee> emps = EmployeeService.GetEmployees(loggedEmp);
                 PopulateListView(emps);
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace MediaBazaar
             AddEmployee addEmployee = new AddEmployee();
             addEmployee.ShowDialog();
             addEmployee.Dispose();
-            RefreshEmployees();
+            RefreshEmployees(DesktopUtils.loggedEmployee);
         }
         private void btnRemoveEmployee_Click(object sender, EventArgs e)
         {
@@ -105,7 +105,7 @@ namespace MediaBazaar
                 {
                     VisualHelper.ShowInfo("Employee removed");
                 }
-                RefreshEmployees();
+                RefreshEmployees(DesktopUtils.loggedEmployee);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -127,7 +127,7 @@ namespace MediaBazaar
                 EditEmployee editEmployee = new EditEmployee(Convert.ToInt16(lvEmps.SelectedItems[0].Text));
                 editEmployee.ShowDialog();
                 editEmployee.Dispose();
-                RefreshEmployees();
+                RefreshEmployees(DesktopUtils.loggedEmployee);
             }
 
             catch (ArgumentOutOfRangeException ex)
@@ -143,7 +143,7 @@ namespace MediaBazaar
             string keyword = tbSearchEmps.Text.Trim();
             try
             {
-                List<Employee> emps = EmployeeService.SearchEmployees(keyword);
+                List<Employee> emps = EmployeeService.SearchEmployees(keyword, DesktopUtils.loggedEmployee);
                 PopulateListView(emps);
             }
             catch (Exception ex)

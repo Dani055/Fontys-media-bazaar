@@ -38,7 +38,7 @@ namespace MediaBazaar.forms
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            int id = EmployeeService.GetNewAvailableID();
+            int id = EmployeeService.GetNewAvailableID(DesktopUtils.loggedEmployee);
             string uname = tbxUsername.Text;
             string pass = tbxPassword.Text;
             string fName = tbxFirstName.Text;

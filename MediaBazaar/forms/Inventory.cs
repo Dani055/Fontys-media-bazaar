@@ -26,7 +26,7 @@ namespace MediaBazaar.forms
         private void Inventory_Load(object sender, EventArgs e)
         {
             lvProducts.Items[0].Selected = true;          
-            string loggedEmpRole = EmployeeService.loggedEmp.Role.ToUpper();
+            string loggedEmpRole = DesktopUtils.loggedEmployee.Role.ToUpper();
             if (loggedEmpRole != "DEPOT MANAGER")
             {
                 CanAccessControls = false;              
@@ -117,7 +117,7 @@ namespace MediaBazaar.forms
             //    pnlTools.Visible = false;
             //}
 
-            if (lvProducts.SelectedItems.Count != 0 && EmployeeService.loggedEmp.Role.ToUpper() == "DEPARTMENT MANAGER")
+            if (lvProducts.SelectedItems.Count != 0 && DesktopUtils.loggedEmployee.Role.ToUpper() == "DEPARTMENT MANAGER")
             {
                 btnSendRestockRequest.Enabled = true;
             }

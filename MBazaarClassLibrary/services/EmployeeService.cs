@@ -10,10 +10,10 @@ namespace MBazaarClassLibrary.services
 {
     public static class EmployeeService
     {
-        public static Employee loggedEmp { get; set; }
+        
         private static MySqlConnection conn = new MySqlConnection(Utils.connectionString);
 
-        public static bool Login(string username, string password)
+        public static Employee Login(string username, string password)
         {
             try
             {
@@ -27,6 +27,7 @@ namespace MBazaarClassLibrary.services
 
                 if (reader.HasRows)
                 {
+                    Employee newLoggedEmp = null;
                     while (reader.Read())
                     {
 
@@ -43,10 +44,10 @@ namespace MBazaarClassLibrary.services
                         string phone = reader["phone"].ToString();
                         string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
                         Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType);
-                        EmployeeService.loggedEmp = emp;
+                        newLoggedEmp = emp;
                     }
                     reader.Close();
-                    return true;
+                    return newLoggedEmp;
                 }
                 else
                 {
@@ -60,7 +61,7 @@ namespace MBazaarClassLibrary.services
             }
 
         }
-        public static List<Employee> GetEmployees()
+        public static List<Employee> GetEmployees(Employee loggedEmp)
         {
             try
             {
@@ -115,7 +116,7 @@ namespace MBazaarClassLibrary.services
             }
         }
 
-        public static List<Employee> SearchEmployees(string keyword)
+        public static List<Employee> SearchEmployees(string keyword, Employee loggedEmp)
         {
             try
             {
@@ -290,11 +291,11 @@ namespace MBazaarClassLibrary.services
             }
             finally { conn.Close(); }
         }
-        public static int GetNewAvailableID()
+        public static int GetNewAvailableID(Employee loggedEmp)
         {
             try
             {
-                var emps = GetEmployees();
+                var emps = GetEmployees(loggedEmp);
                 return emps.ElementAt(emps.Count - 1).Id + 1;
             }
             catch (Exception)

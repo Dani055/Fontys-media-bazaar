@@ -34,7 +34,6 @@ namespace MediaBazaar
             this.lvEmps = new System.Windows.Forms.ListView();
             this.colID = new System.Windows.Forms.ColumnHeader();
             this.colUsername = new System.Windows.Forms.ColumnHeader();
-            this.colPass = new System.Windows.Forms.ColumnHeader();
             this.colRole = new System.Windows.Forms.ColumnHeader();
             this.colFirstname = new System.Windows.Forms.ColumnHeader();
             this.colLastname = new System.Windows.Forms.ColumnHeader();
@@ -70,7 +69,6 @@ namespace MediaBazaar
             this.lvEmps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
             this.colUsername,
-            this.colPass,
             this.colRole,
             this.colFirstname,
             this.colLastname,
@@ -99,10 +97,6 @@ namespace MediaBazaar
             // colUsername
             // 
             this.colUsername.Text = "Username";
-            // 
-            // colPass
-            // 
-            this.colPass.Text = "Password";
             // 
             // colRole
             // 
@@ -290,7 +284,6 @@ namespace MediaBazaar
         private System.Windows.Forms.ListView lvEmps;
         private System.Windows.Forms.ColumnHeader colID;
         private System.Windows.Forms.ColumnHeader colUsername;
-        private System.Windows.Forms.ColumnHeader colPass;
         private System.Windows.Forms.ColumnHeader colRole;
         private System.Windows.Forms.ColumnHeader colFirstname;
         private System.Windows.Forms.ColumnHeader colLastname;

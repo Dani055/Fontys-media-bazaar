@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MBazaarClassLibrary.data_access;
 using MBazaarClassLibrary.models;
 using MySql.Data.MySqlClient;
 
@@ -15,51 +16,58 @@ namespace MBazaarClassLibrary.services
 
         public static Employee Login(string username, string password)
         {
+            Employee emp = DataAccessEmployee.Login(username);
+            bool match = Utils.Verify(password, emp.Password);
+            if (!match)
+            {
+                throw new Exception("Wrong username or password!");
+            }
+            return emp; 
+
+        }
+        public static void UpdatePasswords()
+        {
+            MySqlConnection conn = new MySqlConnection(Utils.connectionString);
             try
             {
-                string sql = "SELECT * FROM Employee WHERE username = @username and password = @password";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
+                string sql = "SELECT * from Employee where password = 123";
 
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
+                List<Employee> emps = new List<Employee>();
 
-                if (reader.HasRows)
+                while (reader.Read())
                 {
-                    Employee newLoggedEmp = null;
-                    while (reader.Read())
-                    {
-
-                        int id = reader.GetInt32("id");
-                        string uname = reader.GetString("username");
-                        string pwd = reader.GetString("password");
-                        string firstname = reader.GetString("firstName");
-                        string lastname = reader.GetString("lastName");
-                        string address = reader.GetString("address");
-                        double wage = reader.GetDouble("hourlyWage");
-                        string departmentid = reader["departmentId"].ToString();
-                        string role = reader["role"].ToString();
-                        string email = reader["email"].ToString();
-                        string phone = reader["phone"].ToString();
-                        string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
-                        Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType);
-                        newLoggedEmp = emp;
-                    }
-                    reader.Close();
-                    return newLoggedEmp;
+                    int id = reader.GetInt32("id");
+                    string uname = reader.GetString("username");
+                    string pwd = reader.GetString("password");
+                    string firstname = reader.GetString("firstName");
+                    string lastname = reader.GetString("lastName");
+                    string address = reader.GetString("address");
+                    double wage = reader.GetDouble("hourlyWage");
+                    string departmentid = reader["departmentId"].ToString();
+                    string role = reader["role"].ToString();
+                    string email = reader["email"].ToString();
+                    string phone = reader["phone"].ToString();
+                    string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
+                    bool isStudent = reader.GetBoolean("isStudent");
+                    Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) { IsStudent = isStudent };
+                    emps.Add(emp);
                 }
-                else
+                reader.Close();
+
+                foreach (Employee e in emps)
                 {
-                    reader.Close();
-                    throw new Exception("Wrong username or password!");
+                    string newPass = Utils.Hash(e.Password);
+                    e.Password = newPass;
+                    DataAccessEmployee.UpdateEmployee(e);
                 }
             }
             finally
             {
                 conn.Close();
             }
-
         }
         public static List<Employee> GetEmployees(Employee loggedEmp)
         {
@@ -213,11 +221,13 @@ namespace MBazaarClassLibrary.services
             try
             {
                 ValidateEmployee(e.Username, e.Password, e.FirstName, e.LastName, e.Address);
+                string hashedPass = Utils.Hash(e.Password);
+
                 string query = "INSERT INTO Employee (username,password,firstName,lastName,address,hourlyWage,departmentId,role,email,phone,contractType,isStudent) VALUES (@Username, @Password, @FirstName, @LastName, @Address, @HourlyWage, @DepartmentId, @Role, @Email, @Phone, @ContractType, @isStudent)";
                 MySqlCommand command = new MySqlCommand(query, conn);
 
                 command.Parameters.AddWithValue("@Username", e.Username);
-                command.Parameters.AddWithValue("@Password", e.Password);
+                command.Parameters.AddWithValue("@Password", hashedPass);
                 command.Parameters.AddWithValue("@FirstName", e.FirstName);
                 command.Parameters.AddWithValue("@LastName", e.LastName);
                 command.Parameters.AddWithValue("@Address", e.Address);
@@ -261,35 +271,16 @@ namespace MBazaarClassLibrary.services
             { conn.Close(); }
 
         }
-        public static bool UpdateEmployee(Employee e)
+        public static bool UpdateEmployee(Employee loggedEmp, Employee e)
         {
-            try
+            ValidateEmployee(e.Username, e.Password, e.FirstName, e.LastName, e.Address);
+            string hashedPass = Utils.Hash(e.Password);
+            e.Password = hashedPass;
+            if (loggedEmp.Role.ToLower() != "ceo" && loggedEmp.Role.ToLower() != "employee manager")
             {
-                ValidateEmployee(e.Username, e.Password, e.FirstName, e.LastName, e.Address);
-                string query = "UPDATE Employee SET username = @newUName, password = @newPassword, firstName = @newFirstName, lastName = @newLastName, address = @newAddress, hourlyWage = @newHourlyWage, departmentId = @newDepartmentId, role = @newRole, email = @newEmail, phone = @newPhone, contractType = @newContractType, isStudent = @newIsStudent WHERE id = @id";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@id", e.Id);
-                command.Parameters.AddWithValue("@newUName", e.Username);
-                command.Parameters.AddWithValue("@newPassword", e.Password);
-                command.Parameters.AddWithValue("@newFirstName", e.FirstName);
-                command.Parameters.AddWithValue("@newLastName", e.LastName);
-                command.Parameters.AddWithValue("@newAddress", e.Address);
-                command.Parameters.AddWithValue("@newHourlyWage", e.HourlyWage);
-                command.Parameters.AddWithValue("@newDepartmentId", e.DepartmentId == 0 ? DBNull.Value : e.DepartmentId);
-                command.Parameters.AddWithValue("@newRole", e.Role);
-                command.Parameters.AddWithValue("@newEmail", e.Email);
-                command.Parameters.AddWithValue("@newPhone", e.Phone);
-                command.Parameters.AddWithValue("@newContractType", e.ContractType);
-                command.Parameters.AddWithValue("@newIsStudent", e.IsStudent);
-
-                conn.Open();
-                if (command.ExecuteNonQuery() > 0)
-                {
-                    return true;
-                }
-                return false;
+                throw new Exception("You are not authorized!");
             }
-            finally { conn.Close(); }
+            return DataAccessEmployee.UpdateEmployee(e);
         }
         public static int GetNewAvailableID(Employee loggedEmp)
         {

@@ -47,7 +47,6 @@ namespace MediaBazaar.forms
                 return;
 
             tbxUsername.Text = emp.Username;
-            tbxPassword.Text = emp.Password;
             tbxFirstName.Text = emp.FirstName;
             tbxLastName.Text = emp.LastName;
             tbxAddress.Text = emp.Address;
@@ -72,7 +71,7 @@ namespace MediaBazaar.forms
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
             string uname = tbxUsername.Text;
-            string pass = tbxPassword.Text;
+            string pass = tbxPassword.Text.Trim();
             string fName = tbxFirstName.Text;
             string lName = tbxLastName.Text;
             double wage = (double)numericWage.Value;
@@ -82,6 +81,8 @@ namespace MediaBazaar.forms
             string departmentId = cbxDepartment.SelectedValue == null ? "" : cbxDepartment.SelectedValue.ToString();
             string role = cbxRole.Text.ToString();
             string contractType = cbxContract.Text.ToString();
+
+
             Employee newEmp = new Employee(emp.Id, uname, pass, fName, lName, wage, address, departmentId, role, email, phone, contractType) { IsStudent = cbxStudent.Checked };
             if (role == "CEO")
             {
@@ -91,7 +92,7 @@ namespace MediaBazaar.forms
             }
             try
             {
-                if (EmployeeService.UpdateEmployee(newEmp))
+                if (EmployeeService.UpdateEmployee(DesktopUtils.loggedEmployee, newEmp))
                 {
                     VisualHelper.ShowInfo("Employee information edited");
                 }

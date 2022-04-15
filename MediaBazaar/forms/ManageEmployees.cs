@@ -57,11 +57,11 @@ namespace MediaBazaar
             {
                 string depName = DepartmentService.GetDepartmentByID(emp.DepartmentId)?.Name;
                 depName ??= String.Empty;
-                string[] row = { emp.Id.ToString(), emp.Username, emp.Password, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), emp.ContractType, depName, (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
+                string[] row = { emp.Id.ToString(), emp.Username, emp.Role, emp.FirstName, emp.LastName, emp.HourlyWage.ToString(), emp.ContractType, depName, (emp.DepartmentId.ToString() == "-1" ? "" : emp.DepartmentId.ToString()), emp.Email, emp.Phone, emp.IsStudent.ToString() };
                 ListViewItem item = new ListViewItem(row);
                 item.Tag = emp;
                 item.UseItemStyleForSubItems = false;
-                item.SubItems[12].BackColor = emp.IsStudent ? Color.Tomato : Color.LightGreen;
+                item.SubItems[11].BackColor = emp.IsStudent ? Color.Tomato : Color.LightGreen;
 
                 lvEmps.Items.Add(item);
             }

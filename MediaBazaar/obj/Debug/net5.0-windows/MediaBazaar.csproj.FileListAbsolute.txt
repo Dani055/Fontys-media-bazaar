@@ -40,7 +40,6 @@ C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
-C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CopyComplete
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.exe
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.deps.json
 C:\Users\NIKI\source\repos\media-bazaar-group-6\MediaBazaar\bin\Debug\net5.0-windows\MediaBazaar.runtimeconfig.json
@@ -127,3 +126,4 @@ D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\refin
 D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.pdb
 D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.genruntimeconfig.cache
 D:\GROUP PROJECT\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\ref\MediaBazaar.dll
+C:\Users\Nitro\Desktop\media-bazaar-group-6\MediaBazaar\obj\Debug\net5.0-windows\MediaBazaar.csproj.CopyComplete

@@ -293,6 +293,7 @@ namespace MediaBazaar.forms
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxPassword.Location = new System.Drawing.Point(12, 106);
             this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PlaceholderText = "Enter new password...";
             this.tbxPassword.Size = new System.Drawing.Size(204, 27);
             this.tbxPassword.TabIndex = 26;
             // 

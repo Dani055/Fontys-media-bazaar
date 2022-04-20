@@ -15,7 +15,7 @@ namespace MBazaarClassLibrary.data_access
             MySqlConnection conn = new MySqlConnection(Utils.connectionString);
             try
             {
-                string sql = "SELECT * FROM Employee WHERE username = @username";
+                string sql = "SELECT * FROM Employee INNER JOIN Department on Employee.departmentId = Department.departmentId WHERE username = @username";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@username", username);
 
@@ -33,11 +33,12 @@ namespace MBazaarClassLibrary.data_access
                     string address = reader.GetString("address");
                     double wage = reader.GetDouble("hourlyWage");
                     string departmentid = reader["departmentId"].ToString();
+                    string departmentName = reader["departmentName"].ToString();
                     string role = reader["role"].ToString();
                     string email = reader["email"].ToString();
                     string phone = reader["phone"].ToString();
                     string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
-                    Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType);
+                    Employee emp = new Employee(id, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) { DepartmentName = departmentName};
                     reader.Close();
 
                     return emp;

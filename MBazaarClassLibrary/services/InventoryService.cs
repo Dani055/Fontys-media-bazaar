@@ -18,7 +18,7 @@ namespace MBazaarClassLibrary.services
 
             using (conn)
             {
-                string query = "SELECT * FROM Product";
+                string query = "SELECT * FROM Product INNER JOIN Department on Product.departmentId = Department.departmentId";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 conn.Open();
@@ -30,11 +30,12 @@ namespace MBazaarClassLibrary.services
                     string productName = reader.GetString("productName");
                     string productEAN = reader.GetString("productEan");
                     int deptID = reader.GetInt32("departmentId");
+                    string deptName = reader.GetString("departmentName");
                     int amountInStock = reader.GetInt32("amountInStock");
                     int minStock = reader.GetInt32("minStock");
                     double price = reader.GetDouble("price");
 
-                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
+                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price) { DepartmentName = deptName};
                     products.Add(p);
 
                 }
@@ -149,7 +150,7 @@ namespace MBazaarClassLibrary.services
 
             using (conn)
             {
-                string query = $"SELECT * FROM Product WHERE productName LIKE @str OR productId LIKE @str OR productEan LIKE @str";
+                string query = $"SELECT * FROM Product WHERE productName LIKE @str OR productId LIKE @str OR productEan LIKE @str INNER JOIN Department on Product.departmentId = Department.departmentId";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@str", "%" + str + "%");
@@ -163,11 +164,12 @@ namespace MBazaarClassLibrary.services
                     string productName = reader.GetString("productName");
                     string productEAN = reader.GetString("productEan");
                     int deptID = reader.GetInt32("departmentId");
+                    string deptName = reader.GetString("departmentName");
                     int amountInStock = reader.GetInt32("amountInStock");
                     int minStock = reader.GetInt32("minStock");
                     double price = reader.GetDouble("price");
 
-                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
+                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price) { DepartmentName = deptName};
                     foundProducts.Add(p);
 
                 }

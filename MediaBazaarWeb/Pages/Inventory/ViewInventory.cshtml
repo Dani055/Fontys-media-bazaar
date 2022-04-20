@@ -1,0 +1,38 @@
+﻿@page
+@model MediaBazaarWeb.Pages.Inventory.ViewInventoryModel
+@using MBazaarClassLibrary.models
+
+<div class="wrapper">
+    <div class="content-header">
+        <h2>Media Bazaar's inventory</h2>
+        <form class="search">
+            <input type="text" asp-for="keyword" placeholder="Look for any item">
+            <button type="submit">Search...</button>
+        </form>
+    </div>
+    <div class="inventory-items">
+        @foreach (Product item in Model.items)
+        {
+            <div class="item-card">
+                <div class="item-header">
+                    <h3>@item.ProductName</h3>
+                </div>
+                <div class="item-content">
+                    @if (item.AmountInStock < item.MinStock)
+                    {
+                        <p><span class="red">Qty: @item.AmountInStock</span></p>
+                    }
+                    else
+                    {
+                        <p>Qty: @item.AmountInStock</p>
+                    }
+                    <p>Price: <span class="green">@item.Price €</span></p>
+                    <p>Department: @item.DepartmentName</p>
+                </div>
+                <div class="item-footer">
+                    <p>EAN: @item.ProductEAN</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -38,6 +38,44 @@ namespace MBazaarClassLibrary.services
                 return DataAccessWorkday.GetDepartmentWorkdaysQuery(date, loggedEmp.DepartmentId);
             }
         }
+        public static List<Workday> GetOwnWorkweek(Employee loggedEmp)
+        {
+            DateTime now = Utils.GetSystemDatetime();
+
+            List<Workday> foundDays = DataAccessWorkday.GetEmpWorkdaysBetweenDatesQuery(loggedEmp, now.AddDays(-1), now.AddDays(6));
+            List<DateTime> days = new List<DateTime>()
+            {
+                now.AddDays(-1),
+                now,
+                now.AddDays(1),
+                now.AddDays(2),
+                now.AddDays(3),
+                now.AddDays(4),
+                now.AddDays(5),
+                now.AddDays(6)
+            };
+
+            List<Workday> workweek = new List<Workday>();
+
+            foreach (DateTime day in days)
+            {
+                workweek.Add(FindWorkdayInList(day, foundDays));
+            }
+
+            return workweek;
+        }
+
+        private static Workday FindWorkdayInList(DateTime date, List<Workday> workdays)
+        {
+            foreach (Workday wd in workdays)
+            {
+                if (DateTime.Parse(wd.Date).Date == date.Date)
+                {
+                    return wd;
+                }
+            }
+            return null;
+        }
         public static bool AddWorkday(Employee emp, Workday workday, Employee loggedEmp)
         {
             if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "CEO")

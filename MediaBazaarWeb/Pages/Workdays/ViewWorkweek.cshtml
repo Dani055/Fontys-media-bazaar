@@ -1,0 +1,117 @@
+﻿@page
+@model MediaBazaarWeb.Pages.Workdays.ViewWorkweekModel
+@using MBazaarClassLibrary.models
+@using MBazaarClassLibrary
+
+<div class="wrapper">
+    <div class="content-header">
+        <h2>@HttpContext.Session.GetLoggedEmp().FirstName @HttpContext.Session.GetLoggedEmp().LastName's shifts</h2>
+        <p>You are in the @HttpContext.Session.GetLoggedEmp().DepartmentName department</p>
+    </div>
+    <div class="shifts">
+        @for (int i = 0; i < Model.workweek.Count - 1; i++)
+        {
+            @if (i == 0)
+            {
+                @if (Model.workweek[i] == null)
+                {
+                    <div class="shift">
+                        <div class="shift-header">
+                            <h3>Yesterday : <span class="blue">Day Off</span></h3>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="shift">
+                        <div class="shift-header">
+                            <h3>
+                                Yesterday :
+                                @if (Model.workweek[i].Missing)
+                                {
+                                    <span class="red">Missing</span>
+                                }
+                                else
+                                {
+                                    <span class="green">Attended</span>
+                                }
+                            </h3>
+                        </div>
+                        <div class="shift-content">
+                            <p>@Model.workweek[i].Shifts.Replace("#", " → ")</p>
+                            <p>@Model.workweek[i].Shifts.Replace("#", " | ").Replace("morning", "8:00 → 12:00").Replace("afternoon", "12:00 → 16:00").Replace("evening", "16:00 → 20:00")</p>
+                        </div>
+                    </div>
+                }
+
+            }
+            else if (i == 1)
+            {
+                @if (Model.workweek[i] == null)
+                {
+                    <div class="shift current-day">
+                        <div class="shift-header">
+                            <h3>Today : <span class="blue">Day Off</span></h3>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="shift current-day">
+                        <div class="shift-header">
+                            <h3>
+                                Today :
+                                @if (Model.workweek[i].Missing)
+                                {
+                                    <span class="red">Missing</span>
+                                }
+                                else
+                                {
+                                    <span class="green">Attended</span>
+                                }
+                            </h3>
+                        </div>
+                        <div class="shift-content current-content">
+                            <p>@Model.workweek[i].Shifts.Replace("#", " → ")</p>
+                            <p>@Model.workweek[i].Shifts.Replace("#", " | ").Replace("morning", "8:00 → 12:00").Replace("afternoon", "12:00 → 16:00").Replace("evening", "16:00 → 20:00")</p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                @if (Model.workweek[i] == null)
+                {
+                    <div class="shift">
+                        <div class="shift-header">
+                            <h3>@Utils.GetSystemDatetime().AddDays(i - 1).ToShortDateString() : <span class="blue">Day Off</span></h3>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="shift">
+                        <div class="shift-header">
+                            <h3>
+                                @Utils.GetSystemDatetime().AddDays(i - 1).ToShortDateString() :
+                                @if (Model.workweek[i].Missing)
+                                {
+                                    <span class="red">Missing</span>
+                                }
+                                else
+                                {
+                                    <span class="green">Attended</span>
+                                }
+                               </h3>
+                        </div>
+                        <div class="shift-content">
+                            <p>@Model.workweek[i].Shifts.Replace("#", " → ")</p>
+                            <p>@Model.workweek[i].Shifts.Replace("#", " | ").Replace("morning", "8:00 → 12:00").Replace("afternoon", "12:00 → 16:00").Replace("evening", "16:00 → 20:00")</p>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        
+    </div>
+</div>

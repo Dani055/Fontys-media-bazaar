@@ -15,7 +15,10 @@ namespace MBazaarClassLibrary
         {
             return $"{date.Year}-{date.Month}-{date.Day}";
         }
-
+        public static DateTime GetSystemDatetime()
+        {
+            return DateTime.Now;
+        }
         private const int SaltSize = 16;
 
 

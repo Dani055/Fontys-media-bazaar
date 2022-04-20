@@ -1,28 +1,23 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using MBazaarClassLibrary.models;
+using MBazaarClassLibrary.services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
-namespace MediaBazaarWeb.Pages
+namespace MediaBazaarWeb.Pages.Workdays
 {
-    public class IndexModel : PageModel
+    public class ViewWorkweekModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly INotyfService _notyf;
-        public IndexModel(ILogger<IndexModel> logger, INotyfService notyf)
-        {
-            _logger = logger;
-            _notyf = notyf;
-        }
+        public List<Workday> workweek = new List<Workday>();
 
         public void OnGet()
         {
-            
+            workweek = WorkdayService.GetOwnWorkweek(HttpContext.Session.GetLoggedEmp());
         }
     }
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaBazaar", "MediaBazaar.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MBazaarClassLibrary", "..\MBazaarClassLibrary\MBazaarClassLibrary.csproj", "{9465FF6F-BB8C-4892-B685-2F353CBEAD2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaBazaarWeb", "..\MediaBazaarWeb\MediaBazaarWeb.csproj", "{B2B428E1-92CC-4356-97B2-DB2278A72356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaBazaarWeb", "..\MediaBazaarWeb\MediaBazaarWeb.csproj", "{B2B428E1-92CC-4356-97B2-DB2278A72356}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

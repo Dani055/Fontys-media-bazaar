@@ -17,16 +17,23 @@
     <div class="site">
         <header>
             <div class="wrapper">
-                <a class="logo" href="index.html"><img src="images/logo_no_text.png" alt=""></a>
-                <p class="welcome">Welcome, anonymous</p>
+                <a class="logo" asp-page="/Index"><img src="~/images/logo_no_text.png" alt=""></a>
+                @if (Context.Session.GetLoggedEmp() != null)
+                {
+                    <p class="welcome">Welcome, @Context.Session.GetLoggedEmp().FirstName</p>
+                }
+
                 <nav>
                     <ul>
-                        <li>
-                            <a href="shifts.html">My shifts</a>
-                        </li>
-                        <li>
-                            <a href="inventory.html">Inventory</a>
-                        </li>
+                        @if (Context.Session.GetLoggedEmp() != null)
+                        {
+                            <li>
+                                <a asp-page="/Workdays/ViewWorkweek">My shifts</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Inventory/ViewInventory">Inventory</a>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -42,7 +49,7 @@
                 </div>
                 <div class="footer-content right">
                     <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-gitlab"></i></a>
+                    <a href="https://git.fhict.nl/I491984/media-bazaar-group-6"><i class="fab fa-gitlab"></i></a>
                     <a href=""><i class="fab fa-instagram-square"></i></a>
                     <a href=""><i class="fab fa-twitter"></i></a>
                 </div>

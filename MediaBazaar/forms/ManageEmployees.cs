@@ -29,8 +29,17 @@ namespace MediaBazaar
             {
                 pnlTools.Visible = true;
             }
+            else if (loggedEmpRole == "DEPARTMENT MANAGER")
+            {
+                pbxAdd.Visible = false;
+                pbxRemove.Visible = false;
+                pbxEdit.Visible = false;
+                pbxManageShift.Visible = false;
+            }
             else
+            {
                 pnlTools.Visible = false;
+            }  
         }
         private void ManageEmployees_Load(object sender, EventArgs e)
         {

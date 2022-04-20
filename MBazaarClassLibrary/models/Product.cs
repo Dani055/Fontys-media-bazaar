@@ -13,6 +13,7 @@ namespace MBazaarClassLibrary.models
         public string ProductName { get; set; }
         public string ProductEAN { get; set; }
         public int DepartmentID { get; set; }
+        public string DepartmentName { get; set; }
         public int AmountInStock { get; set; }
         public int MinStock { get; set; }
         public double Price { get; set; }

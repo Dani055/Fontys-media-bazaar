@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MediaBazaarWeb</title>
+
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/header.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <script src="https://kit.fontawesome.com/8604df3c08.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="site">
+        <header>
+            <div class="wrapper">
+                <a class="logo" href="index.html"><img src="images/logo_no_text.png" alt=""></a>
+                <p class="welcome">Welcome, anonymous</p>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="shifts.html">My shifts</a>
+                        </li>
+                        <li>
+                            <a href="inventory.html">Inventory</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>
+            <div class="wrapper">
+                <div class="footer-content">
+                    <p>Media Bazaar</p>
+                    <p>Copyright © 2022 - Media Bazaar</p>
+                </div>
+                <div class="footer-content right">
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-gitlab"></i></a>
+                    <a href=""><i class="fab fa-instagram-square"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await Component.InvokeAsync("Notyf")
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

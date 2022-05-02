@@ -112,5 +112,29 @@ namespace MBazaarClassLibrary
             }
             return true;
         }
+
+
+
+        /// <summary>
+        /// Gets the following week's intervals based on current local time
+        /// </summary>
+        /// <returns></returns>
+        public static Tuple<DateTime, DateTime> GetNextWeekIntervals()
+        {
+
+            DateTime today = DateTime.Today;
+
+            do
+            {
+                today = today.AddDays(1);
+
+            } while (today.DayOfWeek != DayOfWeek.Monday);
+
+            DateTime firstDateOfWeek = today;
+            DateTime lastDateOfWeek = firstDateOfWeek.AddDays(6);
+
+            return new Tuple<DateTime, DateTime>(firstDateOfWeek, lastDateOfWeek);
+
+        }
     }
 }

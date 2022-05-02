@@ -242,5 +242,34 @@ namespace MBazaarClassLibrary.data_access
                 connection.Close();
             }
         }
+
+        public static bool DeleteWorkdaysInTimeInterval(Tuple<DateTime, DateTime> dateInterval) {
+
+
+            using MySqlConnection connection = new MySqlConnection(Utils.connectionString);
+            try {
+
+                string sql = "DELETE from Workday WHERE day BETWEEN @dateIntervalLOWER AND @dateIntervalUPPER";
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@dateIntervalLOWER", dateInterval.Item1);
+                command.Parameters.AddWithValue("@dateIntervalUPPER", dateInterval.Item2);
+                connection.Open();
+
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    return true;
+                }
+                return false;
+
+            }
+            catch {
+            
+                return false;
+            
+            }
+
+        
+        
+        }
     }
 }

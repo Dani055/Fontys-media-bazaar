@@ -165,5 +165,13 @@ namespace MediaBazaar
         {
             VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
+
+        private void btnAutomaticScheduler_Click(object sender, EventArgs e)
+        {
+
+            AutomaticScheduler automaticScheduler = new();
+            automaticScheduler.ShowDialog();
+
+        }
     }
 }

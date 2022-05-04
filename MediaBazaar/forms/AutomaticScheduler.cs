@@ -125,7 +125,12 @@ namespace MediaBazaar.forms
 
             }
 
-            int studentShiftPercentage = studentShifts* (studentShifts + normalEmployeesShiftCount) / 100 ;
+            // shift count not multiplied - done
+            normalEmployeesShiftCount *= 10;
+            // normalEmployeesShiftCount *= 10;
+
+            //remove multiplication - done
+            int studentShiftPercentage = (studentShifts / (studentShifts + normalEmployeesShiftCount)) * 100 ;
 
             int morningPercentage;
             int afternoonPercentage;
@@ -141,7 +146,8 @@ namespace MediaBazaar.forms
             {
 
                 eveningPercentage = 33 - studentShiftPercentage;
-                morningPercentage = studentShiftPercentage / 2 + 33;
+                morningPercentage = 33; // moved to 33%
+               // morningPercentage = studentShiftPercentage / 2 + 33;
                 afternoonPercentage = morningPercentage;
 
             }
@@ -156,26 +162,38 @@ namespace MediaBazaar.forms
             //the rest of the employees are assigned
             foreach (KeyValuePair<int, List<Employee>> department in employeesByDepartment)
             {
-                int dayOfWeek = 1;
+                
+
+                //probably not needed
                 int employeeCount = department.Value.Count;
 
                 DateTime dateOfWorkday = nextWeekInterval.Item1;
+
+                DateTime dayLeftOut = nextWeekInterval.Item1;
+
                 foreach (Employee employee in department.Value)
                 {
                     
                     int assignedShifts = 0;
                     //cant be more than 4 single shift days or the emp wont reach 40 hours contract
+
+                    
+
                     while (assignedShifts < 10)
                     {
                         bool prevEvening = false;
 
                         if (assignedShifts > 0)
-                        {
+                        { //              ----not needed ---------------------------------
                             prevEvening = workdays[workdays.Count - 1].EmpID == employee.Id && workdays[workdays.Count - 1].Shifts.Contains("evening");
                         }
 
-                        
-                        if (assignedShifts < 6)
+
+                        /*
+                         * right now, double shifts are forced mon-wed because of the assigned shifts check
+                         * fix: remove assigned shift check, instead for double shifts, check if afternoon is second minimum
+                        */
+                        if (assignedShifts < 8)
                         {
                             
                             if (currentMorningValue <= currentEveningValue && !prevEvening)
@@ -184,6 +202,7 @@ namespace MediaBazaar.forms
                                 workdays.Add(new Workday(employee.Id, dateOfWorkday.Date.ToString(Utils.DbDateFormat), "morning#afternoon", false));
                                 currentMorningValue += percentValueOfOneShift;
                                 currentAfternoonValue += percentValueOfOneShift;
+                                //currentAfternoonValue = (currentMorningValue + currentEveningValue) / 2;
                                 assignedShifts += 2;
 
 
@@ -191,9 +210,10 @@ namespace MediaBazaar.forms
 
                             else
                             {
-                                workdays.Add(new Workday(employee.Id, dateOfWorkday.Date.ToString(Utils.DbDateFormat), "afternoon#evening", false));
-                                currentAfternoonValue += percentValueOfOneShift;
+                                workdays.Add(new Workday(employee.Id, dateOfWorkday.Date.ToString(Utils.DbDateFormat), "afternoon#evening", false)); 
                                 currentEveningValue += percentValueOfOneShift;
+                                currentAfternoonValue += percentValueOfOneShift;
+                                //currentAfternoonValue = (currentMorningValue + currentEveningValue) / 2;
                                 assignedShifts += 2;
 
                             }
@@ -203,8 +223,20 @@ namespace MediaBazaar.forms
 
                         else
                         {
-                            double leastBusy = Math.Min(Math.Min(currentMorningValue, currentAfternoonValue), currentEveningValue);
+                            double leastBusy = Math.Min(Math.Min(currentMorningValue, currentAfternoonValue / 1.57), currentEveningValue);
 
+                            if (dateOfWorkday.Equals(dayLeftOut))
+                            {
+                                if (dateOfWorkday == nextWeekInterval.Item2)
+                                {
+                                    dateOfWorkday = nextWeekInterval.Item1;
+                                }
+                                else
+                                {
+                                    dateOfWorkday = dateOfWorkday.AddDays(1);
+                                }
+                                continue;
+                            }
                             if (leastBusy == currentMorningValue && !prevEvening)
                             {
                                 workdays.Add(new Workday(employee.Id, dateOfWorkday.Date.ToString(Utils.DbDateFormat), "morning", false));
@@ -214,7 +246,7 @@ namespace MediaBazaar.forms
                             }
                             else 
                             {
-                                if (leastBusy == currentAfternoonValue)
+                                if (leastBusy == currentAfternoonValue / 1.57)
                                 {
                                     workdays.Add(new Workday(employee.Id, dateOfWorkday.Date.ToString(Utils.DbDateFormat), "afternoon", false));
                                     currentAfternoonValue += percentValueOfOneShift;
@@ -241,6 +273,14 @@ namespace MediaBazaar.forms
                         }
                     }
 
+                    if (dayLeftOut == nextWeekInterval.Item2)
+                    {
+                        dayLeftOut = nextWeekInterval.Item1;
+                    }
+                    else
+                    {
+                        dayLeftOut = dayLeftOut.AddDays(1);
+                    }
 
                 }
 
@@ -256,7 +296,7 @@ namespace MediaBazaar.forms
             List<Workday> workdays = new List<Workday>();
             foreach (KeyValuePair<int, List<Employee>> department in studentEmployeesByDepartment)
             {
-                int dayLeftOut = 1;
+                int dayLeftOut = 0;
                 foreach (Employee employee in department.Value)
                 {
                     DateTime dateOfWorkday = nextWeekInterval.Item1;
@@ -276,7 +316,7 @@ namespace MediaBazaar.forms
                     }
 
                     //this is by far the most horrible looking thing ive ever written
-                    dayLeftOut = dayLeftOut == 7 ? 1 : dayLeftOut + 1;
+                    dayLeftOut = dayLeftOut == 6 ? 1 : dayLeftOut + 1;
 
                 }
 

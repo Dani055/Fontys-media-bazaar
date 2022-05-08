@@ -150,7 +150,7 @@ namespace MBazaarClassLibrary.services
 
             using (conn)
             {
-                string query = $"SELECT * FROM Product WHERE productName LIKE @str OR productId LIKE @str OR productEan LIKE @str INNER JOIN Department on Product.departmentId = Department.departmentId";
+                string query = $"SELECT * FROM Product INNER JOIN Department on Product.departmentId = Department.departmentId WHERE productName LIKE @str OR productId LIKE @str OR productEan LIKE @str";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@str", "%" + str + "%");

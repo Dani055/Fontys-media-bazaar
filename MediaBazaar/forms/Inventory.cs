@@ -21,6 +21,7 @@ namespace MediaBazaar.forms
             InitializeComponent();
             RefreshProducts();           
             pnlTools.Visible = false;
+            tbSearch.Select();
         }
 
         private void Inventory_Load(object sender, EventArgs e)
@@ -141,6 +142,12 @@ namespace MediaBazaar.forms
             {
                 VisualHelper.ShowError(ex.Message);
             }
+            tbSearch.Select();
+
+            if (lvProducts.Items.Count == 1)
+            {
+                tbSearch.Text = string.Empty;
+            }
 
 
         }
@@ -148,6 +155,8 @@ namespace MediaBazaar.forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshProducts();
+            tbSearch.Select();
+            tbSearch.Text = string.Empty;
         }
 
         private void btnSendRestockRequest_Click(object sender, EventArgs e)

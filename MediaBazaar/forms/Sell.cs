@@ -24,6 +24,9 @@ namespace MediaBazaar.forms
             btnAddAmountToCart.Enabled = false;
             btnRemoveEntry.Enabled = false;
             tbxTotal.Text = string.Empty;
+            tbSearch.Select();
+            chbxAutoAdd.Checked = true;
+            autoAddToolTip.SetToolTip(chbxAutoAdd, "For scanner convenience: check if you want item to be automatically added to cart");
         }
 
         private void RefreshProducts()
@@ -59,6 +62,16 @@ namespace MediaBazaar.forms
                     ListViewItem entry = new ListViewItem(p.GetDataArray());
                     lvAllItems.Items.Add(entry);
                 }
+
+                if (foundProducts.Count == 1 & chbxAutoAdd.Checked)
+                {
+                    lvAllItems.Items[0].Selected = true;
+                    lvAllItems.Items[0].Focused = true;
+
+                    AddToCart(1);
+                    tbSearch.Text = string.Empty;
+                }
+
             }
             catch (Exception ex)
             {
@@ -71,18 +84,35 @@ namespace MediaBazaar.forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshProducts();
+            tbSearch.Select();
+            tbSearch.Text = string.Empty;
         }
 
         private void btnAddAmountToCart_Click(object sender, EventArgs e)
         {
+            AddToCart(null);
+        }
+
+        private void AddToCart(int? quantity)
+        {
             int amount = 0;
 
-            if (nmrAddAmountToCart.Value == 0)
+            if (quantity.HasValue)
             {
-                return;
+                amount = quantity.Value;
+            } 
+            else
+            {
+                if (nmrAddAmountToCart.Value == 0)
+                {
+                    return;
+                } else
+                {
+                    amount = Convert.ToInt32(nmrAddAmountToCart.Value);
+                }
             }
 
-            amount = Convert.ToInt32(nmrAddAmountToCart.Value);
+            if (lvAllItems.SelectedItems.Count == 0) { return; }
 
             string[] cartItemInfo =
             {
@@ -96,6 +126,7 @@ namespace MediaBazaar.forms
             lvCart.Items.Add(cartItem);
 
             CalculateTotal();
+            tbSearch.Select();
         }
 
         private void CalculateTotal()

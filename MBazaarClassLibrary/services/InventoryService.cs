@@ -220,7 +220,7 @@ namespace MBazaarClassLibrary.services
 
             if (sellingAmount > currentAmountInStock)
             {
-                throw new Exception("One or more entries were not sold due to insufficient storage quantity");
+                throw new Exception($"Entry for {sellingAmount} of item #{id} was not sold due to insufficient storage quantity");
             }
 
             string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId";

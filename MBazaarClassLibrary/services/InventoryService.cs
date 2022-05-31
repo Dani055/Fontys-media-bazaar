@@ -50,7 +50,7 @@ namespace MBazaarClassLibrary.services
         {
             using (conn)
             {
-                string query = "INSERT INTO Product (productName,productEan,departmentId,amountInStock,minStock,price) VALUES (@productName,@productEan,@departmentId,@amountInStock,@minStock,@price)";
+                string query = "INSERT INTO Product (productName,productEan,departmentId,amountInStock,minStock,price,picture) VALUES (@productName,@productEan,@departmentId,@amountInStock,@minStock,@price,@picture)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@productName", newProduct.ProductName);
@@ -59,6 +59,8 @@ namespace MBazaarClassLibrary.services
                 cmd.Parameters.AddWithValue("@amountInStock", newProduct.AmountInStock);
                 cmd.Parameters.AddWithValue("@minStock", newProduct.MinStock);
                 cmd.Parameters.AddWithValue("@price", newProduct.Price);
+                cmd.Parameters.Add("@picture", MySqlDbType.MediumBlob);
+                cmd.Parameters["@picture"].Value = newProduct.Picture == null ? null : newProduct.Picture;
 
                 conn.Open();
                 if (cmd.ExecuteNonQuery() > 0)
@@ -76,7 +78,7 @@ namespace MBazaarClassLibrary.services
                 throw new Exception("No product");
             }
 
-            string query = "UPDATE Product SET productName = @newName, productEan = @newEan, departmentId = @newDept, amountInStock = @newAmountInStock, minStock = @newMinStock, price = @newPrice WHERE productId = @id";
+            string query = "UPDATE Product SET productName = @newName, productEan = @newEan, departmentId = @newDept, amountInStock = @newAmountInStock, minStock = @newMinStock, price = @newPrice, picture = @picture WHERE productId = @id";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@newName", prod.ProductName);
             cmd.Parameters.AddWithValue("@newEan", prod.ProductEAN);
@@ -85,6 +87,8 @@ namespace MBazaarClassLibrary.services
             cmd.Parameters.AddWithValue("@newMinStock", prod.MinStock);
             cmd.Parameters.AddWithValue("@newPrice", prod.Price);
             cmd.Parameters.AddWithValue("@id", prod.ProductID);
+            cmd.Parameters.Add("@picture", MySqlDbType.MediumBlob);
+            cmd.Parameters["@picture"].Value = prod.Picture == null ? null : prod.Picture;
 
             using (conn)
             {

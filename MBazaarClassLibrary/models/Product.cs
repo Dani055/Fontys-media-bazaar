@@ -17,6 +17,7 @@ namespace MBazaarClassLibrary.models
         public int AmountInStock { get; set; }
         public int MinStock { get; set; }
         public double Price { get; set; }
+        public byte[] Picture { get; set; }
 
         public Product(int id, string name, string ean, int deptID, int amountInStock, int minStock, double price)
         {
@@ -37,6 +38,17 @@ namespace MBazaarClassLibrary.models
             this.AmountInStock = amountInStock;
             this.MinStock = minStock;
             this.Price = price;
+        }
+
+        public Product(string name, string ean, int deptID, int amountInStock, int minStock, double price, byte[] picture)
+        {
+            this.ProductName = name;
+            this.ProductEAN = ean;
+            this.DepartmentID = deptID;
+            this.AmountInStock = amountInStock;
+            this.MinStock = minStock;
+            this.Price = price;
+            this.Picture = picture;
         }
 
         public int CompareTo(Product otherProduct)

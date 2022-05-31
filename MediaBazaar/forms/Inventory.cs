@@ -28,16 +28,16 @@ namespace MediaBazaar.forms
         {
             lvProducts.Items[0].Selected = true;          
             string loggedEmpRole = DesktopUtils.loggedEmployee.Role.ToUpper();
-            if (loggedEmpRole != "DEPOT MANAGER")
+            if (loggedEmpRole == "DEPOT MANAGER" || loggedEmpRole == "CEO")
             {
-                CanAccessControls = false;              
-                pnlTools.Visible = false;
+                CanAccessControls = true;              
+                pnlTools.Visible = true;
             }
             else
             {
-                CanAccessControls = true;
-                pnlTools.Visible = true;
-            }
+                CanAccessControls = false;
+                pnlTools.Visible = false;
+            }          
         }
         private void btnAddItem_Click(object sender, EventArgs e)
         {
@@ -56,6 +56,7 @@ namespace MediaBazaar.forms
                 foreach (Product p in products)
                 {
                     ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    entry.Tag = p;
                     lvProducts.Items.Add(entry);
                 }
             }
@@ -99,29 +100,24 @@ namespace MediaBazaar.forms
         }
 
         private void lvProducts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pnlTools.Visible = CanAccessControls;
+        {           
+
             if (lvProducts.SelectedItems.Count == 0)
             {
-                pnlTools.Visible = false;
-                //pbxRemove.Enabled = true;
-                //btnSendRestockRequest.Enabled = true;
-                //pbxEdit.Enabled = true;
-                //pnlTools.Visible = true;
-               
-            } 
-            //else
-            //{              
-            //    pbxRemove.Enabled = false;
-            //    btnSendRestockRequest.Enabled = false;
-            //    pbxEdit.Enabled = false;
-            //    pnlTools.Visible = false;
-            //}
+                pnlTools.Visible = false;                            
+            }           
 
             if (lvProducts.SelectedItems.Count != 0 && DesktopUtils.loggedEmployee.Role.ToUpper() == "DEPARTMENT MANAGER")
             {
                 btnSendRestockRequest.Enabled = true;
             }
+
+            if (lvProducts.SelectedItems.Count > 0)
+            {
+                DesktopUtils.SetImage(lvProducts.SelectedItems[0].Tag as Product, pbxPic);
+
+            }
+            pnlTools.Visible = CanAccessControls;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -135,6 +131,7 @@ namespace MediaBazaar.forms
                 foreach (Product p in foundProducts)
                 {
                     ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    entry.Tag = p;
                     lvProducts.Items.Add(entry);
                 }
             }
@@ -185,9 +182,8 @@ namespace MediaBazaar.forms
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)
-        {
-            int selectedID = Convert.ToInt32(lvProducts.SelectedItems[0].SubItems[0].Text);
-            EditItem editItem = new EditItem(selectedID);
+        {    
+            EditItem editItem = new EditItem(lvProducts.SelectedItems[0].Tag as Product);
             editItem.ShowDialog();
         }
 

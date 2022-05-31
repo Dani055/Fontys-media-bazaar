@@ -50,6 +50,10 @@ namespace MBazaarClassLibrary.models
             this.Price = price;
             this.Picture = picture;
         }
+        public Product(int id, string name, string ean, int deptID, int amountInStock, int minStock, double price, byte[] picture) : this(id, name, ean, deptID, amountInStock,  minStock, price)
+        {
+            Picture = picture;
+        }
 
         public int CompareTo(Product otherProduct)
         {

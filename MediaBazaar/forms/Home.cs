@@ -134,7 +134,7 @@ namespace MediaBazaar
 
         private void tmr_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         

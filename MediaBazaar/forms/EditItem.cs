@@ -20,13 +20,13 @@ namespace MediaBazaar.forms
         private Product prod;
         private List<Department> departments;
 
-        public EditItem(int productId)
+        public EditItem(Product product)
         {
             InitializeComponent();
             try
             {
                 departments = DepartmentService.GetAllDepartments();
-                prod = InventoryService.GetProductByID(productId);
+                prod = product;
                 cbxDepartment.DataSource = departments;
                 cbxDepartment.DisplayMember = "Name";
                 cbxDepartment.ValueMember = "Id";
@@ -52,6 +52,7 @@ namespace MediaBazaar.forms
             nmrAmount.Value = prod.AmountInStock;
             nmrMinStock.Value = prod.MinStock;
             nmrPrice.Value = (decimal)prod.Price;
+            DesktopUtils.SetImage(prod, pbxPic);
         }
 
         private void btnSubmitChanges_Click(object sender, EventArgs e)

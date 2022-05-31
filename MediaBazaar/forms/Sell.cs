@@ -39,6 +39,7 @@ namespace MediaBazaar.forms
                 foreach (Product p in products)
                 {
                     ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    entry.Tag = p;
                     lvAllItems.Items.Add(entry);
                 }
 
@@ -106,9 +107,10 @@ namespace MediaBazaar.forms
                 if (nmrAddAmountToCart.Value == 0)
                 {
                     return;
-                } else
+                } 
+                else
                 {
-                    amount = Convert.ToInt32(nmrAddAmountToCart.Value);
+                    amount = (int)nmrAddAmountToCart.Value;
                 }
             }
 
@@ -123,6 +125,7 @@ namespace MediaBazaar.forms
             };
 
             ListViewItem cartItem = new ListViewItem(cartItemInfo);
+            cartItem.Tag = lvAllItems.SelectedItems[0].Tag;
             lvCart.Items.Add(cartItem);
 
             CalculateTotal();
@@ -145,9 +148,11 @@ namespace MediaBazaar.forms
 
         private void lvAllItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvAllItems.SelectedItems.Count != 0)
+            if (lvAllItems.SelectedItems.Count > 0)
             {
                 btnAddAmountToCart.Enabled = true;
+
+                DesktopUtils.SetImage(lvAllItems.SelectedItems[0].Tag as Product, pbxPic);          
             }
             else
             {
@@ -193,9 +198,10 @@ namespace MediaBazaar.forms
 
         private void lvCart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvCart.SelectedItems.Count != 0)
+            if (lvCart.SelectedItems.Count > 0)
             {
                 btnRemoveEntry.Enabled = true;
+                DesktopUtils.SetImage(lvCart.SelectedItems[0].Tag as Product, pbxPic);
             }
             else
             {

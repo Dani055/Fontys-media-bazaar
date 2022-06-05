@@ -163,6 +163,7 @@ namespace MediaBazaar.forms
         private void btnSellCart_Click(object sender, EventArgs e)
         {
             if (lvCart.Items.Count == 0) { return; }
+            int empID = DesktopUtils.loggedEmployee.Id;
 
             for (int i=0; i<lvCart.Items.Count; i++)
             {
@@ -170,7 +171,7 @@ namespace MediaBazaar.forms
                 int amountToSell = Convert.ToInt32(lvCart.Items[i].SubItems[2].Text);
                 try
                 {
-                    InventoryService.SellProduct(productId, amountToSell);
+                    InventoryService.SellProduct(productId, amountToSell, empID);
                 }
                 catch (Exception ex)
                 {

@@ -219,7 +219,7 @@ namespace MBazaarClassLibrary.services
             }
         }
 
-        public static bool SellProduct(int id, int sellingAmount)
+        public static bool SellProduct(int id, int sellingAmount, int sellerID)
         {
             int currentAmountInStock = GetAmountInStock(id);
             int newQuantity = currentAmountInStock - sellingAmount;
@@ -229,10 +229,15 @@ namespace MBazaarClassLibrary.services
                 throw new Exception($"Entry for {sellingAmount} of item #{id} was not sold due to insufficient storage quantity");
             }
 
-            string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId";
+            string query = "UPDATE Product SET amountInStock = @newAmount WHERE productId = @productId;" +
+                           "INSERT INTO Sale (saleDate,sellerID,productID,amount) VALUES (@saleDate,@sellerID,@productId,@amount);";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@newAmount", newQuantity.ToString());
             cmd.Parameters.AddWithValue("@productId", id.ToString());
+
+            cmd.Parameters.AddWithValue("@saleDate", DateTime.Now);
+            cmd.Parameters.AddWithValue("@sellerID", sellerID);
+            cmd.Parameters.AddWithValue("@amount", sellingAmount);
 
             try
             {

@@ -46,11 +46,13 @@ namespace MediaBazaar
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.tmr = new System.Windows.Forms.Timer(this.components);
+            this.pnlClockBG = new System.Windows.Forms.Panel();
             this.pnlNav.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            this.pnlClockBG.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -222,7 +224,7 @@ namespace MediaBazaar
             this.pbxLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxLogout.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogout.Image")));
-            this.pbxLogout.Location = new System.Drawing.Point(783, 368);
+            this.pbxLogout.Location = new System.Drawing.Point(783, 425);
             this.pbxLogout.Name = "pbxLogout";
             this.pbxLogout.Size = new System.Drawing.Size(65, 62);
             this.pbxLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -232,9 +234,9 @@ namespace MediaBazaar
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbxLogo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pbxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogo.Image")));
-            this.pbxLogo.Location = new System.Drawing.Point(51, 201);
+            this.pbxLogo.Location = new System.Drawing.Point(279, 277);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(331, 219);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -243,27 +245,37 @@ namespace MediaBazaar
             // 
             // lblTime
             // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTime.Location = new System.Drawing.Point(571, 201);
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(3, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(277, 81);
+            this.lblTime.Size = new System.Drawing.Size(184, 73);
             this.lblTime.TabIndex = 13;
-            this.lblTime.Text = "00:00:00";
+            this.lblTime.Text = "00:00";
             // 
             // tmr
             // 
             this.tmr.Interval = 1000;
             this.tmr.Tick += new System.EventHandler(this.tmr_Tick);
             // 
+            // pnlClockBG
+            // 
+            this.pnlClockBG.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlClockBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.pnlClockBG.Controls.Add(this.lblTime);
+            this.pnlClockBG.Location = new System.Drawing.Point(357, 195);
+            this.pnlClockBG.Name = "pnlClockBG";
+            this.pnlClockBG.Size = new System.Drawing.Size(184, 73);
+            this.pnlClockBG.TabIndex = 14;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 451);
-            this.Controls.Add(this.lblTime);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(871, 508);
+            this.Controls.Add(this.pnlClockBG);
             this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.pbxLogout);
             this.Controls.Add(this.panel2);
@@ -279,8 +291,8 @@ namespace MediaBazaar
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
+            this.pnlClockBG.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -301,5 +313,6 @@ namespace MediaBazaar
         private System.Windows.Forms.PictureBox pbxLogo;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer tmr;
+        private System.Windows.Forms.Panel pnlClockBG;
     }
 }

@@ -49,12 +49,14 @@ namespace MediaBazaar.forms
             this.pbxEdit = new System.Windows.Forms.PictureBox();
             this.pbxAdd = new System.Windows.Forms.PictureBox();
             this.pnlTools = new System.Windows.Forms.Panel();
+            this.pbxPic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmrRestockAmount)).BeginInit();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRemove)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).BeginInit();
             this.pnlTools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPic)).BeginInit();
             this.SuspendLayout();
             // 
             // lvProducts
@@ -76,7 +78,7 @@ namespace MediaBazaar.forms
             this.lvProducts.Location = new System.Drawing.Point(14, 57);
             this.lvProducts.MultiSelect = false;
             this.lvProducts.Name = "lvProducts";
-            this.lvProducts.Size = new System.Drawing.Size(889, 357);
+            this.lvProducts.Size = new System.Drawing.Size(782, 357);
             this.lvProducts.TabIndex = 2;
             this.lvProducts.UseCompatibleStateImageBehavior = false;
             this.lvProducts.View = System.Windows.Forms.View.Details;
@@ -134,7 +136,7 @@ namespace MediaBazaar.forms
             this.btnSendRestockRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendRestockRequest.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSendRestockRequest.ForeColor = System.Drawing.Color.Indigo;
-            this.btnSendRestockRequest.Location = new System.Drawing.Point(744, 11);
+            this.btnSendRestockRequest.Location = new System.Drawing.Point(858, 11);
             this.btnSendRestockRequest.Name = "btnSendRestockRequest";
             this.btnSendRestockRequest.Size = new System.Drawing.Size(169, 76);
             this.btnSendRestockRequest.TabIndex = 8;
@@ -156,7 +158,7 @@ namespace MediaBazaar.forms
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(818, 20);
+            this.btnRefresh.Location = new System.Drawing.Point(935, 20);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(86, 31);
@@ -170,7 +172,7 @@ namespace MediaBazaar.forms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(585, 22);
+            this.label1.Location = new System.Drawing.Point(699, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 20);
             this.label1.TabIndex = 12;
@@ -179,7 +181,7 @@ namespace MediaBazaar.forms
             // nmrRestockAmount
             // 
             this.nmrRestockAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrRestockAmount.Location = new System.Drawing.Point(585, 46);
+            this.nmrRestockAmount.Location = new System.Drawing.Point(699, 46);
             this.nmrRestockAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nmrRestockAmount.Name = "nmrRestockAmount";
             this.nmrRestockAmount.Size = new System.Drawing.Size(143, 27);
@@ -244,8 +246,22 @@ namespace MediaBazaar.forms
             this.pnlTools.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlTools.Location = new System.Drawing.Point(0, 433);
             this.pnlTools.Name = "pnlTools";
-            this.pnlTools.Size = new System.Drawing.Size(920, 98);
+            this.pnlTools.Size = new System.Drawing.Size(1037, 98);
             this.pnlTools.TabIndex = 17;
+            // 
+            // pbxPic
+            // 
+            this.pbxPic.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pbxPic.BackColor = System.Drawing.SystemColors.Control;
+            this.pbxPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbxPic.Image = global::MediaBazaar.Properties.Resources.no_picture;
+            this.pbxPic.Location = new System.Drawing.Point(820, 114);
+            this.pbxPic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbxPic.Name = "pbxPic";
+            this.pbxPic.Size = new System.Drawing.Size(191, 222);
+            this.pbxPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPic.TabIndex = 19;
+            this.pbxPic.TabStop = false;
             // 
             // Inventory
             // 
@@ -253,7 +269,8 @@ namespace MediaBazaar.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(920, 531);
+            this.ClientSize = new System.Drawing.Size(1037, 531);
+            this.Controls.Add(this.pbxPic);
             this.Controls.Add(this.pnlTools);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnSearch);
@@ -271,6 +288,7 @@ namespace MediaBazaar.forms
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).EndInit();
             this.pnlTools.ResumeLayout(false);
             this.pnlTools.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,5 +315,6 @@ namespace MediaBazaar.forms
         private System.Windows.Forms.PictureBox pbxRemove;
         private System.Windows.Forms.PictureBox pbxEdit;
         private System.Windows.Forms.Panel pnlTools;
+        private System.Windows.Forms.PictureBox pbxPic;
     }
 }

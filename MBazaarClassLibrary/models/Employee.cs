@@ -23,6 +23,12 @@ namespace MBazaarClassLibrary.models
         public string ContractType { get; set; }
         public bool IsStudent { get; set; } //It is not in constructor because it is false by default. It can be changed after creation
 
+        public string FullName { 
+            get 
+            {
+                return this.FirstName + " " + this.LastName;
+            } 
+        }
         public Employee()
         {
 

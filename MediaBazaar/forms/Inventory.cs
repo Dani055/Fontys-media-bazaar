@@ -32,11 +32,13 @@ namespace MediaBazaar.forms
             {
                 CanAccessControls = true;              
                 pnlTools.Visible = true;
+                btnViewSales.Enabled = true;
             }
             else
             {
                 CanAccessControls = false;
                 pnlTools.Visible = false;
+                btnViewSales.Enabled = false;
             }          
         }
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -192,5 +194,10 @@ namespace MediaBazaar.forms
             VisualHelper.PicButtonHoverEffect(sender as PictureBox);
         }
 
+        private void btnViewSales_Click(object sender, EventArgs e)
+        {
+            ViewSales viewSales = new ViewSales();
+            viewSales.ShowDialog();
+        }
     }
 }

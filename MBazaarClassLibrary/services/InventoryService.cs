@@ -400,5 +400,81 @@ namespace MBazaarClassLibrary.services
                 conn.Close();
             }
         }
+
+        public static List<Sale> GetAllSales(SalesSort sort)
+        {
+            List<Sale> sales = new List<Sale>();
+            string query = string.Empty;
+
+            if (sort == SalesSort.DEFAULT)
+            {
+                query = "SELECT * FROM Sale inner join Employee on Sale.sellerID = Employee.id inner join Product on Sale.productID = Product.productId;";
+            }
+            else if (sort == SalesSort.DATEDESC)
+            {
+                query = "SELECT * FROM Sale inner join Employee on Sale.sellerID = Employee.id inner join Product on Sale.productID = Product.productId ORDER BY saleDate DESC;";
+            } else if (sort == SalesSort.SELLERID)
+            {
+                query = "SELECT * FROM Sale inner join Employee on Sale.sellerID = Employee.id inner join Product on Sale.productID = Product.productId ORDER BY sellerID ASC;";
+            } else if (sort == SalesSort.PRODUCTID)
+            {
+                query = "SELECT * FROM Sale inner join Employee on Sale.sellerID = Employee.id inner join Product on Sale.productID = Product.productId ORDER BY Sale.productID ASC;";
+            }
+
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    //sale data
+                    int saleID = reader.GetInt32("saleID");
+                    DateTime saleDate = reader.GetDateTime("saleDate");
+                    int amountSold = reader.GetInt32("amount");
+
+                    //seller data
+                    int empid = reader.GetInt32("id");
+                    string uname = reader.GetString("username");
+                    string pwd = reader.GetString("password");
+                    string firstname = reader.GetString("firstName");
+                    string lastname = reader.GetString("lastName");
+                    string address = reader.GetString("address");
+                    double wage = reader.GetDouble("hourlyWage");
+                    string departmentid = reader["departmentId"].ToString();
+                    string role = reader["role"].ToString();
+                    string email = reader["email"].ToString();
+                    string phone = reader["phone"].ToString();
+                    string contractType = reader["contractType"] == DBNull.Value ? string.Empty : reader["contractType"].ToString();
+                    bool isStudent = reader.GetBoolean("isStudent");
+                    Employee emp = new Employee(empid, uname, pwd, firstname, lastname, wage, address, departmentid, role, email, phone, contractType) { IsStudent = isStudent };
+
+                    //product data
+                    int productID = reader.GetInt32("productID");
+                    string productName = reader.GetString("productName");
+                    string productEAN = reader.GetString("productEan");
+                    int deptID = reader.GetInt32("departmentId");
+                    int amountInStock = reader.GetInt32("amountInStock");
+                    int minStock = reader.GetInt32("minStock");
+                    double price = reader.GetDouble("price");
+
+                    Product prod = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price);
+
+                    Sale sale = new Sale(saleID, saleDate, emp, prod, amountSold);
+                    sales.Add(sale);
+
+
+
+                }
+                reader.Close();
+                return sales;
+            } finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

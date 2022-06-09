@@ -173,8 +173,9 @@ namespace MBazaarClassLibrary.services
                     int amountInStock = reader.GetInt32("amountInStock");
                     int minStock = reader.GetInt32("minStock");
                     double price = reader.GetDouble("price");
+                    byte[] picture = reader[7] == DBNull.Value ? null : (byte[])reader[7];
 
-                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price) { DepartmentName = deptName};
+                    Product p = new Product(productID, productName, productEAN, deptID, amountInStock, minStock, price, picture) { DepartmentName = deptName};
                     foundProducts.Add(p);
 
                 }

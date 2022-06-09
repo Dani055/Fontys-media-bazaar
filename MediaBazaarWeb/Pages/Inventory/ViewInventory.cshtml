@@ -17,17 +17,37 @@
                 <div class="item-header">
                     <h3>@item.ProductName</h3>
                 </div>
-                <div class="item-content">
-                    @if (item.AmountInStock < item.MinStock)
-                    {
-                        <p><span class="red">Qty: @item.AmountInStock</span></p>
-                    }
-                    else
-                    {
-                        <p>Qty: @item.AmountInStock</p>
-                    }
-                    <p>Price: <span class="green">@item.Price €</span></p>
-                    <p>Department: @item.DepartmentName</p>
+                <div class="item-content d-flex justify-content-between">
+                    <div>
+                        @if (item.AmountInStock < item.MinStock)
+                        {
+                            <p><span class="red">Qty: @item.AmountInStock</span></p>
+                        }
+                        else
+                        {
+                            <p>Qty: @item.AmountInStock</p>
+                        }
+                        <p>Price: <span class="green">@item.Price €</span></p>
+                        <p>Department: @item.DepartmentName</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        
+                        @if (item.Picture != null)
+                        {
+                            string pic = Convert.ToBase64String(item.Picture);
+
+                            <button class="border-0 pop" data-bs-toggle="modal" data-bs-target="#pic-modal" data-bs-pic="data:image/jpeg;base64,@pic">
+                                <img src="data:image/jpeg;base64,@pic" id="itempic" class="image-container border shadow-sm itempic" style="height: 70px; width: 70px"/>
+                            </button>
+
+                        } else
+                        {
+                            <div class="image-container bg-light border shadow-sm d-flex align-items-center justify-content-center" style="height: 70px; width: 70px">
+                                <img src="~/images/no-camera.png" height="40" width="40" class="opacity-50">
+                            </div>
+                        }
+
+                    </div>           
                 </div>
                 <div class="item-footer">
                     <p>EAN: @item.ProductEAN</p>
@@ -36,3 +56,29 @@
         }
     </div>
 </div>
+
+<div class="modal fade" id="pic-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body d-flex justify-content-center">
+                <img src="" id="previewpic" class="imagepreview border shadow" style="width: 100%;"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var exampleModal = document.getElementById('pic-modal')
+
+    exampleModal.addEventListener('show.bs.modal', event => {
+
+        var button = event.relatedTarget
+  
+        var recipient = button.getAttribute('data-bs-pic')
+        console.log(recipient)
+
+        var modalImg = document.getElementById('previewpic')
+
+        modalImg.src = recipient
+    })
+</script>

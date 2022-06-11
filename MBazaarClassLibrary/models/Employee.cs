@@ -15,6 +15,7 @@ namespace MBazaarClassLibrary.models
         public string LastName { get; set; }
         public string Address { get; set; }
         public double HourlyWage { get; set; }
+        public double MonthlyWage => GetMonthlyWage();
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
         public string Role { get; set; }
@@ -23,11 +24,11 @@ namespace MBazaarClassLibrary.models
         public string ContractType { get; set; }
         public bool IsStudent { get; set; } //It is not in constructor because it is false by default. It can be changed after creation
 
-        public string FullName { 
-            get 
+        public string FullName {
+            get
             {
                 return this.FirstName + " " + this.LastName;
-            } 
+            }
         }
         public Employee()
         {
@@ -59,5 +60,18 @@ namespace MBazaarClassLibrary.models
             Role = role;
             ContractType = contract;
         }
+        private double GetMonthlyWage()
+        {
+            if (ContractType != "Permanent")
+            {
+                return 0;
+            }
+            else
+            {
+                //Permanent contract is 40 hours per week and we multiply it by 4 weeks.
+                return Math.Round(((HourlyWage * 40) * 4), 3);
+            }
+        }
+
     }
 }

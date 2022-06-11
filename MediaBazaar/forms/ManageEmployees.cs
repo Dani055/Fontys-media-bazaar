@@ -173,5 +173,11 @@ namespace MediaBazaar
             automaticScheduler.ShowDialog();
 
         }
+
+        private void btnOverview_Click(object sender, EventArgs e)
+        {
+            EmployeesOverview eo = new EmployeesOverview();
+            eo.ShowDialog();
+        }
     }
 }

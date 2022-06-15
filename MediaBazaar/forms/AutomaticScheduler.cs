@@ -76,10 +76,11 @@ namespace MediaBazaar.forms
                     }
                 }
 
-                WorkdayService.AddWorkday(emp, workday, DesktopUtils.loggedEmployee);
+                //WorkdayService.AddWorkday(emp, workday, DesktopUtils.loggedEmployee);
 
             }
 
+            WorkdayService.AddMultipleWorkdays(workdays);
 
         }
 

@@ -199,6 +199,43 @@ namespace MBazaarClassLibrary.data_access
                 connection.Close();
             }
         }
+
+        public static bool AddMultipleWorkdaysQuery(List<Workday> workdays) 
+        {
+            StringBuilder sCommand = new("INSERT INTO Workday (employeeId, day, shifts) VALUES  ");
+            using MySqlConnection conn = new(Utils.connectionString);
+            try
+            {
+                List<string> rows = new();
+                for (int i = 0; i < workdays.Count; i++)
+                {
+                    rows.Add(String.Format("('{0}','{1}','{2}')",
+                        MySqlHelper.EscapeString(workdays[i].EmpID.ToString()),
+                        MySqlHelper.EscapeString(workdays[i].Date),
+                        MySqlHelper.EscapeString(workdays[i].Shifts)));
+                }
+
+                if (rows.Count == 0)
+                {
+                    return true;
+                }
+
+                sCommand.Append(String.Join(",", rows));
+                sCommand.Append(';');
+                conn.Open();
+                using (MySqlCommand cmd = new(sCommand.ToString(), conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public static bool MarkAttendanceQuery(string workdayId, bool missing)
         {
             MySqlConnection connection = new MySqlConnection(Utils.connectionString);

@@ -76,6 +76,12 @@ namespace MBazaarClassLibrary.services
             }
             return null;
         }
+
+        public static bool AddMultipleWorkdays(List<Workday> workdays) 
+        {
+            return DataAccessWorkday.AddMultipleWorkdaysQuery(workdays);
+        }
+
         public static bool AddWorkday(Employee emp, Workday workday, Employee loggedEmp)
         {
             if (loggedEmp.Role != "Employee Manager" && loggedEmp.Role != "CEO")

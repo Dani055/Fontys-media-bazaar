@@ -40,6 +40,7 @@ namespace MediaBazaar.forms
             this.colMinStock = new System.Windows.Forms.ColumnHeader();
             this.colPrice = new System.Windows.Forms.ColumnHeader();
             this.gbCart = new System.Windows.Forms.GroupBox();
+            this.pbxPic = new System.Windows.Forms.PictureBox();
             this.btnRemoveEntry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxTotal = new System.Windows.Forms.TextBox();
@@ -58,10 +59,9 @@ namespace MediaBazaar.forms
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.chbxAutoAdd = new System.Windows.Forms.CheckBox();
             this.autoAddToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.pbxPic = new System.Windows.Forms.PictureBox();
             this.gbCart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrAddAmountToCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrAddAmountToCart)).BeginInit();
             this.SuspendLayout();
             // 
             // lvAllItems
@@ -141,6 +141,20 @@ namespace MediaBazaar.forms
             this.gbCart.TabIndex = 4;
             this.gbCart.TabStop = false;
             this.gbCart.Text = "Cart";
+            // 
+            // pbxPic
+            // 
+            this.pbxPic.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pbxPic.BackColor = System.Drawing.SystemColors.Control;
+            this.pbxPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbxPic.Image = global::MediaBazaar.Properties.Resources.no_picture;
+            this.pbxPic.Location = new System.Drawing.Point(589, 28);
+            this.pbxPic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbxPic.Name = "pbxPic";
+            this.pbxPic.Size = new System.Drawing.Size(122, 127);
+            this.pbxPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPic.TabIndex = 20;
+            this.pbxPic.TabStop = false;
             // 
             // btnRemoveEntry
             // 
@@ -329,20 +343,6 @@ namespace MediaBazaar.forms
             this.chbxAutoAdd.Text = "Auto-add";
             this.chbxAutoAdd.UseVisualStyleBackColor = true;
             // 
-            // pbxPic
-            // 
-            this.pbxPic.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pbxPic.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbxPic.Image = global::MediaBazaar.Properties.Resources.no_picture;
-            this.pbxPic.Location = new System.Drawing.Point(589, 28);
-            this.pbxPic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pbxPic.Name = "pbxPic";
-            this.pbxPic.Size = new System.Drawing.Size(122, 127);
-            this.pbxPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxPic.TabIndex = 20;
-            this.pbxPic.TabStop = false;
-            // 
             // Sell
             // 
             this.AcceptButton = this.btnSearch;
@@ -363,8 +363,8 @@ namespace MediaBazaar.forms
             this.Text = "Sell";
             this.gbCart.ResumeLayout(false);
             this.gbCart.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrAddAmountToCart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrAddAmountToCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

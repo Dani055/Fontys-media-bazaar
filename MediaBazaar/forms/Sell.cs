@@ -61,6 +61,7 @@ namespace MediaBazaar.forms
                 foreach (Product p in foundProducts)
                 {
                     ListViewItem entry = new ListViewItem(p.GetDataArray());
+                    entry.Tag = p;
                     lvAllItems.Items.Add(entry);
                 }
 
@@ -209,5 +210,7 @@ namespace MediaBazaar.forms
                 btnRemoveEntry.Enabled = false;
             }
         }
+
+       
     }
 }

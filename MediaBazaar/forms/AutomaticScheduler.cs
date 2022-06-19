@@ -80,7 +80,11 @@ namespace MediaBazaar.forms
 
             }
 
-            WorkdayService.AddMultipleWorkdays(workdays);
+            bool result = WorkdayService.AddMultipleWorkdays(workdays);
+            if (result)
+            {
+                VisualHelper.ShowInfo("Weekly schedule created");
+            }
 
         }
 

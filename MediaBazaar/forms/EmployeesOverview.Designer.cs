@@ -104,7 +104,7 @@
             this.lblTitle2.Name = "lblTitle2";
             this.lblTitle2.Size = new System.Drawing.Size(191, 23);
             this.lblTitle2.TabIndex = 1;
-            this.lblTitle2.Text = "Employees brakedown";
+            this.lblTitle2.Text = "Employees breakdown";
             // 
             // lvEmpBrakedown
             // 

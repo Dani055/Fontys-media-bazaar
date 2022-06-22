@@ -86,7 +86,7 @@ namespace MediaBazaar.forms
                 ofdPicture.InitialDirectory = @"C:\";
                 ofdPicture.RestoreDirectory = true;
                 ofdPicture.Title = "Choose a picture";
-                ofdPicture.Filter = "Image Files(*.jpg; *.jpeg; *.bmp)|*.jpg; *.jpeg; *.bmp";
+                ofdPicture.Filter = "Image Files(*.jpg; *.jpeg; *.bmp)|*.jpg; *.jpeg; *.bmp; *.png";
 
                 Bitmap pic;
                 if (ofdPicture.ShowDialog() == DialogResult.OK)

@@ -9,7 +9,7 @@ namespace MBazaarClassLibrary
 {
     public static class Utils
     {
-        public static string connectionString { get; } = "server=eu01-sql.pebblehost.com;database=customer_251983_database;uid=customer_251983_database;password=xenOC70490U@a!pfkl7-;";
+        public static string connectionString { get; } = "connection string to db here";
         public static string DbDateFormat = "yyyy-MM-dd";
         public static long MaxPicSize { get; } = 200000; //max item pic size in bytes
         public static string GetDateStringForMySQL(DateTime date)
